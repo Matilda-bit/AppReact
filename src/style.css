@@ -2,19 +2,6 @@ body {
     margin : 0
 }
 
-.navbar {
-    height:100px;
-    background-color: #333;
-    color: whitesmoke;
-    margin-bottom: 15px;
-    text-align: center;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
 .todo-list {
     background-color: white;
     margin: auto;
@@ -41,4 +28,17 @@ body {
     border-bottom: 1px solid #cecece;
     font-family: Roboto, sans-serif;
     font-weight: 100;
+}
+
+.navbar {
+    height:100px;
+    background-color: #333;
+    color: whitesmoke;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
