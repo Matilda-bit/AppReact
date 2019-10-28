@@ -1,9 +1,13 @@
-import React,{Component} from 'react';
-import FormContainer from "./FormContainer"
+import React from 'react';
+import Header from "./Header";
+import MemeGenerator from "./MemeGenerator";
 
 function App(){
     return(
-        <FormContainer />
+        <div>
+            <Header />
+            <MemeGenerator />
+        </div>
     )
 }
 export default App;
