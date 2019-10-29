@@ -1,6 +1,8 @@
-import React, {Component} from "react"
+import React from "react"
+import "./MemesLink"
+import meme from "./MemesLink";
 
-class MemeGenerator extends Component {
+class MemeGenerator extends React.Component {
     constructor(){
         super()
         this.state = {
@@ -35,19 +37,19 @@ class MemeGenerator extends Component {
     }
     handleSubmit(event){
         event.preventDefault()
-        const randNum = (Math.floor(Math.random() * this.state.allMemeImgs.length))
+        const randNum = (Math.floor(Math.random() * meme.length))
         console.log("Num is:", randNum)
-        console.log("Len is:", this.state.allMemeImgs.length)
-        const randMemeImg = this.state.allMemeImgs[randNum]
-       
-        this.setState({randomImg: {randMemeImg} })
+        console.log("Len is:", meme.length)
+        const randMemeImg = meme[randNum].url
+
+        this.setState({randomImg: randMemeImg })
     }
 
     render(){
         return(
             <div>
 
-                <h1>MEME GENERATOR SECTION</h1>
+                <h1 className="new-style">MEME GENERATOR SECTION</h1>
                 <form className="meme-form" onSubmit={this.handleSubmit}>
                     <input
                     type="text"

@@ -9,7 +9,7 @@ function Header(){
                 alt="Problem?"
             />
 
-            <h1> >> Meme Generator  </h1>
+            <p> >> Meme Generator  </p>
         </header>
 
     )
