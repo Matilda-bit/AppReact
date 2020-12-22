@@ -6,6 +6,7 @@ Meme Generator is a single page application with two user inputs for upper and l
 This is my first project in React, I did it by studying it myself from a video on YouTube
 This web page was created solely for fun and to understand how the React works, therefore it has no value on the market. You can download, watch and try😊
 In this project I used JavaScript with React, the project is very simple with a local database in which links to all pictures are saved. Enjoy!
+This link for you with screenshot of page - https://github.com/Matilda-bit/AppReact/blob/master/meme.jpeg
 
 
 ## How to run Meme Generator project?
