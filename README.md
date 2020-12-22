@@ -19,7 +19,7 @@ In command prompt you run:
 ### `git clone https://github.com/Matilda-bit/AppReact.git`
 Then you can open the project folder that you clone from the your framework(for example WebStorm or Studio Code)
 But to run you need to install npm before, so run please in command prompt: 
-### `npm install` or ### `npm install -g npm`
+### `npm install` or `npm install -g npm`
 
 
 If you want to read more about npm or React, you can find it here:
