@@ -1,3 +1,26 @@
+##MemeGenerator
+About the project:
+Meme Generator is a single page application with two user inputs for upper and lower text and a Gen button for generating images for user-specified text. That's all!)
+This is my first project in React, I did it by studying it myself from a video on YouTube
+This web page was created solely for fun and to understand how the React works, therefore it has no value on the market. You can download, watch and try😊
+In this project I used JavaScript with React, the project is very simple with a local database in which links to all pictures are saved. Enjoy!
+How to run Meme Generator project? 
+READ ME TO KNOW THIS
+Open command prompt and go to the folder that you want to put this project – 
+Here you need to clone my project from git. 
+We have many way to do this – I show you one of them:
+In command prompt you run: 
+git clone https://github.com/Matilda-bit/AppReact.git
+Then you can open the project folder that you clone from the your framework(for example WebStorm or Studio Code)
+But to run you need to install npm before, so run please in command prompt: 
+npm install or npm install -g npm
+
+If you want to read more about npm or React, you can find it here:
+https://docs.npmjs.com/
+https://reactjs.org/
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
