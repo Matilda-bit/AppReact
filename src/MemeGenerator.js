@@ -69,23 +69,29 @@ class MemeGenerator extends React.Component {
 
                 <h1 className="center">MEME GENERATOR SECTION</h1>
                 <form className="meme-form" onSubmit={this.handleSubmit}>
-                    <input
-                    type="text"
-                    name="topText"
-                    placeholder="Top Text"
-                    value={this.state.topText}
-                    onChange={this.handleChange}
-                    />
-
-                    <input
+                    <div className="meme-input w3-container">
+                        <label className="pb-15">Top Text</label>
+                        <input
                         type="text"
-                        name="bottomText"
-                        placeholder="Bottom Text"
-                        value={this.state.bottomText}
+                        name="topText"
+                        className="w3-input"
+                        placeholder="Top Text"
+                        value={this.state.topText}
                         onChange={this.handleChange}
-                    />
+                        />
 
-                    <button>Generate</button>
+                        <label className="pb-15">Top Text</label>
+                        <input
+                            type="text"
+                            name="bottomText"
+                            className="w3-input"
+                            laceholder="Bottom Text"
+                            value={this.state.bottomText}
+                            onChange={this.handleChange}
+                        />
+                     </div>
+
+                    <button className="pb-15">Generate</button>
                 </form>
                 <div className="meme grey w3-cursive">
                     <h2 className="center">"{this.state.item.name}"</h2>
