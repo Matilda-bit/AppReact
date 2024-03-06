@@ -2,6 +2,7 @@ import React from "react"
 import "./MemesLink"
 import meme from "./MemesLink";
 
+
 class MemeGenerator extends React.Component {
     constructor(){
         super()
@@ -9,7 +10,6 @@ class MemeGenerator extends React.Component {
             
             topText: "",
             bottomText: "",
-            randomImg: "http://i.imgflip.com/1bij.jpg",
             allMemeImgs: [],
             item: {
                 id: "61579",
@@ -51,7 +51,6 @@ class MemeGenerator extends React.Component {
         const randMeme = meme[randNum];
 
         this.setState({
-            randomImg: randMeme.url,
             item: {
                 id: randMeme.id,
                 box_count: randMeme.box_count,
@@ -80,12 +79,12 @@ class MemeGenerator extends React.Component {
                         onChange={this.handleChange}
                         />
 
-                        <label className="pb-15">Top Text</label>
+                        <label className="pb-15">Bottom Text</label>
                         <input
                             type="text"
                             name="bottomText"
                             className="w3-input"
-                            laceholder="Bottom Text"
+                            placeholder="Bottom Text"
                             value={this.state.bottomText}
                             onChange={this.handleChange}
                         />

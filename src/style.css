@@ -102,8 +102,8 @@ header > p {
 
 .meme-input {
     display: grid !important;
-    justify-content: space-between;
-}
+    /* justify-content: space-between;*/
+} 
 
 .pb-15 {
     padding-bottom: 15px;
