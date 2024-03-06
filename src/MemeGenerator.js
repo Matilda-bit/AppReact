@@ -6,10 +6,19 @@ class MemeGenerator extends React.Component {
     constructor(){
         super()
         this.state = {
+            
             topText: "",
             bottomText: "",
             randomImg: "http://i.imgflip.com/1bij.jpg",
-            allMemeImgs: []
+            allMemeImgs: [],
+            item: {
+                id: "61579",
+                box_count: 2,
+                height: 335,
+                width: 568,
+                name: "One Does Not Simply",
+                img: "http://i.imgflip.com/1bij.jpg"
+            }
 
         }
         this.handleChange = this.handleChange.bind(this)
@@ -38,18 +47,27 @@ class MemeGenerator extends React.Component {
     handleSubmit(event){
         event.preventDefault()
         const randNum = (Math.floor(Math.random() * meme.length))
-        console.log("Num is:", randNum)
-        console.log("Len is:", meme.length)
-        const randMemeImg = meme[randNum].url
+        console.log(meme)
+        const randMeme = meme[randNum];
 
-        this.setState({randomImg: randMemeImg })
+        this.setState({
+            randomImg: randMeme.url,
+            item: {
+                id: randMeme.id,
+                box_count: randMeme.box_count,
+                height: randMeme.height,
+                width: randMeme.width,
+                name: randMeme.name,
+                img: randMeme.url
+            }
+        })
     }
 
-    render(){
+    render(){ 
         return(
             <div>
 
-                <h1 className="new-style">MEME GENERATOR SECTION</h1>
+                <h1 className="center">MEME GENERATOR SECTION</h1>
                 <form className="meme-form" onSubmit={this.handleSubmit}>
                     <input
                     type="text"
@@ -67,14 +85,29 @@ class MemeGenerator extends React.Component {
                         onChange={this.handleChange}
                     />
 
-                    <button>Gen</button>
+                    <button>Generate</button>
                 </form>
+                <div className="meme grey w3-cursive">
+                    <h2 className="center">"{this.state.item.name}"</h2>
+                </div>
 
-                <div className="meme">
-                    <img src={this.state.randomImg} alt="" />
+                <div className="meme limit">
+                    <img src={this.state.item.img} alt={this.state.item.name} />
                     <h2 className="top">{this.state.topText}</h2>
                     <h2 className="bottom">{this.state.bottomText}</h2>
 
+                </div>
+
+                <div className="center row">
+                    <div>
+                        <label > image hight:</label>
+                        <label > {this.state.item.height}</label>
+                    </div>
+                    
+                    <div>
+                        <label>image wight:</label>
+                        <label > {this.state.item.width}</label>
+                    </div>
                 </div>
             </div>
         )
