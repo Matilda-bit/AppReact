@@ -4,9 +4,11 @@ import meme from "./utils/MemesLink";
 
 import Circle from '@uiw/react-color-circle';
 
-class MemeGenerator extends React.Component {
+const MemeGenerator = (props) => {
 
-    //const [hex, setHex] = useState('#F44E3B');
+}
+class test{
+    
 
     constructor(){
         super()
@@ -146,4 +148,4 @@ class MemeGenerator extends React.Component {
 
 }
 
-export default MemeGenerator
+export default MemeGenerator;

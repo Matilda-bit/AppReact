@@ -1,7 +1,4 @@
-/*body {
-    margin : 0
-}
-*/
+
 
  header{
     height: 100px;
@@ -16,7 +13,9 @@
 h1 {
     font-family: Impact, sans-serif;
 }
-
+.text-bold {
+    font-weight: bold;
+}
 header > img {
     height: 100%;
     margin-left: 1%;
@@ -44,9 +43,7 @@ header > p {
 }
 
 .grey {
-    color:#727272;
-
-    
+    color:#727272;   
 }
 
 .meme > img {
@@ -55,6 +52,7 @@ header > p {
     margin-right: auto;
     width: 100%;
 }
+
 .center {
     margin-left: 3%;
     text-align: center;
@@ -96,29 +94,39 @@ header > p {
     width: 90%;
     margin: 20px auto;
     display: flex;
-    justify-content: center;
-
+    justify-content: auto;
 }
 
 .meme-input {
     display: grid !important;
-    /* justify-content: space-between;*/
+    width: 50%;
 } 
+.input-settings {
+    /* justify-content: start; */
+    display: flex;
+}
 
-.pb-15 {
-    padding-bottom: 15px;
+.settings-item {
+    width: 30%;
+}
+
+.margin-10 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.pt-5 {
+    padding-top: 5px;
 }
 
 
 .meme-input > input{
-    width: 460px;
+    width: 90%;
     height: 50px;
     padding-left: 15px;
     font-size: 16px;
 }
 
 .meme-form > button {
-    /* padding-top: 15px; */
     height: 40px;
     border: none;
     font-family: VT323, monospace;
