@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./utils/MemesLink";
 import meme from "./utils/MemesLink";
-import Circle from '@uiw/react-color-circle';
+//import Circle from '@uiw/react-color-circle';//uninstall!
+import AlignLeftIcon from './assets/icons/textAlign/align-left.png';
+import AlignCenterIcon from './assets/icons/textAlign/format.png';
+import AlignRightIcon from './assets/icons/textAlign/align-right.png';
 
 const MemeGenerator = () => {
     const [topText, setTopText] = useState("");
     const [bottomText, setBottomText] = useState("");
-    const [hex, setHex] = useState('#F44E3B');
+    //const [hex, setHex] = useState('#F44E3B');
+    const [boxColor, setBoxColor] = useState('black');
+    const [textAlign, setTextAlign] = useState('center');
     const [allMemeImgs, setAllMemeImgs] = useState([]);
     const [item, setItem] = useState({
         id: "61579",
@@ -63,17 +68,32 @@ const MemeGenerator = () => {
                     </div>
 
                     <div className="input-settings">
-                        <Circle 
-                            className="border-cst"
-                            colors={[ 'black', 'white']}
-                            color={hex}
-                            onChange={(color) => {
-                                setHex(color.hex);
-                            }}
+                    <div className="color-options">
+                        <div
+                            className="color-option"
+                            style={{ backgroundColor: "black" }}
+                            onClick={() => setBoxColor('black')}
                         />
+                        <div
+                            className="color-option"
+                            style={{ backgroundColor: "white" }}
+                            onClick={() => setBoxColor('white')}
+                        />
+                    </div>
 
-                        <label className="settings-item">Text Align</label>
-                        <label className="settings-item">Font Size</label>
+
+                    <div className="align-options">
+                        <div className="align-option" onClick={() => setTextAlign('left')}>
+                            <img src={AlignLeftIcon} alt="Left Align" width="25" height="15" />
+                        </div>
+                        <div className="align-option" onClick={() => setTextAlign('center')}>
+                            <img src={AlignCenterIcon} alt="Center Align" width="25" height="15" />
+                        </div>
+                        <div className="align-option" onClick={() => setTextAlign('right')}>
+                            <img src={AlignRightIcon} alt="Right Align" width="25" height="15" />
+                        </div>
+                    </div>
+                        
                      </div>
 
                     <input
@@ -82,6 +102,7 @@ const MemeGenerator = () => {
                         className="margin-10"
                         placeholder="Top Text"
                         value={topText}
+                        color={boxColor}
                         onChange={handleChange}
                     />
 

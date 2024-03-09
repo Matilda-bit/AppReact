@@ -112,6 +112,35 @@ header > p {
     width: 30%;
     font-family: Courier New, monospace;
 }
+/* color boxes    */
+.color-options {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  
+  .color-option {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px 0 0;
+    border: 1px solid #000000;
+    cursor: pointer;
+  }
+  
+  .color-option:hover {
+    border: 1px solid #333;
+  }
+
+/*text-align*/
+.align-options {
+    display: flex;
+  }
+
+.align-option {
+    margin: 0 5px 0 0;
+    cursor: pointer;
+    padding-bottom: 10px;
+}
 
 .comic-font {
     font-family: Comic Sans MS, Comic Sans, cursive !important;
