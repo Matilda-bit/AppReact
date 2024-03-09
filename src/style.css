@@ -28,7 +28,8 @@ header > p {
     font-size:50px;
     margin-left: 60px;
 }
-/*font-family: VT323, monospace;*/
+/*font-family: VT323, monospace; Courier New, monospace*/
+
 
 
 .meme{
@@ -101,13 +102,20 @@ header > p {
     display: grid !important;
     width: 50%;
 } 
+
 .input-settings {
-    /* justify-content: start; */
     display: flex;
+    margin-top: 15px;
 }
 
-.settings-item {
+.settings-title {
     width: 30%;
+    font-family: Courier New, monospace;
+}
+
+.comic-font {
+    font-family: Comic Sans MS, Comic Sans, cursive !important;
+    color: #555555;
 }
 
 .margin-10 {
@@ -117,7 +125,11 @@ header > p {
 .pt-5 {
     padding-top: 5px;
 }
-
+.border-cst {
+    border-radius: 1px;
+    border-color: #555555;
+    border-style: double;
+}
 
 .meme-input > input{
     width: 90%;
