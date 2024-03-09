@@ -58,6 +58,11 @@ const MemeGenerator = () => {
     return (
         <div>
             <h1 className="center">MEME GENERATOR SECTION</h1>
+            <div className="random-meme center">
+                <button className="pb-15" onClick={handleSubmit}>RANDOM MEME IMG</button>
+            </div>
+
+            <form className="meme-form" onSubmit={handleSubmit}></form>
             <form className="meme-form" onSubmit={handleSubmit}>
                 <div className="meme-input">
                     <label className="text-bold comic-font">Top Text</label>
@@ -126,7 +131,7 @@ const MemeGenerator = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <button className="pb-15">RANDOM MEME</button>
+                <button className="pb-15">SUBMIT</button>
             </form>
             <div className="meme grey">
                 <h2 className="center">"{item.name}"</h2>
@@ -151,76 +156,3 @@ const MemeGenerator = () => {
 };
 
 export default MemeGenerator;
-
-
-//div>
-
-// <h1 className="center">MEME GENERATOR SECTION</h1>
-// <form className="meme-form" onSubmit={this.handleSubmit}>
-//     <div className="meme-input ">
-//         <label className="pb-15 text-bold">Top Text</label>
-//         <div className="input-settings">
-//             <label className="settings-item pb-15 pt-5">Color</label>
-//             <label className="settings-item pb-15 pt-5">Text Align</label>
-//             <label className="settings-item pb-15 pt-5">Font Size</label>
-//         </div>
-//         <div className="input-settings">
-//             {/* <Circle 
-//                 colors={[ '#F44E3B', '#FE9200', '#FCDC00', '#DBDF00' ]}
-//                 color={hex}
-//                 onChange={(color) => {
-//                     // setHex(color.hex);
-//                 }}
-//             /> */}
-
-            
-//             <label className="settings-item pb-15 pt-5">Text Align</label>
-//             <label className="settings-item pb-15 pt-5">Font Size</label>
-//         </div>
-//         <input
-//         type="text"
-//         name="topText"
-//         className="margin-10"
-//         placeholder="Top Text"
-//         value={this.state.topText}
-//         onChange={this.handleChange}
-//         />
-
-//         <label className="pb-15 pt-5">Bottom Text</label>
-//         <input
-//             type="text"
-//             name="bottomText"
-//             className="margin-10"
-//             placeholder="Bottom Text"
-//             value={this.state.bottomText}
-//             onChange={this.handleChange}
-//         />
-//      </div>
-//     <div className="input-setting">
-    
-//     </div>
-//         <button className="pb-15">RANDOM MEME</button>
-// </form>
-// <div className="meme grey">
-//     <h2 className="center">"{this.state.item.name}"</h2>
-// </div>
-
-// <div className="meme limit">
-//     <img src={this.state.item.img} alt={this.state.item.name} />
-//     <h2 className="top">{this.state.topText}</h2>
-//     <h2 className="bottom">{this.state.bottomText}</h2>
-
-// </div>
-
-// <div className="center row">
-//     <div>
-//         <label > image hight:</label>
-//         <label > {this.state.item.height}</label>
-//     </div>
-    
-//     <div>
-//         <label>image wight:</label>
-//         <label > {this.state.item.width}</label>
-//     </div>
-// </div>
-// </div>
