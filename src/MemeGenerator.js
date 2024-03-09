@@ -5,6 +5,7 @@ import meme from "./utils/MemesLink";
 import AlignLeftIcon from './assets/icons/textAlign/align-left.png';
 import AlignCenterIcon from './assets/icons/textAlign/format.png';
 import AlignRightIcon from './assets/icons/textAlign/align-right.png';
+import FontSize from './assets/icons/fontSize/font-size.png';
 
 const MemeGenerator = () => {
     const [topText, setTopText] = useState("");
@@ -68,32 +69,38 @@ const MemeGenerator = () => {
                     </div>
 
                     <div className="input-settings">
-                    <div className="color-options">
-                        <div
-                            className="color-option"
-                            style={{ backgroundColor: "black" }}
-                            onClick={() => setBoxColor('black')}
-                        />
-                        <div
-                            className="color-option"
-                            style={{ backgroundColor: "white" }}
-                            onClick={() => setBoxColor('white')}
-                        />
-                    </div>
+                        <div className="color-options">
+                            <div
+                                className="color-option"
+                                style={{ backgroundColor: "black" }}
+                                onClick={() => setBoxColor('black')}
+                            />
+                            <div
+                                className="color-option"
+                                style={{ backgroundColor: "white" }}
+                                onClick={() => setBoxColor('white')}
+                            />
+                        </div>
 
 
-                    <div className="align-options">
-                        <div className="align-option" onClick={() => setTextAlign('left')}>
-                            <img src={AlignLeftIcon} alt="Left Align" width="25" height="15" />
+                        <div className="align-options">
+                            <div className="align-option" onClick={() => setTextAlign('left')}>
+                                <img src={AlignLeftIcon} alt="Left Align" width="25" height="15" />
+                            </div>
+                            <div className="align-option" onClick={() => setTextAlign('center')}>
+                                <img src={AlignCenterIcon} alt="Center Align" width="25" height="15" />
+                            </div>
+                            <div className="align-option" onClick={() => setTextAlign('right')}>
+                                <img src={AlignRightIcon} alt="Right Align" width="25" height="15" />
+                            </div>
                         </div>
-                        <div className="align-option" onClick={() => setTextAlign('center')}>
-                            <img src={AlignCenterIcon} alt="Center Align" width="25" height="15" />
+                            
+                        <div className="align-options">
+                            <div className="align-option" onClick={() => setTextAlign('left')}>
+                                <img src={FontSize} alt="Font Size" width="25" height="25" />
+                            </div>
+        
                         </div>
-                        <div className="align-option" onClick={() => setTextAlign('right')}>
-                            <img src={AlignRightIcon} alt="Right Align" width="25" height="15" />
-                        </div>
-                    </div>
-                        
                      </div>
 
                     <input
