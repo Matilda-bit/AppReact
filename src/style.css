@@ -62,17 +62,15 @@ header > p {
 .meme > h2 {
     position: absolute;
     width: 95%;
-    /* text-align: center; */
     left: 50%;
     transform: translateX(-50%);
     margin: auto;
     padding: 0 5px;
     font-family: Impact, sans-serif;
-    font-size: 3cqi;
+    /* font-size: 3cqi; */
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-
 
 /* Colors options: white and black*/
 .color-white {
@@ -88,31 +86,31 @@ header > p {
     -2px 0 0 #000,
     2px 2px 5px #000;
 }
+
 .color-black {
     color: black;
     text-shadow:
-2px 2px 0 #ffffff,
--2px -2px 0 #ffffff,
-2px -2px 0 #ffffff,
--2px 2px 0 #ffffff,
-0 2px 0 #ffffff,
-2px 0 0 #ffffff,
-0 -2px 0 #ffffff,
--2px 0 0 #ffffff,
-2px 2px 5px #ffffff;
+    2px 2px 0 #ffffff,
+    -2px -2px 0 #ffffff,
+    2px -2px 0 #ffffff,
+    -2px 2px 0 #ffffff,
+    0 2px 0 #ffffff,
+    2px 0 0 #ffffff,
+    0 -2px 0 #ffffff,
+    -2px 0 0 #ffffff,
+    2px 2px 5px #ffffff;
 }
 
 /* Text Align options - center , left, right */
 .text-align-center {
-    text-align: center;
+    text-align: center !important;
 }
 .text-align-left {
-    text-align: left;
+    text-align: left !important;
 }
 .text-align-right {
-    text-align: right;
+    text-align: right !important;
 }
-
 
 .meme > .bottom {
     bottom: 0;
@@ -132,37 +130,47 @@ header > p {
     width: 50%;
 } 
 
-.input-settings {
+.settings {
     display: flex;
     margin-top: 15px;
+    flex-direction: row;
+}
+
+.input-settings-color {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
 }
 
 .settings-title {
-    width: 30%;
     font-family: Courier New, monospace;
 }
+
+
 /* color boxes    */
 .color-options {
     display: flex;
     justify-content: center;
     margin-bottom: 15px;
+    width: 30%;
   }
   
-  .color-option {
-    width: 20px;
-    height: 20px;
-    margin: 0 5px 0 0;
-    border: 1px solid #000000;
-    cursor: pointer;
-  }
-  
-  .color-option:hover {
-    border: 1px solid #333;
-  }
+.color-option {
+width: 20px;
+height: 20px;
+margin: 0 5px 0 0;
+border: 1px solid #000000;
+cursor: pointer;
+}
+
+.color-option:hover {
+border: 1px solid #333;
+}
 
 /*text-align*/
 .align-options {
     display: flex;
+    margin-left: 5px;
   }
 
 .align-option {
@@ -170,7 +178,66 @@ header > p {
     cursor: pointer;
     padding-bottom: 10px;
 }
+/* Font Size Options */
+.font-size-options {
+    display: flex;
+    margin-left: 5px;
+}
 
+.font-size-option {
+    margin: 0 5px 0 0;
+    padding-bottom: 10px;
+}
+
+.no-cursor {
+    cursor: default;
+}
+
+.font-size-6 {
+    font-size: 280%;
+}
+.font-size-7 {
+    font-size: 310%;
+}
+.font-size-8 {
+    font-size: 340%;
+}
+.font-size-9 {
+    font-size: 370%;
+}
+.font-size-10 {
+    font-size: 400%;
+}
+.font-size-11 {
+    font-size: 430%;
+}
+.font-size-12 {
+    font-size: 460%;
+}
+.font-size-13 {
+    font-size: 490%;
+}
+.font-size-14 {
+    font-size: 520%;
+}
+.font-size-15 {
+    font-size: 550%;
+}
+.font-size-16 {
+    font-size: 580%;
+}
+.font-size-17 {
+    font-size: 610%;
+}
+.font-size-18 {
+    font-size: 640%;
+}
+.font-size-19 {
+    font-size: 670%;
+}
+.font-size-20 {
+    font-size: 700%;
+}
 .comic-font {
     font-family: Comic Sans MS, Comic Sans, cursive !important;
     color: #555555;

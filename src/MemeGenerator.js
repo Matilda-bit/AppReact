@@ -6,13 +6,18 @@ import AlignLeftIcon from './assets/icons/textAlign/align-left.png';
 import AlignCenterIcon from './assets/icons/textAlign/format.png';
 import AlignRightIcon from './assets/icons/textAlign/align-right.png';
 import FontSize from './assets/icons/fontSize/font-size.png';
+import ReduceSize from './assets/icons/fontSize/down.png';
+import IncreaseSize from './assets/icons/fontSize/up.png';
 
 const MemeGenerator = () => {
     const [topText, setTopText] = useState("");
     const [bottomText, setBottomText] = useState("");
-    //const [hex, setHex] = useState('#F44E3B');
     const [topColor, setTopColor] = useState("color-white");
-    const [textAlign, setTextAlign] = useState('text-align-center');
+    const [textAlign, setTextAlign] = useState(' text-align-center ');
+    const [fontSize, setFontSize] = useState(10);
+    const reduce = fontSize > 6;
+    const increase = fontSize < 20;
+    //fontSize
     const [allMemeImgs, setAllMemeImgs] = useState([]);
     const [item, setItem] = useState({
         id: "61579",
@@ -67,45 +72,53 @@ const MemeGenerator = () => {
                 <div className="meme-input">
                     <label className="text-bold comic-font">Top Text</label>
 
-                    <div className="input-settings">
-                        <label className="settings-title">Color</label>
-                        <label className="settings-title">Text Align</label>             
-                        <label className="settings-title">Font Size</label>         
+                    <div className="settings">
+                        <div className="input-settings-color">
+                            <label className="settings-title">Color</label> 
+                            <div className="color-options">
+                                <div
+                                    className="color-option"
+                                    style={{ backgroundColor: "black" }}
+                                    onClick={() => setTopColor('color-black')}
+                                />
+                                <div
+                                    className="color-option"
+                                    style={{ backgroundColor: "white" }}
+                                    onClick={() => setTopColor('color-white')}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="input-settings-color">
+                            <label className="settings-title">Text Align</label> 
+                            <div className="align-options">
+                                <div className="align-option" onClick={() => setTextAlign(' text-align-left ')}>
+                                    <img src={AlignLeftIcon} alt="Left Align" width="25" height="15" />
+                                </div>
+                                <div className="align-option" onClick={() => setTextAlign(' text-align-center ')}>
+                                    <img src={AlignCenterIcon} alt="Center Align" width="25" height="15" />
+                                </div>
+                                <div className="align-option" onClick={() => setTextAlign(' text-align-right ')}>
+                                    <img src={AlignRightIcon} alt="Right Align" width="25" height="15" />
+                                </div>
+                            </div>                
+                        </div>
+
+                        <div className="input-settings-color">
+                            <label className="settings-title">Font Size</label>
+                            <div className="align-options">
+                                <fieldset className="align-option"  onClick={() => reduce ? setFontSize(fontSize - 1) : null}>
+                                        <img src={ReduceSize} alt="Font Size" width="15" height="15" />
+                                </fieldset>
+                                <div className="align-option no-cursor">
+                                        <img src={FontSize} alt="Font Size" width="25" height="25" />
+                                </div>
+                                <fieldset className="align-option" onClick={() => increase ? setFontSize(fontSize + 1) : null}>
+                                        <img src={IncreaseSize} alt="Font Size" width="15" height="15" />
+                                </fieldset>
+                            </div>
+                        </div>
                     </div>
-
-                    <div className="input-settings">
-                        <div className="color-options">
-                            <div
-                                className="color-option"
-                                style={{ backgroundColor: "black" }}
-                                onClick={() => setTopColor('color-black')}
-                            />
-                            <div
-                                className="color-option"
-                                style={{ backgroundColor: "white" }}
-                                onClick={() => setTopColor('color-white')}
-                            />
-                        </div>
-
-                        <div className="align-options">
-                            <div className="align-option" onClick={() => setTextAlign('text-align-left')}>
-                                <img src={AlignLeftIcon} alt="Left Align" width="25" height="15" />
-                            </div>
-                            <div className="align-option" onClick={() => setTextAlign('text-align-center')}>
-                                <img src={AlignCenterIcon} alt="Center Align" width="25" height="15" />
-                            </div>
-                            <div className="align-option" onClick={() => setTextAlign('text-align-right')}>
-                                <img src={AlignRightIcon} alt="Right Align" width="25" height="15" />
-                            </div>
-                        </div>
-                            
-                        <div className="align-options">
-                            <div className="align-option" onClick={() => setTextAlign('left')}>
-                                <img src={FontSize} alt="Font Size" width="25" height="25" />
-                            </div>
-        
-                        </div>
-                     </div>
 
                     <input
                         type="text"
@@ -133,7 +146,7 @@ const MemeGenerator = () => {
             </div>
             <div className="meme limit">
                 <img src={item.img} alt={item.name} />
-                <h2 className={"top " + topColor + " " + textAlign}>{topText}</h2>
+                <h2 className={"top " + topColor + " " + textAlign + " font-size-" + fontSize}>{topText}</h2>
                 <h2 className="bottom">{bottomText}</h2>
             </div>
             <div className="center row">
