@@ -11,7 +11,7 @@ const MemeGenerator = () => {
     const [topText, setTopText] = useState("");
     const [bottomText, setBottomText] = useState("");
     //const [hex, setHex] = useState('#F44E3B');
-    const [boxColor, setBoxColor] = useState('black');
+    const [topColor, setTopColor] = useState("color-white");
     const [textAlign, setTextAlign] = useState('center');
     const [allMemeImgs, setAllMemeImgs] = useState([]);
     const [item, setItem] = useState({
@@ -78,12 +78,12 @@ const MemeGenerator = () => {
                             <div
                                 className="color-option"
                                 style={{ backgroundColor: "black" }}
-                                onClick={() => setBoxColor('black')}
+                                onClick={() => setTopColor('color-black')}
                             />
                             <div
                                 className="color-option"
                                 style={{ backgroundColor: "white" }}
-                                onClick={() => setBoxColor('white')}
+                                onClick={() => setTopColor('color-white')}
                             />
                         </div>
 
@@ -114,12 +114,8 @@ const MemeGenerator = () => {
                         className="margin-10"
                         placeholder="Top Text"
                         value={topText}
-                        color={boxColor}
                         onChange={handleChange}
                     />
-
-
-
 
                     <label className="pt-5 text-bold comic-font">Bottom Text</label>
                     <input
@@ -138,7 +134,7 @@ const MemeGenerator = () => {
             </div>
             <div className="meme limit">
                 <img src={item.img} alt={item.name} />
-                <h2 className="top">{topText}</h2>
+                <h2 className={"top " + topColor}>{topText}</h2>
                 <h2 className="bottom">{bottomText}</h2>
             </div>
             <div className="center row">

@@ -70,8 +70,10 @@ header > p {
     font-family: Impact, sans-serif;
     font-size: 3cqi;
     text-transform: uppercase;
-    color: white;
+/* 
+    color: black; */
     letter-spacing: 1px;
+    /* color: white;
     text-shadow:
 2px 2px 0 #000,
 -2px -2px 0 #000,
@@ -81,10 +83,38 @@ header > p {
 2px 0 0 #000,
 0 -2px 0 #000,
 -2px 0 0 #000,
-2px 2px 5px #000
-;
-
+2px 2px 5px #000; */
 }
+
+
+/* Colors options: white and black*/
+.color-white {
+    color: white;
+    text-shadow:
+    2px 2px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    0 2px 0 #000,
+    2px 0 0 #000,
+    0 -2px 0 #000,
+    -2px 0 0 #000,
+    2px 2px 5px #000;
+}
+.color-black {
+    color: black;
+    text-shadow:
+2px 2px 0 #ffffff,
+-2px -2px 0 #ffffff,
+2px -2px 0 #ffffff,
+-2px 2px 0 #ffffff,
+0 2px 0 #ffffff,
+2px 0 0 #ffffff,
+0 -2px 0 #ffffff,
+-2px 0 0 #ffffff,
+2px 2px 5px #ffffff;
+}
+
 .meme > .bottom {
     bottom: 0;
 }
