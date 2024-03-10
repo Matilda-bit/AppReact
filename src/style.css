@@ -62,7 +62,7 @@ header > p {
 .meme > h2 {
     position: absolute;
     width: 95%;
-    text-align: center;
+    /* text-align: center; */
     left: 50%;
     transform: translateX(-50%);
     margin: auto;
@@ -70,20 +70,7 @@ header > p {
     font-family: Impact, sans-serif;
     font-size: 3cqi;
     text-transform: uppercase;
-/* 
-    color: black; */
     letter-spacing: 1px;
-    /* color: white;
-    text-shadow:
-2px 2px 0 #000,
--2px -2px 0 #000,
-2px -2px 0 #000,
--2px 2px 0 #000,
-0 2px 0 #000,
-2px 0 0 #000,
-0 -2px 0 #000,
--2px 0 0 #000,
-2px 2px 5px #000; */
 }
 
 
@@ -114,6 +101,18 @@ header > p {
 -2px 0 0 #ffffff,
 2px 2px 5px #ffffff;
 }
+
+/* Text Align options - center , left, right */
+.text-align-center {
+    text-align: center;
+}
+.text-align-left {
+    text-align: left;
+}
+.text-align-right {
+    text-align: right;
+}
+
 
 .meme > .bottom {
     bottom: 0;

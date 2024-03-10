@@ -12,7 +12,7 @@ const MemeGenerator = () => {
     const [bottomText, setBottomText] = useState("");
     //const [hex, setHex] = useState('#F44E3B');
     const [topColor, setTopColor] = useState("color-white");
-    const [textAlign, setTextAlign] = useState('center');
+    const [textAlign, setTextAlign] = useState('text-align-center');
     const [allMemeImgs, setAllMemeImgs] = useState([]);
     const [item, setItem] = useState({
         id: "61579",
@@ -87,15 +87,14 @@ const MemeGenerator = () => {
                             />
                         </div>
 
-
                         <div className="align-options">
-                            <div className="align-option" onClick={() => setTextAlign('left')}>
+                            <div className="align-option" onClick={() => setTextAlign('text-align-left')}>
                                 <img src={AlignLeftIcon} alt="Left Align" width="25" height="15" />
                             </div>
-                            <div className="align-option" onClick={() => setTextAlign('center')}>
+                            <div className="align-option" onClick={() => setTextAlign('text-align-center')}>
                                 <img src={AlignCenterIcon} alt="Center Align" width="25" height="15" />
                             </div>
-                            <div className="align-option" onClick={() => setTextAlign('right')}>
+                            <div className="align-option" onClick={() => setTextAlign('text-align-right')}>
                                 <img src={AlignRightIcon} alt="Right Align" width="25" height="15" />
                             </div>
                         </div>
@@ -134,7 +133,7 @@ const MemeGenerator = () => {
             </div>
             <div className="meme limit">
                 <img src={item.img} alt={item.name} />
-                <h2 className={"top " + topColor}>{topText}</h2>
+                <h2 className={"top " + topColor + " " + textAlign}>{topText}</h2>
                 <h2 className="bottom">{bottomText}</h2>
             </div>
             <div className="center row">
