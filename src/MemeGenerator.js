@@ -8,16 +8,20 @@ import AlignRightIcon from './assets/icons/textAlign/align-right.png';
 import FontSize from './assets/icons/fontSize/font-size.png';
 import ReduceSize from './assets/icons/fontSize/down.png';
 import IncreaseSize from './assets/icons/fontSize/up.png';
+import BtnIcon from './assets/icons/btn/pokeball.png';
 
 const MemeGenerator = () => {
     const [topText, setTopText] = useState("");
     const [bottomText, setBottomText] = useState("");
     const [topColor, setTopColor] = useState("color-white");
-    const [textAlign, setTextAlign] = useState(' text-align-center ');
-    const [fontSize, setFontSize] = useState(10);
+    const [bottomColor, setBottomColor] = useState("color-white");
+    const [textAlignTop, setTextAlignTop]= useState(' text-align-center ');
+    const [textAlignBottom, setTextAlignBottom] = useState(' text-align-center ');
+    const [fontSizeTop, setFontSizeTop] = useState(10);
+    const [fontSizeBottom, setFontSizeBottom] = useState(10);
     const [hideSettings, setHideSettings] = useState(true);
-    const reduce = fontSize > 6;
-    const increase = fontSize < 20;
+    const reduce = fontSizeTop > 6;
+    const increase = fontSizeTop < 20;
     const [allMemeImgs, setAllMemeImgs] = useState([]);
     const [item, setItem] = useState({
         id: "61579",
@@ -66,8 +70,10 @@ const MemeGenerator = () => {
 
     const checkboxChange = (event) => {
         
-        const { name, value } = event.target;
+        const {name } = event.target;
         if (name === "checkbox") {
+            setTextAlignBottom(textAlignTop);
+            setBottomColor(topColor);
             setHideSettings(!hideSettings);
         } 
     };
@@ -90,12 +96,22 @@ const MemeGenerator = () => {
         <div>
             <h1 className="center">MEME GENERATOR SECTION</h1>
             <div className="random-meme center">
-                <button className="pb-15" onClick={handleSubmit}> RANDOM MEME IMG </button>
+                <button className="pb-15" onClick={handleSubmit}> 
+                    <img src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
+                    RANDOM MEME IMG </button>
             </div>
 
             <form className="meme-form" onSubmit={handleSubmit}>
                 <div className="meme-input">
                     <label className="text-bold comic-font">Top Text</label>
+
+                    {/* <Settings
+                        setTopColor={setTopColor}
+                        setTextAlign={setTextAlign}
+                        setfontSizeTop={setfontSizeTop}
+                        reduce={reduce}
+                        increase={increase}
+                    /> */}
 
                     <div className="settings">
                         <div className="input-settings-color">
@@ -104,12 +120,12 @@ const MemeGenerator = () => {
                                 <div
                                     className="color-option"
                                     style={{ backgroundColor: "black" }}
-                                    onClick={() => setTopColor('color-black')}
+                                    onClick={() => {setTopColor('color-black'); hideSettings && setBottomColor(' color-black ');}}
                                 />
                                 <div
                                     className="color-option"
                                     style={{ backgroundColor: "white" }}
-                                    onClick={() => setTopColor('color-white')}
+                                    onClick={() => {setTopColor('color-white'); hideSettings && setBottomColor(' color-white ');}}
                                 />
                             </div>
                         </div>
@@ -117,13 +133,13 @@ const MemeGenerator = () => {
                         <div className="input-settings-color">
                             <label className="settings-title">Text Align</label> 
                             <div className="display-flex">
-                                <div className="align-option" onClick={() => setTextAlign(' text-align-left ')}>
+                                <div className="align-option" onClick={() => {setTextAlignTop(' text-align-left '); hideSettings && setTextAlignBottom(' text-align-left ');}}>
                                     <img src={AlignLeftIcon} alt="Left Align" width="25" height="15" />
                                 </div>
-                                <div className="align-option" onClick={() => setTextAlign(' text-align-center ')}>
+                                <div className="align-option" onClick={() => {setTextAlignTop(' text-align-center '); hideSettings && setTextAlignBottom(' text-align-center ');}}>
                                     <img src={AlignCenterIcon} alt="Center Align" width="25" height="15" />
                                 </div>
-                                <div className="align-option" onClick={() => setTextAlign(' text-align-right ')}>
+                                <div className="align-option" onClick={() => {setTextAlignTop(' text-align-right '); hideSettings && setTextAlignBottom(' text-align-right ');}}>
                                     <img src={AlignRightIcon} alt="Right Align" width="25" height="15" />
                                 </div>
                             </div>                
@@ -132,13 +148,13 @@ const MemeGenerator = () => {
                         <div className="input-settings-color">
                             <label className="settings-title">Font Size</label>
                             <div className="display-flex">
-                                <fieldset className="font-size-option"  onClick={() => reduce ? setFontSize(fontSize - 1) : null}>
+                                <fieldset className="font-size-option"  onClick={() => reduce ? setFontSizeTop(fontSizeTop - 1) : null}>
                                         <img src={ReduceSize} alt="Font Size" width="15" height="15" />
                                 </fieldset>
                                 <div className="font-size-option no-cursor">
                                         <img src={FontSize} alt="Font Size" width="25" height="25" />
                                 </div>
-                                <fieldset className="font-size-option" onClick={() => increase ? setFontSize(fontSize + 1) : null}>
+                                <fieldset className="font-size-option" onClick={() => increase ? setFontSizeTop(fontSizeTop + 1) : null}>
                                         <img src={IncreaseSize} alt="Font Size" width="15" height="15" />
                                 </fieldset>
                             </div>
@@ -156,15 +172,62 @@ const MemeGenerator = () => {
 
                     <label className="pt-5 text-bold comic-font">Bottom Text</label>
                     <div >
-                        <label class="same-settings">Same Settings
+                        <label className="same-settings">Same Settings
                             <input className="checkbox" name="checkbox" type="checkbox" checked={hideSettings} onChange={checkboxChange}/>
-                            <span class="checkmark"></span>
+                            <span className="checkmark"></span>
                         </label>
                     </div>
 
-                    {!hideSettings ? {
-                        
-                    } : null}
+                    {!hideSettings ? (
+                        <div className="settings">
+                        <div className="input-settings-color">
+                            <label className="settings-title">Color</label> 
+                            <div className="color-options">
+                                <div
+                                    className="color-option"
+                                    style={{ backgroundColor: "black" }}
+                                    onClick={() => {setBottomColor('color-black'); hideSettings && setTextAlignBottom(' text-align-left ');}}
+                                />
+                                <div
+                                    className="color-option"
+                                    style={{ backgroundColor: "white" }}
+                                    onClick={() => setBottomColor('color-white')}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="input-settings-color">
+                            <label className="settings-title">Text Align</label> 
+                            <div className="display-flex">
+                                <div className="align-option" onClick={() => setTextAlignBottom(' text-align-left ')}>
+                                    <img src={AlignLeftIcon} alt="Left Align" width="25" height="15" />
+                                </div>
+                                <div className="align-option" onClick={() => setTextAlignBottom(' text-align-center ')}>
+                                    <img src={AlignCenterIcon} alt="Center Align" width="25" height="15" />
+                                </div>
+                                <div className="align-option" onClick={() => setTextAlignBottom(' text-align-right ')}>
+                                    <img src={AlignRightIcon} alt="Right Align" width="25" height="15" />
+                                </div>
+                            </div>                
+                        </div>
+
+                        <div className="input-settings-color">
+                            <label className="settings-title">Font Size</label>
+                            <div className="display-flex">
+                                <fieldset className="font-size-option"  onClick={() => reduce ? setFontSizeBottom(fontSizeBottom - 1) : null}>
+                                        <img src={ReduceSize} alt="Font Size" width="15" height="15" />
+                                </fieldset>
+                                <div className="font-size-option no-cursor">
+                                        <img src={FontSize} alt="Font Size" width="25" height="25" />
+                                </div>
+                                <fieldset className="font-size-option" onClick={() => increase ? setFontSizeBottom(fontSizeBottom + 1) : null}>
+                                        <img src={IncreaseSize} alt="Font Size" width="15" height="15" />
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>)
+
+                     : null}
 
                     <textarea
                         type="text"
@@ -184,8 +247,8 @@ const MemeGenerator = () => {
                     </div>
                     <div className="meme limit">
                         <img src={item.img} alt={item.name} />
-                        <h2 id="Top Text" className={"top " + topColor + " " + textAlign + " font-size-" + fontSize} style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>{topText}</h2>
-                        <h2 id="Bottom Text" className={"bottom " + topColor + " " + textAlign + " font-size-" + fontSize} style={{ whiteSpace: 'pre-wrap' }}>{bottomText}</h2>
+                        <h2 id="Top Text" className={"top " + topColor + " " + textAlignTop + " font-size-" + fontSizeTop} style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>{topText}</h2>
+                        <h2 id="Bottom Text" className={"bottom " + bottomColor + " " + textAlignBottom + " font-size-" + fontSizeBottom} style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>{bottomText}</h2>
                     </div>
                     
                 </div>
@@ -194,9 +257,7 @@ const MemeGenerator = () => {
             </form>
 
             <div className="center row">
-                <div>
-                    <label > original size {item.width} x {item.height}</label>
-                </div>
+                <label > original size {item.width} x {item.height}</label>
             </div>
             
         </div>

@@ -35,6 +35,7 @@ header > p {
 .same-settings {
    
     display: block;
+    /* position: static; */
     position: relative;
     padding-left: 35px;
     margin-bottom: 12px;
@@ -49,8 +50,6 @@ header > p {
 
 /* Hide the browser's default checkbox */
 .same-settings input{
-    
-    
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -109,6 +108,7 @@ header > p {
 
 .meme{
     position: relative;
+    /* position: center; */
     width: 600px;
     margin: auto;
 }
@@ -122,11 +122,16 @@ header > p {
     color:#727272;   
 }
 
-.meme > img {
+.meme > img {    
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+}
+
+button > img {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .center {
@@ -135,6 +140,7 @@ header > p {
 
 .meme > h2 {
     position: absolute;
+    /* position: relative; */
     width: 95%;
     left: 50%;
     transform: translateX(-50%);
@@ -198,7 +204,8 @@ header > p {
 }
 
 .meme-input {
-    display: grid !important;
+    display: flex;
+    flex-direction: column;
     width: 40%;
 } 
 
@@ -212,11 +219,6 @@ header > p {
     display: flex;
     flex-direction: column;
     width: 30%;
-}
-.display-flex-col {
-    display: flex;
-    flex-direction: column;
-    width: 60%;
 }
 
 .settings-title {
@@ -350,17 +352,130 @@ border: 1px solid #333;
     background: #a591cb;
 }
 
-.random-meme > button{
+.random-meme > button {
+    cursor: pointer;
     height: 60px;
-    border: none;
+    /* //border: none; */
+    border: 2px solid #000;
+    background: 
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(90deg, rgba(151,215,0,1) 0%, rgba(0,169,224,1) 50%, rgba(51,0,114,1) 100%) border-box;
+    transition: all .5s ease;
+    height: 3rem;
+    display: table;
+    letter-spacing: 0.125rem;
     font-family: VT323, monospace;
     font-size: 23px;
-    letter-spacing: 1.5px;
-    color: white;
-    border-radius: 5px 25px;
-    background: #6441A5;
-
+    color: #6441A5;
+    border-radius: 5px 25px; 
 }
+    /* letter-spacing: 1.5px; */
+    /* color: white; */
+    /* background: #6441A5;
+     }
+    /* display: inline-block;
+      margin: 20px;
+      color: #fff;
+      line-height: 1.4em;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 0.9em 3.5em;
+      border: 0.18em solid transparent;
+      background: #2b2f3c;
+      border-radius: 3.5em;
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      
+      &:before {
+        content: "";
+        display: block;
+        border-radius: 3.5em;
+        position: absolute;
+        background: inherit;
+        top: 0.2em;
+        left: 0.2em;
+        right: 0.2em;
+        bottom: 0.2em;
+        z-index: -1;
+      }
+      
+      &:after {
+        content: "";
+        display: block;
+         //border-radius: 3.5em; 
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -2;
+        transform: rotate(0deg);
+        animation: gradient 2s ease alternate infinite;
+        -webkit-animation-play-state: paused;
+        animation-play-state: paused;
+      }
+      
+      &:hover:after {
+          -webkit-animation-play-state: running;
+          animation-play-state: running;
+        }
+      
+      &:nth-child(1) {
+        
+        &:after {
+          background: rgb(51,203,235);
+          background: -moz-linear-gradient(left, rgba(51,203,235,1) 0%, rgba(40,214,98,1) 30%, rgba(240,119,57,1) 70%, rgba(227,54,107,1) 100%);
+          background: -webkit-linear-gradient(left, rgba(51,203,235,1) 0%,rgba(40,214,98,1) 30%,rgba(240,119,57,1) 70%,rgba(227,54,107,1) 100%);
+          background: linear-gradient(to right, rgba(51,203,235,1) 0%,rgba(40,214,98,1) 30%,rgba(240,119,57,1) 70%,rgba(227,54,107,1) 100%);
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33cbeb', endColorstr='#e3366b',GradientType=1 );
+          background-size: 300% 300%;
+        }
+
+      }
+      
+      &:nth-child(2) {
+        
+        &:after {
+          background: rgb(96,134,193);
+          background: -moz-linear-gradient(45deg,  rgba(96,134,193,1) 0%, rgba(239,224,151,1) 70%, rgba(214,100,102,1) 100%);
+          background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(96,134,193,1)), color-stop(70%,rgba(239,224,151,1)), color-stop(100%,rgba(214,100,102,1)));
+          background: -webkit-linear-gradient(45deg,  rgba(96,134,193,1) 0%,rgba(239,224,151,1) 70%,rgba(214,100,102,1) 100%);
+          background: -o-linear-gradient(45deg,  rgba(96,134,193,1) 0%,rgba(239,224,151,1) 70%,rgba(214,100,102,1) 100%);
+          background: -ms-linear-gradient(45deg,  rgba(96,134,193,1) 0%,rgba(239,224,151,1) 70%,rgba(214,100,102,1) 100%);
+          background: linear-gradient(45deg,  rgba(96,134,193,1) 0%,rgba(239,224,151,1) 70%,rgba(214,100,102,1) 100%);
+          background-size: 300% 300%;
+        }
+      
+      &:nth-child(3) {
+        
+        &:after {
+          background: rgb(230,54,196);
+          background: -moz-linear-gradient(left, rgba(230,54,196,1) 0%, rgba(63,206,165,1) 48%, rgba(80,64,139,1) 96%);
+          background: -webkit-linear-gradient(left, rgba(230,54,196,1) 0%,rgba(63,206,165,1) 48%,rgba(80,64,139,1) 96%);
+          background: linear-gradient(to right, rgba(230,54,196,1) 0%,rgba(63,206,165,1) 48%,rgba(80,64,139,1) 96%);
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e636c4', endColorstr='#50408b',GradientType=1 );
+          background-size: 300% 300%;
+        }
+      }
+    }
+
+  
+  
+  @-webkit-keyframes gradient {.keyframes;}
+  @keyframes gradient {.keyframes;}
+  .keyframes () {
+          0% {background-position: 0% 50%;}
+          50% {background-position: 95% 50%;}
+          100% {background-position: 0% 50%;}
+  }
+     }} */
+
+/* .random-meme > button :hover {
+    border: 2px solid #0000;
+  } */
 
 .meme-form > input:-webkit-input-placeholder { /* Chrome/Opera/Safari */
     font-family: VT323,monospace;
