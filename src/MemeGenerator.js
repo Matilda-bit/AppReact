@@ -120,20 +120,20 @@ const MemeGenerator = () => {
                         </div>
                     </div>
 
-                    <input
+                    <textarea
                         type="text"
                         name="topText"
-                        className="margin-10"
+                        className="margin-10 input-pretender"
                         placeholder="Top Text"
                         value={topText}
                         onChange={handleChange}
                     />
 
                     <label className="pt-5 text-bold comic-font">Bottom Text</label>
-                    <input
+                    <textarea
                         type="text"
                         name="bottomText"
-                        className="margin-10"
+                        className="margin-10 input-pretender"
                         placeholder="Bottom Text"
                         value={bottomText}
                         onChange={handleChange}
@@ -141,13 +141,13 @@ const MemeGenerator = () => {
                 </div>
                 <button className="pb-15">SUBMIT</button>
             </form>
-            <div className="meme grey">
+            <div className="center settings-title grey">
                 <h2 className="center">"{item.name}"</h2>
             </div>
             <div className="meme limit">
                 <img src={item.img} alt={item.name} />
-                <h2 className={"top " + topColor + " " + textAlign + " font-size-" + fontSize}>{topText}</h2>
-                <h2 className="bottom">{bottomText}</h2>
+                <h2 className={"top " + topColor + " " + textAlign + " font-size-" + fontSize} style={{ whiteSpace: 'pre-wrap' }}>{topText}</h2>
+                <h2 className={"bottom " + topColor + " " + textAlign + " font-size-" + fontSize} style={{ whiteSpace: 'pre-wrap' }}>{bottomText}</h2>
             </div>
             <div className="center row">
                 <div>

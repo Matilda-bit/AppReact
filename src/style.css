@@ -22,7 +22,6 @@ header > img {
 }
 
 header > p {
-
     font-family: Impact, sans-serif;
     color: whitesmoke;
     font-size:50px;
@@ -67,7 +66,6 @@ header > p {
     margin: auto;
     padding: 0 5px;
     font-family: Impact, sans-serif;
-    /* font-size: 3cqi; */
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -174,9 +172,9 @@ border: 1px solid #333;
   }
 
 .align-option {
-    margin: 0 5px 0 0;
+    /* margin: 0 5px 0 0; */
     cursor: pointer;
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
 }
 /* Font Size Options */
 .font-size-options {
@@ -256,11 +254,19 @@ border: 1px solid #333;
     border-style: double;
 }
 
-.meme-input > input{
+.meme-input > textarea, input{
     width: 90%;
-    height: 50px;
+    min-height: 50px;
     padding-left: 15px;
     font-size: 16px;
+}
+
+.input-pretender {
+    border: 2px solid gray;
+  border-radius: 4px;
+  /* background: #4aaaa5; */
+  /* color: #ffffff; */
+  font-size: 16px;
 }
 
 .meme-form > button {
