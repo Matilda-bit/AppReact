@@ -33,7 +33,7 @@ header > p {
 
 .meme{
     position: relative;
-    width: 90%;
+    width: 80%;
     margin: auto;
 }
 .limit {
@@ -54,7 +54,6 @@ header > p {
 }
 
 .center {
-    margin-left: 3%;
     text-align: center;
 }
 
@@ -120,12 +119,11 @@ header > p {
     width: 90%;
     margin: 20px auto;
     display: flex;
-    justify-content: auto;
 }
 
 .meme-input {
     display: grid !important;
-    width: 50%;
+    width: 40%;
 } 
 
 .settings {
@@ -139,19 +137,21 @@ header > p {
     flex-direction: column;
     width: 30%;
 }
+.display-flex-col {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
 
 .settings-title {
     font-family: Courier New, monospace;
 }
 
-
 /* color boxes    */
 .color-options {
     display: flex;
-    justify-content: center;
     margin-bottom: 15px;
-    width: 30%;
-  }
+}
   
 .color-option {
 width: 20px;
@@ -186,40 +186,40 @@ border: 1px solid #333;
 }
 
 .font-size-6 {
-    font-size: 280%;
+    font-size: 80%;
 }
 .font-size-7 {
-    font-size: 310%;
+    font-size: 110%;
 }
 .font-size-8 {
-    font-size: 340%;
+    font-size: 140%;
 }
 .font-size-9 {
-    font-size: 370%;
+    font-size: 170%;
 }
 .font-size-10 {
-    font-size: 400%;
+    font-size: 200%;
 }
 .font-size-11 {
-    font-size: 430%;
+    font-size: 230%;
 }
 .font-size-12 {
-    font-size: 460%;
+    font-size: 260%;
 }
 .font-size-13 {
-    font-size: 490%;
+    font-size: 290%;
 }
 .font-size-14 {
-    font-size: 520%;
+    font-size: 320%;
 }
 .font-size-15 {
-    font-size: 550%;
+    font-size: 350%;
 }
 .font-size-16 {
-    font-size: 580%;
+    font-size: 380%;
 }
 .font-size-17 {
-    font-size: 610%;
+    font-size: 410%;
 }
 .font-size-18 {
     font-size: 640%;
@@ -250,8 +250,10 @@ border: 1px solid #333;
 
 .meme-input > textarea, input{
     width: 90%;
+    height: 28px;
     min-height: 50px;
-    padding-left: 15px;
+    padding-left: 10px;
+    padding-top: 5px;
     font-size: 16px;
 }
 

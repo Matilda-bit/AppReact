@@ -28,6 +28,11 @@ const MemeGenerator = () => {
         img: "http://i.imgflip.com/1bij.jpg"
     });
 
+    const [topLimit, setTopLimit] = useState(0);
+    // const [bottomLimit, setBottomLimit] = useState(0);
+
+    
+
     useEffect(() => {
         fetch("http://api.imgflip.com/get_memes")
             .then(response => response.json())
@@ -38,12 +43,22 @@ const MemeGenerator = () => {
     }, []);
 
     const handleChange = (event) => {
+        
         const { name, value } = event.target;
         if (name === "topText") {
-            setTopText(value);
+            // var el1 = document.getElementById("Top Text");
+            // if(el1){
+            //     setTopLimit(el1.offsetHeight);
+            // }
+            if(topLimit < (item.height/2)) {
+                setTopText(value);
+            }
         } else if (name === "bottomText") {
-            setBottomText(value);
+           
+                setBottomText(value);
+       
         }
+        
     };
 
     const handleSubmit = (event) => {
@@ -67,7 +82,6 @@ const MemeGenerator = () => {
                 <button className="pb-15" onClick={handleSubmit}> RANDOM MEME IMG </button>
             </div>
 
-            <form className="meme-form" onSubmit={handleSubmit}></form>
             <form className="meme-form" onSubmit={handleSubmit}>
                 <div className="meme-input">
                     <label className="text-bold comic-font">Top Text</label>
@@ -139,28 +153,35 @@ const MemeGenerator = () => {
                         onChange={handleChange}
                     />
 
-                    <button className="pb-15">SUBMIT</button>
+                    <button className="">SUBMIT</button>
                 </div>
+
+                <div className="display-flex-col">
+                    <div className="center settings-title grey">
+                        <h2 className="center">"{item.name}"</h2>
+                    </div>
+                    <div className="meme limit">
+                        <img src={item.img} alt={item.name} />
+                        <h2 id="Top Text" className={"top " + topColor + " " + textAlign + " font-size-" + fontSize} style={{ whiteSpace: 'pre-wrap' }}>{topText}</h2>
+                        <h2 id="Bottom Text" className={"bottom " + topColor + " " + textAlign + " font-size-" + fontSize} style={{ whiteSpace: 'pre-wrap' }}>{bottomText}</h2>
+                    </div>
+                    
+                </div>
+
                 
             </form>
-            <div className="center settings-title grey">
-                <h2 className="center">"{item.name}"</h2>
-            </div>
-            <div className="meme limit">
-                <img src={item.img} alt={item.name} />
-                <h2 className={"top " + topColor + " " + textAlign + " font-size-" + fontSize} style={{ whiteSpace: 'pre-wrap' }}>{topText}</h2>
-                <h2 className={"bottom " + topColor + " " + textAlign + " font-size-" + fontSize} style={{ whiteSpace: 'pre-wrap' }}>{bottomText}</h2>
-            </div>
+
             <div className="center row">
-                <div>
-                    <label > image hight:</label>
-                    <label > {item.height}</label>
-                </div>
-                <div>
-                    <label>image width:</label>
-                    <label > {item.width}</label>
-                </div>
-            </div>
+                        <div>
+                            <label > image hight:</label>
+                            <label > {item.height}</label>
+                        </div>
+                        <div>
+                            <label>image width:</label>
+                            <label > {item.width}</label>
+                        </div>
+                    </div>
+            
         </div>
     );
 };
