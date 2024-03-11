@@ -29,14 +29,14 @@ const MemeGenerator = () => {
     });
 
     const [topLimit, setTopLimit] = useState(0);
-    // const [bottomLimit, setBottomLimit] = useState(0);
+    const [bottomLimit, setBottomLimit] = useState(0);
 
     
 
     useEffect(() => {
         fetch("http://api.imgflip.com/get_memes")
             .then(response => response.json())
-            .then(response => {
+            .then(response => { 
                 const { memes } = response.data;
                 setAllMemeImgs(memes);
             });
@@ -46,16 +46,21 @@ const MemeGenerator = () => {
         
         const { name, value } = event.target;
         if (name === "topText") {
-            // var el1 = document.getElementById("Top Text");
-            // if(el1){
-            //     setTopLimit(el1.offsetHeight);
-            // }
-            if(topLimit < (item.height/2)) {
+            var el1 = document.getElementById("Top Text");
+            if(el1){
+                setTopLimit(el1.offsetHeight);
+            }
+            if(topLimit < (item.height/2) || topText > value) {
                 setTopText(value);
             }
         } else if (name === "bottomText") {
-           
-                setBottomText(value);
+                var el1 = document.getElementById("Bottom Text");
+                if(el1){
+                    setBottomLimit(el1.offsetHeight);
+                }
+                if(bottomLimit < (item.height/2) || bottomText > value) {
+                    setBottomText(value);
+                }
        
         }
         
@@ -162,7 +167,7 @@ const MemeGenerator = () => {
                     </div>
                     <div className="meme limit">
                         <img src={item.img} alt={item.name} />
-                        <h2 id="Top Text" className={"top " + topColor + " " + textAlign + " font-size-" + fontSize} style={{ whiteSpace: 'pre-wrap' }}>{topText}</h2>
+                        <h2 id="Top Text" className={"top " + topColor + " " + textAlign + " font-size-" + fontSize} style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>{topText}</h2>
                         <h2 id="Bottom Text" className={"bottom " + topColor + " " + textAlign + " font-size-" + fontSize} style={{ whiteSpace: 'pre-wrap' }}>{bottomText}</h2>
                     </div>
                     
