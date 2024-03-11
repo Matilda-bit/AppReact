@@ -35,7 +35,7 @@ header > p {
 .same-settings {
    
     display: block;
-    /* position: static; */
+    /* position: absolute; */
     position: relative;
     padding-left: 35px;
     margin-bottom: 12px;
@@ -208,7 +208,10 @@ button > img {
     flex-direction: column;
     width: 40%;
 } 
-
+.meme-input-item { 
+    display: flex;
+    flex-direction: column; 
+}
 .settings {
     display: flex;
     margin-top: 15px;
@@ -326,7 +329,7 @@ border: 1px solid #333;
     border-style: double;
 }
 
-.meme-input > textarea, input{
+.meme-input-item > textarea, input{
     width: 90%;
     height: 28px;
     min-height: 50px;
@@ -342,6 +345,18 @@ border: 1px solid #333;
 }
 
 .meme-input > button {
+    position: relative;
+    width: 40%;
+    height: 40px;
+    border: 2px solid black;
+    font-family: VT323, monospace;
+    font-size: 23px;
+    letter-spacing: 1.5px;
+    color: white;
+    background: #04AA6D;;
+}
+
+.meme-input-item > button {
     width: 30%;
     height: 40px;
     border: none;
