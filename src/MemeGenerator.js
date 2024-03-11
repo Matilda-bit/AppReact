@@ -17,7 +17,6 @@ const MemeGenerator = () => {
     const [fontSize, setFontSize] = useState(10);
     const reduce = fontSize > 6;
     const increase = fontSize < 20;
-    //fontSize
     const [allMemeImgs, setAllMemeImgs] = useState([]);
     const [item, setItem] = useState({
         id: "61579",
@@ -30,8 +29,6 @@ const MemeGenerator = () => {
 
     const [topLimit, setTopLimit] = useState(0);
     const [bottomLimit, setBottomLimit] = useState(0);
-
-    
 
     useEffect(() => {
         fetch("http://api.imgflip.com/get_memes")
@@ -46,7 +43,7 @@ const MemeGenerator = () => {
         
         const { name, value } = event.target;
         if (name === "topText") {
-            var el1 = document.getElementById("Top Text");
+            let el1 = document.getElementById("Top Text");
             if(el1){
                 setTopLimit(el1.offsetHeight);
             }
@@ -54,17 +51,17 @@ const MemeGenerator = () => {
                 setTopText(value);
             }
         } else if (name === "bottomText") {
-                var el1 = document.getElementById("Bottom Text");
+                let el1 = document.getElementById("Bottom Text");
                 if(el1){
                     setBottomLimit(el1.offsetHeight);
                 }
                 if(bottomLimit < (item.height/2) || bottomText > value) {
                     setBottomText(value);
                 }
-       
         }
-        
     };
+
+    //checkboxChange
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -149,6 +146,13 @@ const MemeGenerator = () => {
                     />
 
                     <label className="pt-5 text-bold comic-font">Bottom Text</label>
+                    <div >
+                        <label class="same-settings">Same Settings
+                            <input className="checkbox" type="checkbox" checked="checked" onChange={checkboxChange}/>
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+
                     <textarea
                         type="text"
                         name="bottomText"
@@ -177,15 +181,10 @@ const MemeGenerator = () => {
             </form>
 
             <div className="center row">
-                        <div>
-                            <label > image hight:</label>
-                            <label > {item.height}</label>
-                        </div>
-                        <div>
-                            <label>image width:</label>
-                            <label > {item.width}</label>
-                        </div>
-                    </div>
+                <div>
+                    <label > original size {item.width} x {item.height}</label>
+                </div>
+            </div>
             
         </div>
     );
