@@ -15,6 +15,7 @@ const MemeGenerator = () => {
     const [topColor, setTopColor] = useState("color-white");
     const [textAlign, setTextAlign] = useState(' text-align-center ');
     const [fontSize, setFontSize] = useState(10);
+    const [hideSettings, setHideSettings] = useState(true);
     const reduce = fontSize > 6;
     const increase = fontSize < 20;
     const [allMemeImgs, setAllMemeImgs] = useState([]);
@@ -62,6 +63,14 @@ const MemeGenerator = () => {
     };
 
     //checkboxChange
+
+    const checkboxChange = (event) => {
+        
+        const { name, value } = event.target;
+        if (name === "checkbox") {
+            setHideSettings(!hideSettings);
+        } 
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -148,10 +157,14 @@ const MemeGenerator = () => {
                     <label className="pt-5 text-bold comic-font">Bottom Text</label>
                     <div >
                         <label class="same-settings">Same Settings
-                            <input className="checkbox" type="checkbox" checked="checked" onChange={checkboxChange}/>
+                            <input className="checkbox" name="checkbox" type="checkbox" checked={hideSettings} onChange={checkboxChange}/>
                             <span class="checkmark"></span>
                         </label>
                     </div>
+
+                    {!hideSettings ? {
+                        
+                    } : null}
 
                     <textarea
                         type="text"

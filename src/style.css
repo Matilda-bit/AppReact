@@ -33,6 +33,7 @@ header > p {
 
 /* The same-settings */
 .same-settings {
+   
     display: block;
     position: relative;
     padding-left: 35px;
@@ -49,6 +50,7 @@ header > p {
 /* Hide the browser's default checkbox */
 .same-settings input{
     
+    
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -58,6 +60,9 @@ header > p {
   
   /* Create a custom checkbox */
   .checkmark {
+    border:#371158;
+    border-width: 1px;
+    border-style: solid;
     position: absolute;
     top: 0;
     left: 0;
@@ -91,7 +96,7 @@ header > p {
   /* Style the checkmark/indicator */
   .same-settings .checkmark:after {
     left: 7px;
-    top: 4px;
+    top: 2px;
     width: 5px;
     height: 10px;
     border: solid white;
