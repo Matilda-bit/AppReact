@@ -6,10 +6,10 @@ import FontSize from './assets/icons/fontSize/font-size.png';
 import ReduceSize from './assets/icons/fontSize/down.png';
 import IncreaseSize from './assets/icons/fontSize/up.png';
 
-const Settings = ({index, template, setColor, setTextAlign, setFontSize, hideSettings }) => {
+const Settings = ({index, line, template, setColor, setTextAlign, setFontSize, hideSettings }) => {
     const tem = index === 0; 
-    let reduce = setFontSize > 6;
-    let increase = setFontSize < 20;
+    let reduce = line.fontSize > 6;
+    let increase = line.fontSize < 20;
     if(!tem && hideSettings) {
         return null;
     }
@@ -53,13 +53,13 @@ const Settings = ({index, template, setColor, setTextAlign, setFontSize, hideSet
             <div className="input-settings-color">
                 <label className="settings-title">Font Size</label>
                 <div className="display-flex">
-                    <fieldset className="font-size-option" onClick={() => reduce ? setFontSize(... - 1) : null}>
+                    <fieldset className="font-size-option" onClick={() => reduce ? setFontSize("reduce") : null}>
                         <img src={ReduceSize} alt="Font Size" width="15" height="15" />
                     </fieldset>
                     <div className="font-size-option no-cursor">
                         <img src={FontSize} alt="Font Size" width="25" height="25" />
                     </div>
-                    <fieldset className="font-size-option" onClick={() => increase ? setFontSize(... + 1) : null}>
+                    <fieldset className="font-size-option" onClick={() => increase ? setFontSize("increase") : null}>
                         <img src={IncreaseSize} alt="Font Size" width="15" height="15" />
                     </fieldset>
                 </div>

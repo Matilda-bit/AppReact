@@ -148,6 +148,47 @@ const MemeGenerator = () => {
         });
     };
 
+    const setFontSize = (index, operation) => {
+        if(operation === "reduce"){
+            if(index === 0 && hideSettings) {
+                setLines(prevLines => {
+                    return prevLines.map((line) => {
+                        
+                            return { ...line, fontSize: line.fontSize - 1 };
+                    });
+                });
+            }
+            setLines(prevLines => {
+                return prevLines.map((line, i) => {
+                    if (i === index) {
+                        return { ...line, fontSize: line.fontSize - 1 };
+                    }
+                    return line;
+                });
+            });
+        }
+        if(operation === "increase"){
+            if(index === 0 && hideSettings) {
+                setLines(prevLines => {
+                    return prevLines.map((line) => {
+                        
+                            return { ...line, fontSize: line.fontSize + 1 };
+                    });
+                });
+            }
+            setLines(prevLines => {
+                return prevLines.map((line, i) => {
+                    if (i === index) {
+                        return { ...line, fontSize: line.fontSize + 1 };
+                    }
+                    return line;
+                });
+            });
+        }
+
+        
+    };
+
     return (
         <div>
             <h1 className="center">MEME GENERATOR SECTION</h1>
@@ -165,10 +206,11 @@ const MemeGenerator = () => {
                         <label className="text-bold comic-font">{index === 0 ? "Text " + (index+1) : "Text " + (index+1)}</label>
                         <Settings 
                             index={index}
+                            line={lines[index]}
                             template={lines[0]}
                             setColor={(color) => setColor(index, color)}
                             setTextAlign={(textAlign) => setTextAlign(index, textAlign)}
-                            setFontSize={lines[index].fontSize}
+                            setFontSize={(operation) => setFontSize(index, operation)}
                             hideSettings={hideSettings}
                         />
                         <textarea
