@@ -71,7 +71,8 @@ const MemeGenerator = () => {
                         return {
                             ...line,
                             textAlign: lines[0].textAlign,
-                            color: lines[0].color
+                            color: lines[0].color,
+                            fontSize: lines[0].fontSize
                         };
                     }
                     return line;
@@ -97,30 +98,34 @@ const MemeGenerator = () => {
     };
 
     const addLine = () => {
-        setLines(prevLines => [
-            ...prevLines,
-            {
-                text: "",
-                color: "color-white",
-                textAlign: 'text-align-center',
-                fontSize: 10
-            }
-        ]);
+        if (hideSettings) {
+            setLines(prevLines => [
+                ...prevLines,
+                {
+                    text: "",
+                    color: lines[0].color,
+                    textAlign: lines[0].textAlign,
+                    fontSize: lines[0].fontSize
+                }
+            ]);
+        } else {
+            setLines(prevLines => [
+                ...prevLines,
+                {
+                    text: "",
+                    color: "color-white",
+                    textAlign: 'text-align-center',
+                    fontSize: 10
+                }
+            ]);
+        }
+       
     };
     
     const setColor = (index, color) => {
-
-        if(index === 0 && hideSettings) {
-            setLines(prevLines => {
-                return prevLines.map((line) => {
-                    
-                        return { ...line, color };
-                });
-            });
-        }
         setLines(prevLines => {
             return prevLines.map((line, i) => {
-                if (i === index) {
+                if ((i === index || (index === 0 && hideSettings))) {
                     return { ...line, color };
                 }
                 return line;
@@ -129,18 +134,9 @@ const MemeGenerator = () => {
     };
 
     const setTextAlign = (index, textAlign) => {
-
-        if(index === 0 && hideSettings) {
-            setLines(prevLines => {
-                return prevLines.map((line) => {
-                    
-                        return { ...line, textAlign };
-                });
-            });
-        }
         setLines(prevLines => {
             return prevLines.map((line, i) => {
-                if (i === index) {
+                if ((i === index || (index === 0 && hideSettings))) {
                     return { ...line, textAlign };
                 }
                 return line;
@@ -149,44 +145,14 @@ const MemeGenerator = () => {
     };
 
     const setFontSize = (index, operation) => {
-        if(operation === "reduce"){
-            if(index === 0 && hideSettings) {
-                setLines(prevLines => {
-                    return prevLines.map((line) => {
-                        
-                            return { ...line, fontSize: line.fontSize - 1 };
-                    });
-                });
-            }
-            setLines(prevLines => {
-                return prevLines.map((line, i) => {
-                    if (i === index) {
-                        return { ...line, fontSize: line.fontSize - 1 };
-                    }
-                    return line;
-                });
+        setLines(prevLines => {
+            return prevLines.map((line, i) => {
+                if ((i === index || (index === 0 && hideSettings)) && (operation === "reduce" || operation === "increase")) {
+                    return { ...line, fontSize: operation === "reduce" ? line.fontSize - 1 : line.fontSize + 1 };
+                }
+                return line;
             });
-        }
-        if(operation === "increase"){
-            if(index === 0 && hideSettings) {
-                setLines(prevLines => {
-                    return prevLines.map((line) => {
-                        
-                            return { ...line, fontSize: line.fontSize + 1 };
-                    });
-                });
-            }
-            setLines(prevLines => {
-                return prevLines.map((line, i) => {
-                    if (i === index) {
-                        return { ...line, fontSize: line.fontSize + 1 };
-                    }
-                    return line;
-                });
-            });
-        }
-
-        
+        });
     };
 
     return (
@@ -230,14 +196,18 @@ const MemeGenerator = () => {
                                 <span className="checkmark"></span>
                             </label>
                         </div>) : null}
+
+                        <hr class="solid"></hr>
                         </div>
                     
                 ))}
 
-                <div className="meme-input-item">
-                <button className="meme-input" type="button" onClick={addLine}> <img src={AddIcon} alt="buttonpng" border="0" width={35} height={35} /> 
+                <div className="meme-input-btn ">
+                <button className="button-39" type="button" onClick={addLine}> <img src={AddIcon} alt="buttonpng" border="0" width={20} height={20} /> 
                     Add Line</button>
-                
+                </div>
+
+                <div className="meme-input-item">                
                     <button className="meme-input-item">SUBMIT</button>
                 </div>
             </div>
