@@ -220,6 +220,12 @@ button > img {
     display: flex;
     flex-direction: column; 
 }
+
+.flex-cloumn { 
+    display: flex;
+    flex-direction: column; 
+}
+
 .settings {
     display: flex;
     margin-top: 15px;
@@ -346,16 +352,43 @@ border: 1px solid #333;
     font-size: 16px;
 }
 
+div > textarea{
+    width: 90%;
+    height: 28px;
+    min-height: 50px;
+    padding-left: 10px;
+    padding-top: 5px;
+    font-size: 16px;
+}
+
+
 .input-pretender {
+    width: 90%;
+    height: 28px;
+    min-height: 50px;
+    padding-left: 10px;
+    padding-top: 5px;
+    font-size: 16px;
+}
+.line-0 {
     border: 2px solid gray;
-  border-radius: 4px;
-  font-size: 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 120%;
+}
+
+.lines {
+    border: 2px solid gray;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 80%;
 }
 
 .meme-input-btn > button {
     position: relative;
     width: 200px;
     height: 40px;
+    /* border-radius: 4px; */
     /* border: 1px solid black; */
     /* font-family: VT323, monospace;
     font-size: 23px; */
@@ -432,113 +465,6 @@ border: 1px solid #333;
     color: #6441A5;
     border-radius: 5px 25px; 
 }
-    /* letter-spacing: 1.5px; */
-    /* color: white; */
-    /* background: #6441A5;
-     }
-    /* display: inline-block;
-      margin: 20px;
-      color: #fff;
-      line-height: 1.4em;
-      letter-spacing: 0.15em;
-      text-decoration: none;
-      text-transform: uppercase;
-      font-weight: 600;
-      padding: 0.9em 3.5em;
-      border: 0.18em solid transparent;
-      background: #2b2f3c;
-      border-radius: 3.5em;
-      position: relative;
-      z-index: 1;
-      overflow: hidden;
-      
-      &:before {
-        content: "";
-        display: block;
-        border-radius: 3.5em;
-        position: absolute;
-        background: inherit;
-        top: 0.2em;
-        left: 0.2em;
-        right: 0.2em;
-        bottom: 0.2em;
-        z-index: -1;
-      }
-      
-      &:after {
-        content: "";
-        display: block;
-         //border-radius: 3.5em; 
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        z-index: -2;
-        transform: rotate(0deg);
-        animation: gradient 2s ease alternate infinite;
-        -webkit-animation-play-state: paused;
-        animation-play-state: paused;
-      }
-      
-      &:hover:after {
-          -webkit-animation-play-state: running;
-          animation-play-state: running;
-        }
-      
-      &:nth-child(1) {
-        
-        &:after {
-          background: rgb(51,203,235);
-          background: -moz-linear-gradient(left, rgba(51,203,235,1) 0%, rgba(40,214,98,1) 30%, rgba(240,119,57,1) 70%, rgba(227,54,107,1) 100%);
-          background: -webkit-linear-gradient(left, rgba(51,203,235,1) 0%,rgba(40,214,98,1) 30%,rgba(240,119,57,1) 70%,rgba(227,54,107,1) 100%);
-          background: linear-gradient(to right, rgba(51,203,235,1) 0%,rgba(40,214,98,1) 30%,rgba(240,119,57,1) 70%,rgba(227,54,107,1) 100%);
-          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33cbeb', endColorstr='#e3366b',GradientType=1 );
-          background-size: 300% 300%;
-        }
-
-      }
-      
-      &:nth-child(2) {
-        
-        &:after {
-          background: rgb(96,134,193);
-          background: -moz-linear-gradient(45deg,  rgba(96,134,193,1) 0%, rgba(239,224,151,1) 70%, rgba(214,100,102,1) 100%);
-          background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,rgba(96,134,193,1)), color-stop(70%,rgba(239,224,151,1)), color-stop(100%,rgba(214,100,102,1)));
-          background: -webkit-linear-gradient(45deg,  rgba(96,134,193,1) 0%,rgba(239,224,151,1) 70%,rgba(214,100,102,1) 100%);
-          background: -o-linear-gradient(45deg,  rgba(96,134,193,1) 0%,rgba(239,224,151,1) 70%,rgba(214,100,102,1) 100%);
-          background: -ms-linear-gradient(45deg,  rgba(96,134,193,1) 0%,rgba(239,224,151,1) 70%,rgba(214,100,102,1) 100%);
-          background: linear-gradient(45deg,  rgba(96,134,193,1) 0%,rgba(239,224,151,1) 70%,rgba(214,100,102,1) 100%);
-          background-size: 300% 300%;
-        }
-      
-      &:nth-child(3) {
-        
-        &:after {
-          background: rgb(230,54,196);
-          background: -moz-linear-gradient(left, rgba(230,54,196,1) 0%, rgba(63,206,165,1) 48%, rgba(80,64,139,1) 96%);
-          background: -webkit-linear-gradient(left, rgba(230,54,196,1) 0%,rgba(63,206,165,1) 48%,rgba(80,64,139,1) 96%);
-          background: linear-gradient(to right, rgba(230,54,196,1) 0%,rgba(63,206,165,1) 48%,rgba(80,64,139,1) 96%);
-          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e636c4', endColorstr='#50408b',GradientType=1 );
-          background-size: 300% 300%;
-        }
-      }
-    }
-
-  
-  
-  @-webkit-keyframes gradient {.keyframes;}
-  @keyframes gradient {.keyframes;}
-  .keyframes () {
-          0% {background-position: 0% 50%;}
-          50% {background-position: 95% 50%;}
-          100% {background-position: 0% 50%;}
-  }
-     }} */
-
-/* .random-meme > button :hover {
-    border: 2px solid #0000;
-  } */
 
 .meme-form > input:-webkit-input-placeholder { /* Chrome/Opera/Safari */
     font-family: VT323,monospace;

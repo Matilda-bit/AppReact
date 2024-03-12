@@ -3,6 +3,7 @@ import "./utils/MemesLink";
 import BtnIcon from './assets/icons/btn/pokeball.png';
 import Settings from './Settings'; // assuming you have created a separate Settings component
 
+import DeleteIcon from './assets/icons/btn/delete.png';
 import AddIcon from './assets/icons/btn/add.png';
 
 const MemeGenerator = () => {
@@ -48,11 +49,17 @@ const MemeGenerator = () => {
 
 
     const handleChange = (event, index) => {
+    console.log("test");
+    console.log(index);
+    console.log(event.target);
         const { name, value } = event.target;
+
+        console.log(name);
+        console.log(value);
         setLines(prevLines => {
             return prevLines.map((line, i) => {
                 if (i === index) {
-                    return { ...line, [name]: value };
+                    return { ...line, text: value };
                 }
                 return line;
             });
@@ -98,28 +105,13 @@ const MemeGenerator = () => {
     };
 
     const addLine = () => {
-        if (hideSettings) {
-            setLines(prevLines => [
-                ...prevLines,
-                {
-                    text: "",
-                    color: lines[0].color,
-                    textAlign: lines[0].textAlign,
-                    fontSize: lines[0].fontSize
-                }
-            ]);
-        } else {
-            setLines(prevLines => [
-                ...prevLines,
-                {
-                    text: "",
-                    color: "color-white",
-                    textAlign: 'text-align-center',
-                    fontSize: 10
-                }
-            ]);
-        }
-       
+        const newLine = {
+            text: "",
+            color: hideSettings ? lines[0].color : "color-white",
+            textAlign: hideSettings ? lines[0].textAlign : 'text-align-center',
+            fontSize: hideSettings ? lines[0].fontSize : 10
+        };
+        setLines(prevLines => [...prevLines, newLine]);
     };
     
     const setColor = (index, color) => {
@@ -155,10 +147,16 @@ const MemeGenerator = () => {
         });
     };
 
+    const deleteLine = (index) => {
+        if (lines.length > 1) {
+            setLines(prevLines => prevLines.filter((line, i) => i !== index));
+        }
+    };
+
     return (
         <div>
             <h1 className="center">MEME GENERATOR SECTION</h1>
-            <div className="random-meme center">
+            <div className="random-meme center meme-form">
                 <button className="pb-15" onClick={handleSubmit}> 
                     <img src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
                     RANDOM MEME IMG </button>
@@ -179,25 +177,44 @@ const MemeGenerator = () => {
                             setFontSize={(operation) => setFontSize(index, operation)}
                             hideSettings={hideSettings}
                         />
-                        <textarea
+
+                        {(index === 0) ? <textarea
                             type="text"
-                            name="text"
-                            className="margin-10 input-pretender"
+                            name={"text-" + {index}}
+                            className={"margin-10 " + (index !== 0) ?  "lines " : "line-0 "}
                             placeholder={index === 0 ? "Top Text" : "Bottom Text"}
                             value={line.text}
                             onChange={(event) => handleChange(event, index)}
-                        />         
+                        />  
+                        : 
+                        <div className="display-flex">
+                            <textarea
+                                type="text"
+                                name={"text-" + {index}}
+                                className={"margin-10 " + (index !== 0) ?  "lines " : "line-0 "}
+                                placeholder={index === 0 ? "Top Text" : "Bottom Text"}
+                                value={line.text}
+                                onChange={(event) => handleChange(event, index)}
+                            />  
+                            <button type="button" onClick={() => deleteLine(index)}>
+                                <img src={DeleteIcon} alt="Delete" border="0" width={35} height={35}/>
+                            </button>    
+                        </div>
+                        }
+                        
+                           
                     </div>
                     
-                    {(index === 0) ? 
+                    {(index === 0 && lines.length > 1) ? 
                         (<div >
                             <label className="same-settings">Same settings to all lines
                                 <input className="checkbox" name="checkbox" type="checkbox" checked={hideSettings} onChange={checkboxChange}/>
                                 <span className="checkmark"></span>
                             </label>
-                        </div>) : null}
+                        </div>) : 
+                        null}
 
-                        <hr class="solid"></hr>
+                        <hr className="solid"></hr>
                         </div>
                     
                 ))}
