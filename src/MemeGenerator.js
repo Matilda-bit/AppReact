@@ -61,53 +61,92 @@ const MemeGenerator = () => {
 
 
 
-        //checkboxChange
-
-        const checkboxChange = (event) => {
-            const { name } = event.target;
-            if (name === "checkbox") {
-                setLines(prevLines => {
-                    return prevLines.map((line, index) => {
-                        if (index !== 0) {
-                            return {
-                                ...line,
-                                textAlign: lines[0].textAlign,
-                                color: lines[0].color
-                            };
-                        }
-                        return line;
-                    });
+    //checkboxChange
+    const checkboxChange = (event) => {
+        const { name } = event.target;
+        if (name === "checkbox") {
+            setLines(prevLines => {
+                return prevLines.map((line, index) => {
+                    if (index !== 0) {
+                        return {
+                            ...line,
+                            textAlign: lines[0].textAlign,
+                            color: lines[0].color
+                        };
+                    }
+                    return line;
                 });
-                setHideSettings(!hideSettings);
-            }
-        };
-        
-        const handleSubmit = (event) => {
-            event.preventDefault();
-            const randNum = Math.floor(Math.random() * allMemeImgs.length);
-            const randMeme = allMemeImgs[randNum];
-            setItem({
-                id: randMeme.id,
-                box_count: randMeme.box_count,
-                height: randMeme.height,
-                width: randMeme.width,
-                name: randMeme.name,
-                img: randMeme.url,
-                data: randMeme
             });
-        };
+            setHideSettings(!hideSettings);
+        }
+    };
+    
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const randNum = Math.floor(Math.random() * allMemeImgs.length);
+        const randMeme = allMemeImgs[randNum];
+        setItem({
+            id: randMeme.id,
+            box_count: randMeme.box_count,
+            height: randMeme.height,
+            width: randMeme.width,
+            name: randMeme.name,
+            img: randMeme.url,
+            data: randMeme
+        });
+    };
 
-        const addLine = () => {
-            setLines(prevLines => [
-                ...prevLines,
-                {
-                    text: "",
-                    color: "color-white",
-                    textAlign: 'text-align-center',
-                    fontSize: 10
+    const addLine = () => {
+        setLines(prevLines => [
+            ...prevLines,
+            {
+                text: "",
+                color: "color-white",
+                textAlign: 'text-align-center',
+                fontSize: 10
+            }
+        ]);
+    };
+    
+    const setColor = (index, color) => {
+
+        if(index === 0 && hideSettings) {
+            setLines(prevLines => {
+                return prevLines.map((line) => {
+                    
+                        return { ...line, color };
+                });
+            });
+        }
+        setLines(prevLines => {
+            return prevLines.map((line, i) => {
+                if (i === index) {
+                    return { ...line, color };
                 }
-            ]);
-        };
+                return line;
+            });
+        });
+    };
+
+    const setTextAlign = (index, textAlign) => {
+
+        if(index === 0 && hideSettings) {
+            setLines(prevLines => {
+                return prevLines.map((line) => {
+                    
+                        return { ...line, textAlign };
+                });
+            });
+        }
+        setLines(prevLines => {
+            return prevLines.map((line, i) => {
+                if (i === index) {
+                    return { ...line, textAlign };
+                }
+                return line;
+            });
+        });
+    };
 
     return (
         <div>
@@ -121,21 +160,17 @@ const MemeGenerator = () => {
             <form className="meme-form" onSubmit={handleSubmit}>
             <div className="meme-input">
                 {lines.map((line, index) => (
-                    <div>
-                    <div key={index} className="meme-input-item">
+                    <div key={index}>
+                    <div className="meme-input-item">
                         <label className="text-bold comic-font">{index === 0 ? "Text " + (index+1) : "Text " + (index+1)}</label>
-                        {/* {!hideSettings &&  */}
                         <Settings 
                             index={index}
-                            template={line[0]}
-                            setColor={lines[index].color}
-                            setTextAlign={lines[index].textAlign}
+                            template={lines[0]}
+                            setColor={(color) => setColor(index, color)}
+                            setTextAlign={(textAlign) => setTextAlign(index, textAlign)}
                             setFontSize={lines[index].fontSize}
-                            // reduce={reduce}
-                            // increase={increase}
                             hideSettings={hideSettings}
                         />
-                        {/* } */}
                         <textarea
                             type="text"
                             name="text"
@@ -171,7 +206,7 @@ const MemeGenerator = () => {
                 <div className="meme limit">
                     <img src={item.img} alt={item.name} />
                     {lines.map((line, index) => (
-                        <h2 key={index} className={`line- ${line.color} ${line.textAlign} font-size-${line.fontSize}`} style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>{line.text}</h2>
+                        <h2 key={index} className={`${(index === 0) ? "top" : "bottom"} ${line.color} ${line.textAlign} font-size-${line.fontSize}`} style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>{line.text}</h2>
                     ))}
                 </div>
             </div>
