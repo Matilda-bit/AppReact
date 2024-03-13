@@ -8,10 +8,10 @@ function Header(){
                 alt="Problem?"
             />
 
-            <p>Meme Gen</p>
+            <p>Meme Byte</p>
         </header>
 
     )
 }
 
-export default Header
+export default Header;

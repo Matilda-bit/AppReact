@@ -19,12 +19,12 @@ const Settings = ({index, line, template, setColor, setTextAlign, setFontSize, h
                 <label className="settings-title">Color</label>
                 <div className="color-options">
                     <div
-                        className="color-option"
+                        className={((line.color === 'color-black ')? "option-selected " : "color-option ")}
                         style={{ backgroundColor: "black" }}
                         onClick={() => { setColor((hideSettings && index !== 0) ? template.color : 'color-black '); }}
                     />
                     <div
-                        className="color-option"
+                        className={"color-option " + ((line.color === 'color-white ')? "option-selected " : null)}
                         style={{ backgroundColor: "white" }}
                         // onClick={() => { setColor('color-white '); hideSettings && setColor('color-white '); }}
                         onClick={() => { setColor((hideSettings && index !== 0) ? template.color : 'color-white '); }}

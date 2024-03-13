@@ -13,9 +13,7 @@
 h1 {
     font-family: Impact, sans-serif;
 }
-.text-bold {
-    font-weight: bold;
-}
+
 header > img {
     height: 100%;
     margin-left: 1%;
@@ -32,11 +30,11 @@ header > p {
 /* Check box*/
 
 /* The same-settings */
-.same-settings {
+/* .same-settings {
    
-    display: block;
+    display: block; */
     /* position: absolute; */
-    position: relative;
+    /* position: relative;
     padding-left: 35px;
     margin-bottom: 12px;
     margin-top: 15px;
@@ -46,19 +44,19 @@ header > p {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
+  } */
 
 /* Hide the browser's default checkbox */
-.same-settings input{
+/* .same-settings input{
     position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 0;
     width: 0;
-  }
+  } */
   
   /* Create a custom checkbox */
-  .checkmark {
+  /* .checkmark {
     border:#371158;
     border-width: 1px;
     border-style: solid;
@@ -68,32 +66,111 @@ header > p {
     height: 20px;
     width: 20px;
     background-color: #eee;
+  } */
+
+  .checkbox-wrapper-6 .tgl {
+    display: none;
+
   }
+  .checkbox-wrapper-6 .tgl,
+  .checkbox-wrapper-6 .tgl:after,
+  .checkbox-wrapper-6 .tgl:before,
+  .checkbox-wrapper-6 .tgl *,
+  .checkbox-wrapper-6 .tgl *:after,
+  .checkbox-wrapper-6 .tgl *:before,
+  .checkbox-wrapper-6 .tgl + .tgl-btn {
+    box-sizing: border-box;
+  }
+  .checkbox-wrapper-6 .tgl::-moz-selection,
+  .checkbox-wrapper-6 .tgl:after::-moz-selection,
+  .checkbox-wrapper-6 .tgl:before::-moz-selection,
+  .checkbox-wrapper-6 .tgl *::-moz-selection,
+  .checkbox-wrapper-6 .tgl *:after::-moz-selection,
+  .checkbox-wrapper-6 .tgl *:before::-moz-selection,
+  .checkbox-wrapper-6 .tgl + .tgl-btn::-moz-selection,
+  .checkbox-wrapper-6 .tgl::selection,
+  .checkbox-wrapper-6 .tgl:after::selection,
+  .checkbox-wrapper-6 .tgl:before::selection,
+  .checkbox-wrapper-6 .tgl *::selection,
+  .checkbox-wrapper-6 .tgl *:after::selection,
+  .checkbox-wrapper-6 .tgl *:before::selection,
+  .checkbox-wrapper-6 .tgl + .tgl-btn::selection {
+    background: none;
+  }
+  .checkbox-wrapper-6 .tgl + .tgl-btn {
+    margin-bottom: 12px;
+    margin-top: 15px;
+    outline: 0;
+    display: block;
+    width: 6%;
+    height: 2.6ch;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+  }
+  .checkbox-wrapper-6 .tgl + .tgl-btn:after,
+  .checkbox-wrapper-6 .tgl + .tgl-btn:before {
+    position: relative;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 100%;
+  }
+  .checkbox-wrapper-6 .tgl + .tgl-btn:after {
+    left: 0;
+  }
+  .checkbox-wrapper-6 .tgl + .tgl-btn:before {
+    display: none;
+  }
+  .checkbox-wrapper-6 .tgl:checked + .tgl-btn:after {
+    left: 50%;
+  }
+
+  .checkbox-wrapper-6 .tgl-light + .tgl-btn {
+    background: #f0f0f0;
+    border-radius: 2em;
+    padding: 2px;
+    transition: all 0.4s ease;
+  }
+  .checkbox-wrapper-6 .tgl-light + .tgl-btn:after {
+    border-radius: 50%;
+    background: #fff;
+    transition: all 0.2s ease;
+  }
+  .checkbox-wrapper-6 .tgl-light:checked + .tgl-btn {
+    background: #9FD6AE;
+  }
+
+
+
   
   /* On mouse-over, add a grey background color */
-  .same-settings :hover input ~ .checkmark {
+  /* .same-settings :hover input ~ .checkmark {
     background-color: #ccc;
-  }
+  } */
   
   /* When the checkbox is checked, add a blue background */
-  .same-settings input:checked ~ .checkmark {
+  /* .same-settings input:checked ~ .checkmark {
     background-color: hsl(239, 100%, 82%);
-  }
+  } */
   
   /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
+  /* .checkmark:after {
     content: "";
     position: absolute;
     display: none;
-  }
+  } */
   
   /* Show the checkmark when checked */
-  .same-settings input:checked ~ .checkmark:after {
+  /* .same-settings input:checked ~ .checkmark:after {
     display: block;
-  }
+  } */
   
   /* Style the checkmark/indicator */
-  .same-settings .checkmark:after {
+  /* .same-settings .checkmark:after {
     left: 7px;
     top: 2px;
     width: 5px;
@@ -103,7 +180,7 @@ header > p {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
-  }
+  } */
 
 
 .meme{
@@ -207,6 +284,7 @@ button > img {
     display: flex;
     flex-direction: column;
     width: 40%;
+    margin-right: 15px;
 } 
 
 .meme-input-btn {
@@ -228,7 +306,6 @@ button > img {
 
 .settings {
     display: flex;
-    margin-top: 15px;
     flex-direction: row;
 }
 
@@ -254,6 +331,13 @@ height: 20px;
 margin: 0 5px 0 0;
 border: 1px solid #000000;
 cursor: pointer;
+}
+
+.option-selected {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px 0 0;
+    border: 1px solid #6edd84;
 }
 
 .color-option:hover {
@@ -325,9 +409,12 @@ border: 1px solid #333;
 .font-size-20 {
     font-size: 700%;
 }
-.comic-font {
+
+.title-line {
+    margin-bottom: 15px;
     font-family: Comic Sans MS, Comic Sans, cursive !important;
     color: #555555;
+    font-weight: bold;
 }
 
 .margin-10 {
@@ -361,6 +448,12 @@ div > textarea{
     font-size: 16px;
 }
 
+.btn-delete {
+    border: none;
+    cursor: pointer;
+    appearance: none;
+    background-color: inherit;
+}
 
 .input-pretender {
     width: 90%;
@@ -381,7 +474,7 @@ div > textarea{
     border: 2px solid gray;
     border-radius: 4px;
     font-size: 16px;
-    width: 80%;
+    width: 82%;
 }
 
 .meme-input-btn > button {
@@ -457,7 +550,7 @@ div > textarea{
     linear-gradient(#ffffff, #ffffff) padding-box,
     linear-gradient(90deg, rgba(151,215,0,1) 0%, rgba(0,169,224,1) 50%, rgba(51,0,114,1) 100%) border-box;
     transition: all .5s ease;
-    height: 3rem;
+    height: 4rem;
     display: table;
     letter-spacing: 0.125rem;
     font-family: VT323, monospace;
@@ -465,6 +558,44 @@ div > textarea{
     color: #6441A5;
     border-radius: 5px 25px; 
 }
+
+/* .btn-gradient-2 {
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(to right, darkblue, darkorchid) border-box;
+    border-radius: 50em;
+    border: 4px solid transparent;
+  } */
+
+
+  /* &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+  }
+
+  /* &::before {
+    z-index: -1;
+    background: #040a22;
+  } */
+
+  /* &::after {
+    --gradientColor1: #09ec3a;
+    --gradientColor2: #040c27;
+    --gradientColor3: #37a5ee;
+    z-index: -2;
+    background: linear-gradient(
+      235deg,
+      var(--gradientColor1),
+      var(--gradientColor2),
+      var(--gradientColor3)
+    );
+    filter: blur(40px);
+    animation: glow 4s linear infinite;
+  } */ */
 
 .meme-form > input:-webkit-input-placeholder { /* Chrome/Opera/Safari */
     font-family: VT323,monospace;

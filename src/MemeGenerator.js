@@ -3,7 +3,7 @@ import "./utils/MemesLink";
 import BtnIcon from './assets/icons/btn/pokeball.png';
 import Settings from './Settings'; // assuming you have created a separate Settings component
 
-import DeleteIcon from './assets/icons/btn/delete.png';
+import DeleteIcon from './assets/icons/btn/garbage.png';
 import AddIcon from './assets/icons/btn/add.png';
 
 const MemeGenerator = () => {
@@ -11,14 +11,14 @@ const MemeGenerator = () => {
         {
             title: "Top Text",
             text: "",
-            color: "color-white",
+            color: "color-white ",
             textAlign: 'text-align-center',
             fontSize: 10
         },
         {
             title: "Bottom Text",
             text: "",
-            color: "color-white",
+            color: "color-white ",
             textAlign: 'text-align-center',
             fontSize: 10
         }
@@ -40,7 +40,6 @@ const MemeGenerator = () => {
             .then(response => response.json())
             .then(response => { 
                 const { memes } = response.data;
-                console.log(response.data);
                 setAllMemeImgs(memes);
             });
     }, []);
@@ -49,13 +48,7 @@ const MemeGenerator = () => {
 
 
     const handleChange = (event, index) => {
-    console.log("test");
-    console.log(index);
-    console.log(event.target);
         const { name, value } = event.target;
-
-        console.log(name);
-        console.log(value);
         setLines(prevLines => {
             return prevLines.map((line, i) => {
                 if (i === index) {
@@ -107,8 +100,8 @@ const MemeGenerator = () => {
     const addLine = () => {
         const newLine = {
             text: "",
-            color: hideSettings ? lines[0].color : "color-white",
-            textAlign: hideSettings ? lines[0].textAlign : 'text-align-center',
+            color: hideSettings ? lines[0].color : "color-white ",
+            textAlign: hideSettings ? lines[0].textAlign : 'text-align-center ',
             fontSize: hideSettings ? lines[0].fontSize : 10
         };
         setLines(prevLines => [...prevLines, newLine]);
@@ -157,7 +150,7 @@ const MemeGenerator = () => {
         <div>
             <h1 className="center">MEME GENERATOR SECTION</h1>
             <div className="random-meme center meme-form">
-                <button className="pb-15" onClick={handleSubmit}> 
+                <button className="pb-15 " onClick={handleSubmit}> 
                     <img src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
                     RANDOM MEME IMG </button>
             </div>
@@ -167,7 +160,9 @@ const MemeGenerator = () => {
                 {lines.map((line, index) => (
                     <div key={index}>
                     <div className="meme-input-item">
-                        <label className="text-bold comic-font">{index === 0 ? "Text " + (index+1) : "Text " + (index+1)}</label>
+                        <div className="title-line">
+                            <label >{index === 0 ? "Text " + (index+1) : "Text " + (index+1)}</label>
+                        </div>
                         <Settings 
                             index={index}
                             line={lines[index]}
@@ -196,8 +191,8 @@ const MemeGenerator = () => {
                                 value={line.text}
                                 onChange={(event) => handleChange(event, index)}
                             />  
-                            <button type="button" onClick={() => deleteLine(index)}>
-                                <img src={DeleteIcon} alt="Delete" border="0" width={35} height={35}/>
+                            <button className="btn-delete" type="submit" onClick={() => deleteLine(index)}>
+                                <img src={DeleteIcon} alt="Delete" border="0" width={45} height={45}/>
                             </button>    
                         </div>
                         }
@@ -207,10 +202,15 @@ const MemeGenerator = () => {
                     
                     {(index === 0 && lines.length > 1) ? 
                         (<div >
-                            <label className="same-settings">Same settings to all lines
+                            {/* <label className="same-settings">Same settings to all lines
                                 <input className="checkbox" name="checkbox" type="checkbox" checked={hideSettings} onChange={checkboxChange}/>
                                 <span className="checkmark"></span>
-                            </label>
+                            </label> */}
+
+                            <div class="checkbox-wrapper-6"> 
+                                <input class="tgl tgl-light" id="cb1-6" name="checkbox" type="checkbox" checked={hideSettings} onChange={checkboxChange}/> 
+                                <label class="tgl-btn" for="cb1-6"> </label> <span>Same settings to all lines</span>
+                            </div>
                         </div>) : 
                         null}
 
@@ -242,6 +242,7 @@ const MemeGenerator = () => {
 
             <div className="center row">
                 <label > original size {item.width} x {item.height}</label>
+                <label > boxes {item.box_count} </label>
             </div>
             </form>
 
