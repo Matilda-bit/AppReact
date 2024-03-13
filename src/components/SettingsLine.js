@@ -1,10 +1,10 @@
 import React from 'react';
-import AlignLeftIcon from './assets/icons/textAlign/align-left.png';
-import AlignCenterIcon from './assets/icons/textAlign/format.png';
-import AlignRightIcon from './assets/icons/textAlign/align-right.png';
-import FontSize from './assets/icons/fontSize/font-size.png';
-import ReduceSize from './assets/icons/fontSize/down.png';
-import IncreaseSize from './assets/icons/fontSize/up.png';
+import AlignLeftIcon from '../assets/icons/textAlign/align-left.png';
+import AlignCenterIcon from '../assets/icons/textAlign/format.png';
+import AlignRightIcon from '../assets/icons/textAlign/align-right.png';
+import FontSize from '../assets/icons/fontSize/font-size.png';
+import ReduceSize from '../assets/icons/fontSize/down.png';
+import IncreaseSize from '../assets/icons/fontSize/up.png';
 
 const SettingsLine = ({index, line, template, setColor, setTextAlign, setFontSize, hideSettings }) => {
     const tem = index === 0; 

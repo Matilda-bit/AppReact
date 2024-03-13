@@ -1,5 +1,5 @@
 import React from 'react';
-import FlipIcon from './assets/icons/btn/flip.png';
+import FlipIcon from '../assets/icons/btn/flip.png';
 
 
 const SettingsLine = ({setFlip }) => {
