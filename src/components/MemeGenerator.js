@@ -150,12 +150,15 @@ const MemeGenerator = () => {
     return (
         <div>
             <h1 className="center">MEME GENERATOR SECTION</h1>
-            <div className="random-meme center meme-form">
-                <button className="pb-15 " onClick={handleSubmit}> 
-                    <img src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
-                    RANDOM MEME IMG </button>
+            <div className="random-meme-section">
+                <div className="width-30">
+                    <button className="pb-15 center align-items-center" onClick={handleSubmit}> 
+                        <img src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
+                        RANDOM MEME IMG </button>
+                </div>
+                
 
-                    <div></div>
+                <div className="meme-catalog "></div>
             </div>
 
             
@@ -164,7 +167,7 @@ const MemeGenerator = () => {
             <div className="meme-input">
                 <div>
                     <div className="title-line">
-                        <label >Image</label>
+                        <label >Image Settings</label>
                     </div>
                     <SettingsImg
                         setFlip={() => setFlip(!flip)}

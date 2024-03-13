@@ -191,6 +191,32 @@ button > img {
 .text-align-right {
     text-align: right !important;
 }
+.align-items-center {
+    margin: 0;
+    position: absolute;
+    top: 30%;
+    
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.random-meme-section {
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+.width-30 {
+    width: 30%;
+}
+.meme-catalog {
+    width: 70%;
+    /* align-items: normal !important; */
+    border: 1px solid black;
+    margin-left: 20px ;
+}
 
 .meme > .bottom {
     bottom: 0;
@@ -198,6 +224,7 @@ button > img {
 .meme > .top {
     top: 0;
 }
+
 .meme-form {
     width: 90%;
     margin: 20px auto;
@@ -485,10 +512,8 @@ div > textarea{
     background: #a591cb;
 }
 
-.random-meme > button {
+.random-meme-section > div > button {
     cursor: pointer;
-    height: 60px;
-    /* //border: none; */
     border: 2px solid #000;
     background: 
     linear-gradient(#ffffff, #ffffff) padding-box,
