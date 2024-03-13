@@ -212,10 +212,43 @@ button > img {
     width: 30%;
 }
 .meme-catalog {
-    width: 70%;
+    width: 90%; 
     /* align-items: normal !important; */
-    border: 1px solid black;
+    /* border: 1px solid black;
+    margin-left: 20px ; */ 
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.meme-catalog-scroll {
+    width: 80%;
+    /* align-items: normal !important; */
+    border: 2px solid black;
     margin-left: 20px ;
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.meme-catalog {
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.scroll-btn {
+    margin: 0 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.meme-images {
+    display: flex;
+    flex-direction: row;
 }
 
 .meme > .bottom {

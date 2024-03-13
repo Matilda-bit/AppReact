@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../utils/MemesLink";
 import SettingsLine from './SettingsLine'; // assuming you have created a separate Settings component
 import SettingsImg from './SettingsImg'; // assuming you have created a separate Settings component
@@ -44,7 +44,14 @@ const MemeGenerator = () => {
                 setAllMemeImgs(memes);
             });
     }, []);
+    
+    const scrollRef = useRef(null);
 
+    const scroll = (direction) => {
+        if (scrollRef.current) {
+            scrollRef.current.scrollLeft += direction * 1000; // Adjust 100 as needed
+        }
+    };
 
 
 
@@ -157,8 +164,20 @@ const MemeGenerator = () => {
                         RANDOM MEME IMG </button>
                 </div>
                 
-
-                <div className="meme-catalog "></div>
+                <div className="meme-catalog">
+                    <button className="scroll-btn" onClick={() => scroll(-1)}>Left</button>
+                    <div className="meme-catalog-scroll ">
+                        
+                        <div className="meme-images">
+                            {allMemeImgs.map((meme, index) => (
+                                <img key={index} src={meme.url} alt={meme.name} style={{ height: '100px' }} />
+                            ))}
+                        </div>
+                       
+                    </div>
+                    <button className="scroll-btn" onClick={() => scroll(1)}>Right</button>
+                </div>
+                
             </div>
 
             
