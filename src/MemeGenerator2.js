@@ -9,7 +9,7 @@ import meme from "./utils/MemesLink";
 // import IncreaseSize from './assets/icons/fontSize/up.png';
 import BtnIcon from './assets/icons/btn/pokeball.png';
 
-import Settings from './Settings';
+import Settings from './SettingsLine';
 
 const MemeGenerator = () => {
     const [topText, setTopText] = useState("");

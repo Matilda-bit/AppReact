@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "./utils/MemesLink";
 import BtnIcon from './assets/icons/btn/pokeball.png';
-import Settings from './Settings'; // assuming you have created a separate Settings component
-
+import SettingsLine from './SettingsLine'; // assuming you have created a separate Settings component
+import SettingsImg from './SettingsImg'; // assuming you have created a separate Settings component
 import DeleteIcon from './assets/icons/btn/garbage.png';
 import AddIcon from './assets/icons/btn/add.png';
 
@@ -24,6 +24,7 @@ const MemeGenerator = () => {
         }
     ]);
     const [hideSettings, setHideSettings] = useState(true);
+    const [flip, setFlip] = useState(false);
     const [allMemeImgs, setAllMemeImgs] = useState([]);
     const [item, setItem] = useState({
         id: "61579",
@@ -48,7 +49,7 @@ const MemeGenerator = () => {
 
 
     const handleChange = (event, index) => {
-        const { name, value } = event.target;
+        const { value } = event.target;
         setLines(prevLines => {
             return prevLines.map((line, i) => {
                 if (i === index) {
@@ -153,17 +154,32 @@ const MemeGenerator = () => {
                 <button className="pb-15 " onClick={handleSubmit}> 
                     <img src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
                     RANDOM MEME IMG </button>
+
+                    <div></div>
             </div>
+
+            
 
             <form className="meme-form" onSubmit={handleSubmit}>
             <div className="meme-input">
+                <div>
+                    <div className="title-line">
+                        <label >Image</label>
+                    </div>
+                    <SettingsImg
+                        setFlip={() => setFlip(!flip)}
+                    />
+
+                    <hr className="solid"></hr>
+                </div>
+
                 {lines.map((line, index) => (
                     <div key={index}>
                     <div className="meme-input-item">
                         <div className="title-line">
                             <label >{index === 0 ? "Text " + (index+1) : "Text " + (index+1)}</label>
                         </div>
-                        <Settings 
+                        <SettingsLine 
                             index={index}
                             line={lines[index]}
                             template={lines[0]}
@@ -202,20 +218,14 @@ const MemeGenerator = () => {
                     
                     {(index === 0 && lines.length > 1) ? 
                         (<div >
-                            {/* <label className="same-settings">Same settings to all lines
-                                <input className="checkbox" name="checkbox" type="checkbox" checked={hideSettings} onChange={checkboxChange}/>
-                                <span className="checkmark"></span>
-                            </label> */}
-
-                            <div class="checkbox-wrapper-6"> 
-                                <input class="tgl tgl-light" id="cb1-6" name="checkbox" type="checkbox" checked={hideSettings} onChange={checkboxChange}/> 
-                                <label class="tgl-btn" for="cb1-6"> </label> <span>Same settings to all lines</span>
+                            <div className="checkbox-wrapper-6"> 
+                                <input className="tgl tgl-light" id="cb1-6" name="checkbox" type="checkbox" checked={hideSettings} onChange={checkboxChange}/> 
+                                <label className="tgl-btn" htmlFor="cb1-6"/><span>Same settings to all lines</span>
                             </div>
-                        </div>) : 
-                        null}
+                        </div>) : null}
 
-                        <hr className="solid"></hr>
-                        </div>
+                    <hr className="solid"></hr>
+                </div>
                     
                 ))}
 
@@ -228,12 +238,12 @@ const MemeGenerator = () => {
                     <button className="meme-input-item">SUBMIT</button>
                 </div>
             </div>
-            <div className="display-flex-col">
+            <div className="display-meme">
                 <div className="center settings-title grey">
                     <h2 className="center">"{item.name}"</h2>
                 </div>
                 <div className="meme limit">
-                    <img src={item.img} alt={item.name} />
+                    <img className={(flip) ? "meme-flip " : null}  src={item.img} alt={item.name} />
                     {lines.map((line, index) => (
                         <h2 key={index} className={`${(index === 0) ? "top" : "bottom"} ${line.color} ${line.textAlign} font-size-${line.fontSize}`} style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>{line.text}</h2>
                     ))}

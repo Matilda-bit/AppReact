@@ -6,7 +6,7 @@ import FontSize from './assets/icons/fontSize/font-size.png';
 import ReduceSize from './assets/icons/fontSize/down.png';
 import IncreaseSize from './assets/icons/fontSize/up.png';
 
-const Settings = ({index, line, template, setColor, setTextAlign, setFontSize, hideSettings }) => {
+const SettingsLine = ({index, line, template, setColor, setTextAlign, setFontSize, hideSettings }) => {
     const tem = index === 0; 
     let reduce = line.fontSize > 6;
     let increase = line.fontSize < 20;
@@ -16,7 +16,7 @@ const Settings = ({index, line, template, setColor, setTextAlign, setFontSize, h
     return (
         <div className="settings">
             <div className="input-settings-color">
-                <label className="settings-title">Color</label>
+                <label className="font-monospace">Color</label>
                 <div className="color-options">
                     <div
                         className={((line.color === 'color-black ')? "option-selected " : "color-option ")}
@@ -33,7 +33,7 @@ const Settings = ({index, line, template, setColor, setTextAlign, setFontSize, h
             </div>
 
             <div className="input-settings-color">
-                <label className="settings-title">Text Align</label>
+                <label className="font-monospace">Text Align</label>
                 <div className="display-flex">
                     <div className="align-option" 
                     //onClick={() => { setTextAlign(' text-align-left '); hideSettings && setTextAlign(' text-align-left '); }}
@@ -51,7 +51,7 @@ const Settings = ({index, line, template, setColor, setTextAlign, setFontSize, h
             </div>
 
             <div className="input-settings-color">
-                <label className="settings-title">Font Size</label>
+                <label className="font-monospace">Font Size</label>
                 <div className="display-flex">
                     <fieldset className="font-size-option" onClick={() => reduce ? setFontSize("reduce") : null}>
                         <img src={ReduceSize} alt="Font Size" width="15" height="15" />
@@ -68,4 +68,4 @@ const Settings = ({index, line, template, setColor, setTextAlign, setFontSize, h
     );
 };
 
-export default Settings;
+export default SettingsLine;
