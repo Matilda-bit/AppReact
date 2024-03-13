@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./utils/MemesLink";
+import "../utils/MemesLink";
 import BtnIcon from './assets/icons/btn/pokeball.png';
 import SettingsLine from './SettingsLine'; // assuming you have created a separate Settings component
 import SettingsImg from './SettingsImg'; // assuming you have created a separate Settings component
