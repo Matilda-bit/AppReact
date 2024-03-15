@@ -5,8 +5,7 @@ import SettingsImg from './SettingsImg'; // assuming you have created a separate
 import BtnIcon from '../assets/icons/btn/pokeball.png';
 import DeleteIcon from '../assets/icons/btn/garbage.png';
 import AddIcon from '../assets/icons/btn/add.png';
-import Left from '../assets/icons/fontSize/down.png';
-import Right from '../assets/icons/fontSize/up.png';
+import Arrow from '../assets/icons/fontSize/up.png';
 
 const MemeGenerator = () => {
     const [lines, setLines] = useState([
@@ -168,7 +167,7 @@ const MemeGenerator = () => {
 
                 <div className="meme-catalog" ref={scrollRef}>
                     <fieldset className="scroll-btn left suit-icon " onClick={() => scroll(-100)}>
-                        <img src={Left} alt="Left Scroll" width="50" height="50" />
+                        <img src={Arrow} alt="Left Scroll" width="50" height="50" />
                     </fieldset>
                     <div className="meme-images">
                         {allMemeImgs.map((meme, index) => (
@@ -177,7 +176,7 @@ const MemeGenerator = () => {
                     </div>
 
                     <fieldset className="scroll-btn right suit-icon " onClick={() => scroll(100)}>
-                        <img src={Right} alt="Right Scroll" width="50" height="50" />
+                        <img src={Arrow} alt="Right Scroll" width="50" height="50" />
                     </fieldset>
                 </div>
                 

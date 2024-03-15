@@ -222,6 +222,17 @@ button > img {
     justify-content: center;
 }
 
+.suit-icon {
+    height: 100px;
+    align-items: center;
+    background-color: #000;
+}
+.suit-icon > img {
+    -webkit-filter: invert(1);
+   filter: invert(1);
+   transform: rotate(90deg);
+}
+
 
 .scroll-btn {
     position: absolute;
@@ -239,11 +250,16 @@ button > img {
 
 .scroll-btn.left {
     left: initial;
-  }
-  
-  .scroll-btn.right {
-    right: 5%;
-  }
+}
+.scroll-btn.left > img {
+transform: rotate(270deg);
+}
+
+.scroll-btn.right {
+right: 5%;
+/* display: flex;
+  flex-direction: row-reverse; */
+}
 
 .meme-images {
     display: flex;
@@ -253,14 +269,7 @@ button > img {
     padding-left: 74px;
 }
 
-.meme-images img {
-    /* border: 2px solid #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    cursor: pointer; */
-    height: 100px;
-    border: 2px solid white;
-}
+
 
 .meme > .bottom {
     bottom: 0;
@@ -372,16 +381,7 @@ border: 1px solid #333;
     margin: 0 15px 0 0;
     cursor: pointer;
 }
-.suit-icon {
-    height: 100px;
-    align-items: center;
-    background-color: #000;
-}
-.suit-icon > img {
-    -webkit-filter: invert(1);
-   filter: invert(1);
-   transform: rotate(90deg);
-}
+
 
 
 .no-cursor {
