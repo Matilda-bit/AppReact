@@ -171,7 +171,21 @@ const MemeGenerator = () => {
                     </fieldset>
                     <div className="meme-images">
                         {allMemeImgs.map((meme, index) => (
-                            <img key={index} src={meme.url} alt={meme.name} style={{ height: '100px' }} />
+                            <img 
+                            key={index} 
+                            src={meme.url} 
+                            alt={meme.name} 
+                            style={{ height: '100px', cursor: 'pointer' }} 
+                            onClick={() => setItem({
+                                id: meme.id,
+                                box_count: meme.box_count,
+                                height: meme.height,
+                                width: meme.width,
+                                name: meme.name,
+                                img: meme.url,
+                                data: meme
+                              })}
+                            />
                         ))}
                     </div>
 
