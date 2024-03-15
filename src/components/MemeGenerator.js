@@ -47,9 +47,9 @@ const MemeGenerator = () => {
     
     const scrollRef = useRef(null);
 
-    const scroll = (direction) => {
+    const scroll = (amount) => {
         if (scrollRef.current) {
-            scrollRef.current.scrollLeft += direction * 1000; // Adjust 100 as needed
+            scrollRef.current.scrollLeft += amount; // Adjust as needed
         }
     };
 
@@ -158,16 +158,15 @@ const MemeGenerator = () => {
         <div>
             <h1 className="center">MEME GENERATOR SECTION</h1>
             <div className="random-meme-section">
-                <div className="width-30">
+                <div className="random width-30">
                     <button className="pb-15 center align-items-center" onClick={handleSubmit}> 
                         <img src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
                         RANDOM MEME IMG </button>
                 </div>
                 
-                <div className="meme-catalog">
-                    <button className="scroll-btn" onClick={() => scroll(-1)}>Left</button>
+                {/* <div className="meme-catalog" ref={scrollRef}>
+                    <button className="scroll-btn" onClick={() => scroll(-100)}>Left</button>
                     <div className="meme-catalog-scroll ">
-                        
                         <div className="meme-images">
                             {allMemeImgs.map((meme, index) => (
                                 <img key={index} src={meme.url} alt={meme.name} style={{ height: '100px' }} />
@@ -175,7 +174,17 @@ const MemeGenerator = () => {
                         </div>
                        
                     </div>
-                    <button className="scroll-btn" onClick={() => scroll(1)}>Right</button>
+                    <button className="scroll-btn" onClick={() => scroll(100)}>Right</button>
+                </div> */}
+
+                <div className="meme-catalog" ref={scrollRef}>
+                    <button className="scroll-btn left" onClick={() => scroll(-100)}>Left</button>
+                    <div className="meme-images">
+                        {allMemeImgs.map((meme, index) => (
+                            <img key={index} src={meme.url} alt={meme.name} style={{ height: '100px' }} />
+                        ))}
+                    </div>
+                    <button className="scroll-btn right" onClick={() => scroll(100)}>Right</button>
                 </div>
                 
             </div>
