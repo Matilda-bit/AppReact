@@ -5,6 +5,8 @@ import SettingsImg from './SettingsImg'; // assuming you have created a separate
 import BtnIcon from '../assets/icons/btn/pokeball.png';
 import DeleteIcon from '../assets/icons/btn/garbage.png';
 import AddIcon from '../assets/icons/btn/add.png';
+import Left from '../assets/icons/fontSize/down.png';
+import Right from '../assets/icons/fontSize/up.png';
 
 const MemeGenerator = () => {
     const [lines, setLines] = useState([
@@ -163,28 +165,20 @@ const MemeGenerator = () => {
                         <img src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
                         RANDOM MEME IMG </button>
                 </div>
-                
-                {/* <div className="meme-catalog" ref={scrollRef}>
-                    <button className="scroll-btn" onClick={() => scroll(-100)}>Left</button>
-                    <div className="meme-catalog-scroll ">
-                        <div className="meme-images">
-                            {allMemeImgs.map((meme, index) => (
-                                <img key={index} src={meme.url} alt={meme.name} style={{ height: '100px' }} />
-                            ))}
-                        </div>
-                       
-                    </div>
-                    <button className="scroll-btn" onClick={() => scroll(100)}>Right</button>
-                </div> */}
 
                 <div className="meme-catalog" ref={scrollRef}>
-                    <button className="scroll-btn left" onClick={() => scroll(-100)}>Left</button>
+                    <fieldset className="scroll-btn left suit-icon " onClick={() => scroll(-100)}>
+                        <img src={Left} alt="Left Scroll" width="50" height="50" />
+                    </fieldset>
                     <div className="meme-images">
                         {allMemeImgs.map((meme, index) => (
                             <img key={index} src={meme.url} alt={meme.name} style={{ height: '100px' }} />
                         ))}
                     </div>
-                    <button className="scroll-btn right" onClick={() => scroll(100)}>Right</button>
+
+                    <fieldset className="scroll-btn right suit-icon " onClick={() => scroll(100)}>
+                        <img src={Right} alt="Right Scroll" width="50" height="50" />
+                    </fieldset>
                 </div>
                 
             </div>
