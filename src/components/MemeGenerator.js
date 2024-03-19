@@ -25,6 +25,7 @@ const MemeGenerator = () => {
         }
     ]);
     const [hideSettings, setHideSettings] = useState(true);
+    //const [hideSettingsImg, setHideSettingsImg] = useState(true);
     const [flip, setFlip] = useState(false);
     const [allMemeImgs, setAllMemeImgs] = useState([]);
     const [item, setItem] = useState({
@@ -45,6 +46,21 @@ const MemeGenerator = () => {
                 setAllMemeImgs(memes);
             });
     }, []);
+
+    useEffect(() => {
+        const head = document.querySelector(".meme-images");
+
+        const click = (e) => {
+            console.log(e);
+        }
+        head.addEventListener('click', click);
+        if(click ===  "click") {
+            const dragging = (e) => {
+                console.log(e);
+            }
+            head.addEventListener('mousemove', dragging);
+        }
+      });
     
     const scrollRef = useRef(null);
 
@@ -175,6 +191,7 @@ const MemeGenerator = () => {
                             key={index} 
                             src={meme.url} 
                             alt={meme.name} 
+                            draggable="false"
                             style={{ height: '100px', cursor: 'pointer' }} 
                             onClick={() => setItem({
                                 id: meme.id,
