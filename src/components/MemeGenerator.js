@@ -49,18 +49,45 @@ const MemeGenerator = () => {
 
     useEffect(() => {
         const head = document.querySelector(".meme-images");
-
-        const click = (e) => {
-            console.log(e);
-        }
-        head.addEventListener('click', click);
-        if(click ===  "click") {
-            const dragging = (e) => {
-                console.log(e);
-            }
-            head.addEventListener('mousemove', dragging);
-        }
-      });
+        let isDragging = false;
+        let startX = 0;
+        let scrollLeft = 0;
+    
+        const startDragging = (e) => {
+            isDragging = true;
+            startX = e.pageX - head.offsetLeft;
+            scrollLeft = head.scrollLeft;
+        };
+    
+        const stopDragging = () => {
+            isDragging = false;
+        };
+    
+        const dragging = (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - head.offsetLeft;
+            const diff = x - startX;
+            const direction = Math.sign(diff);
+            scrollLeft = scrollLeft - diff;
+            scroll(-direction*10);
+            head.scrollLeft = scrollLeft;
+            startX = x + direction; 
+        };
+    
+        head.addEventListener("mousedown", startDragging);
+        head.addEventListener("mouseup", stopDragging);
+        head.addEventListener("mouseleave", stopDragging);
+        head.addEventListener("mousemove", dragging);
+    
+        return () => {
+            head.removeEventListener("mousedown", startDragging);
+            head.removeEventListener("mouseup", stopDragging);
+            head.removeEventListener("mouseleave", stopDragging);
+            head.removeEventListener("mousemove", dragging);
+        };
+    }, []);
+    
     
     const scrollRef = useRef(null);
 
@@ -83,8 +110,6 @@ const MemeGenerator = () => {
             });
         });
     };
-
-
 
     //checkboxChange
     const checkboxChange = (event) => {
@@ -177,13 +202,13 @@ const MemeGenerator = () => {
             <div className="random-meme-section">
                 <div className="random width-30">
                     <button className="pb-15 center align-items-center" onClick={handleSubmit}> 
-                        <img src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
+                        <img draggable="false" src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
                         RANDOM MEME IMG </button>
                 </div>
 
                 <div className="meme-catalog" ref={scrollRef}>
                     <fieldset className="scroll-btn left suit-icon " onClick={() => scroll(-100)}>
-                        <img src={Arrow} alt="Left Scroll" width="50" height="50" />
+                        <img draggable="false" src={Arrow} alt="Left Scroll" width="50" height="50" />
                     </fieldset>
                     <div className="meme-images">
                         {allMemeImgs.map((meme, index) => (
@@ -207,7 +232,7 @@ const MemeGenerator = () => {
                     </div>
 
                     <fieldset className="scroll-btn right suit-icon " onClick={() => scroll(100)}>
-                        <img src={Arrow} alt="Right Scroll" width="50" height="50" />
+                        <img draggable="false" src={Arrow} alt="Right Scroll" width="50" height="50" />
                     </fieldset>
                 </div>
                 
@@ -263,7 +288,7 @@ const MemeGenerator = () => {
                                 onChange={(event) => handleChange(event, index)}
                             />  
                             <button className="btn-delete" type="submit" onClick={() => deleteLine(index)}>
-                                <img src={DeleteIcon} alt="Delete" border="0" width={45} height={45}/>
+                                <img draggable="false" src={DeleteIcon} alt="Delete" border="0" width={45} height={45}/>
                             </button>    
                         </div>
                         }
@@ -298,7 +323,7 @@ const MemeGenerator = () => {
                     <h2 className="center">"{item.name}"</h2>
                 </div>
                 <div className="meme limit">
-                    <img className={(flip) ? "meme-flip " : null}  src={item.img} alt={item.name} />
+                    <img draggable="false" className={(flip) ? "meme-flip " : null}  src={item.img} alt={item.name} />
                     {lines.map((line, index) => (
                         <h2 key={index} className={`${(index === 0) ? "top" : "bottom"} ${line.color} ${line.textAlign} font-size-${line.fontSize}`} style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>{line.text}</h2>
                     ))}
