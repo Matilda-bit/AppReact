@@ -5,7 +5,7 @@ import SettingsImg from './SettingsImg'; // assuming you have created a separate
 import BtnIcon from '../assets/icons/btn/pokeball.png';
 import DeleteIcon from '../assets/icons/btn/garbage.png';
 import AddIcon from '../assets/icons/btn/add.png';
-import Arrow from '../assets/icons/fontSize/up.png';
+import ScrollSide from "./ScrollSide";
 
 const MemeGenerator = () => {
     const [lines, setLines] = useState([
@@ -206,10 +206,11 @@ const MemeGenerator = () => {
                         RANDOM MEME IMG </button>
                 </div>
 
-                <div className="meme-catalog" ref={scrollRef}>
-                    <fieldset className="scroll-btn left suit-icon " onClick={() => scroll(-100)}>
-                        <img draggable="false" src={Arrow} alt="Left Scroll" width="50" height="50" />
-                    </fieldset>
+                <div className="meme-catalog" ref={scrollRef} >
+                    <ScrollSide 
+                        ctsStyle={"scroll-btn left suit-icon "} 
+                        alt="Left Scroll" 
+                        cstFunc={() => {scroll(-10)}}/>
                     <div className="meme-images">
                         {allMemeImgs.map((meme, index) => (
                             <img 
@@ -217,7 +218,7 @@ const MemeGenerator = () => {
                             src={meme.url} 
                             alt={meme.name} 
                             draggable="false"
-                            style={{ height: '100px', cursor: 'pointer' }} 
+                            style={{ height: '90px', cursor: 'pointer' }} 
                             onClick={() => setItem({
                                 id: meme.id,
                                 box_count: meme.box_count,
@@ -231,9 +232,10 @@ const MemeGenerator = () => {
                         ))}
                     </div>
 
-                    <fieldset className="scroll-btn right suit-icon " onClick={() => scroll(100)}>
-                        <img draggable="false" src={Arrow} alt="Right Scroll" width="50" height="50" />
-                    </fieldset>
+                    <ScrollSide 
+                        ctsStyle={"scroll-btn right suit-icon "} 
+                        alt="Right Scroll" 
+                        cstFunc={() => {scroll(10)}}/>
                 </div>
                 
             </div>

@@ -263,9 +263,8 @@ right: 5%;
 
 .meme-images {
     display: flex;
-    /* flex-direction: row; */
-    gap: 10px;
-    padding: 10px;
+    gap: 5px;
+    padding: 5px;
     padding-left: 74px;
 }
 
