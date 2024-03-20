@@ -152,6 +152,19 @@ button > img {
     letter-spacing: 1px;
 }
 
+.meme-text {
+    position: absolute;
+    /* position: relative; */
+    width: 95%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
+    padding: 0 5px;
+    font-family: Impact, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 /* Colors options: white and black*/
 .color-white {
     color: white;
@@ -275,6 +288,8 @@ right: 5%;
 }
 .meme > .top {
     top: 0;
+    /* position: absolute;
+    cursor: move !important; */
 }
 
 .meme-form {

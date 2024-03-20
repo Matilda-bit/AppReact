@@ -6,6 +6,7 @@ import BtnIcon from '../assets/icons/btn/pokeball.png';
 import DeleteIcon from '../assets/icons/btn/garbage.png';
 import AddIcon from '../assets/icons/btn/add.png';
 import ScrollSide from "./ScrollSide";
+import DraggableText from "./DraggableComponent";
 
 const MemeGenerator = () => {
     const [lines, setLines] = useState([
@@ -327,7 +328,7 @@ const MemeGenerator = () => {
                 <div className="meme limit">
                     <img draggable="false" className={(flip) ? "meme-flip " : null}  src={item.img} alt={item.name} />
                     {lines.map((line, index) => (
-                        <h2 key={index} className={`${(index === 0) ? "top" : "bottom"} ${line.color} ${line.textAlign} font-size-${line.fontSize}`} style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>{line.text}</h2>
+                            <DraggableText key={index} line={line} />
                     ))}
                 </div>
             </div>

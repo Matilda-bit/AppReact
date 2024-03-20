@@ -26,7 +26,6 @@ const SettingsLine = ({index, line, template, setColor, setTextAlign, setFontSiz
                     <div
                         className={"color-option " + ((line.color === 'color-white ')? "option-selected " : null)}
                         style={{ backgroundColor: "white" }}
-                        // onClick={() => { setColor('color-white '); hideSettings && setColor('color-white '); }}
                         onClick={() => { setColor((hideSettings && index !== 0) ? template.color : 'color-white '); }}
                     />
                 </div>
@@ -36,7 +35,6 @@ const SettingsLine = ({index, line, template, setColor, setTextAlign, setFontSiz
                 <label className="font-monospace">Text Align</label>
                 <div className="display-flex">
                     <div className="align-option" 
-                    //onClick={() => { setTextAlign(' text-align-left '); hideSettings && setTextAlign(' text-align-left '); }}
                     onClick={() => { setTextAlign((hideSettings && index !== 0) ? template.setTextAlign : ' text-align-left '); }}
                     >
                         <img src={AlignLeftIcon} alt="Left Align" width="25" height="15" />
