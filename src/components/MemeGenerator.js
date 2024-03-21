@@ -247,104 +247,104 @@ const MemeGenerator = () => {
                 
             </div>
 
-            
-
-            <form className="meme-form" onSubmit={handleSubmit}>
-            <div className="meme-input">
-                <div>
-                    <div className="title-line">
-                        <label >Image Settings</label>
-                    </div>
-                    <SettingsImg
-                        setFlip={() => setFlip(!flip)}
-                    />
-
-                    <hr className="solid"></hr>
-                </div>
-
-                {lines.map((line, index) => (
-                    <div key={index}>
-                    <div className="meme-input-item">
-                        <div className="title-line">
-                            <label >{index === 0 ? "Text " + (index+1) : "Text " + (index+1)}</label>
-                        </div>
-                        <SettingsLine 
-                            index={index}
-                            line={lines[index]}
-                            template={lines[0]}
-                            setColor={(color) => setColor(index, color)}
-                            setTextAlign={(textAlign) => setTextAlign(index, textAlign)}
-                            setFontSize={(operation) => setFontSize(index, operation)}
-                            hideSettings={hideSettings}
-                        />
-
-                        {(index === 0) ? <textarea
-                            type="text"
-                            name={"text-" + {index}}
-                            className={"margin-10 " + (index !== 0) ?  "lines " : "line-0 "}
-                            placeholder={index === 0 ? "Top Text" : "Bottom Text"}
-                            value={line.text}
-                            onChange={(event) => handleChange(event, index)}
-                        />  
-                        : 
-                        <div className="display-flex">
-                            <textarea
-                                type="text"
-                                name={"text-" + {index}}
-                                className={"margin-10 " + (index !== 0) ?  "lines " : "line-0 "}
-                                placeholder={index === 0 ? "Top Text" : "Bottom Text"}
-                                value={line.text}
-                                onChange={(event) => handleChange(event, index)}
-                            />  
-                            <button className="btn-delete" type="submit" onClick={() => deleteLine(index)}>
-                                <img draggable="false" src={DeleteIcon} alt="Delete" border="0" width={45} height={45}/>
-                            </button>    
-                        </div>
-                        }
-                        
-                           
-                    </div>
-                    
-                    {(index === 0 && lines.length > 1) ? 
-                        (<div >
-                            <div className="checkbox-wrapper-6"> 
-                                <input className="tgl tgl-light" id="cb1-6" name="checkbox" type="checkbox" checked={hideSettings} onChange={checkboxChange}/> 
-                                <label className="tgl-btn" htmlFor="cb1-6"/><span>Same settings to all lines</span>
+            <div className="">
+                <form className="meme-form" onSubmit={handleSubmit}>
+                    <div className="meme-input">
+                        <div>
+                            <div className="title-line">
+                                <label >Image Settings</label>
                             </div>
-                        </div>) : null}
+                            <SettingsImg
+                                setFlip={() => setFlip(!flip)}
+                            />
 
-                    <hr className="solid"></hr>
-                </div>
-                    
-                ))}
+                            <hr className="solid"></hr>
+                        </div>
 
-                <div className="meme-input-btn ">
-                <button className="button-39" type="button" onClick={addLine}> <img src={AddIcon} alt="buttonpng" border="0" width={20} height={20} /> 
-                    Add Line</button>
-                </div>
+                        {lines.map((line, index) => (
+                            <div key={index}>
+                            <div className="meme-input-item">
+                                <div className="title-line">
+                                    <label >{index === 0 ? "Text " + (index+1) : "Text " + (index+1)}</label>
+                                </div>
+                                <SettingsLine 
+                                    index={index}
+                                    line={lines[index]}
+                                    template={lines[0]}
+                                    setColor={(color) => setColor(index, color)}
+                                    setTextAlign={(textAlign) => setTextAlign(index, textAlign)}
+                                    setFontSize={(operation) => setFontSize(index, operation)}
+                                    hideSettings={hideSettings}
+                                />
 
-                <div className="meme-input-item">                
-                    <button className="meme-input-item">SUBMIT</button>
-                </div>
-            </div>
-            <div className="display-meme">
-                <div className="center settings-title grey">
-                    <h2 className="center">"{item.name}"</h2>
-                </div>
-                <div className="meme limit">
-                    <img draggable="false" className={(flip) ? "meme-flip " : null}  src={item.img} alt={item.name} />
-                    {lines.map((line, index) => (
-                            <DraggableText key={index} unique={index} line={line} imgId={item.id} boxCount={item.box_count}/>
-                    ))}
-                </div>
-            </div>
+                                {(index === 0) ? <textarea
+                                    type="text"
+                                    name={"text-" + {index}}
+                                    className={"margin-10 " + (index !== 0) ?  "lines " : "line-0 "}
+                                    placeholder={index === 0 ? "Top Text" : "Bottom Text"}
+                                    value={line.text}
+                                    onChange={(event) => handleChange(event, index)}
+                                />  
+                                : 
+                                <div className="display-flex">
+                                    <textarea
+                                        type="text"
+                                        name={"text-" + {index}}
+                                        className={"margin-10 " + (index !== 0) ?  "lines " : "line-0 "}
+                                        placeholder={index === 0 ? "Top Text" : "Bottom Text"}
+                                        value={line.text}
+                                        onChange={(event) => handleChange(event, index)}
+                                    />  
+                                    <button className="btn-delete" type="submit" onClick={() => deleteLine(index)}>
+                                        <img draggable="false" src={DeleteIcon} alt="Delete" border="0" width={45} height={45}/>
+                                    </button>    
+                                </div>
+                                }
+                            </div>
+                            
+                            {(index === 0 && lines.length > 1) ? 
+                                (<div >
+                                    <div className="checkbox-wrapper-6"> 
+                                        <input className="tgl tgl-light" id="cb1-6" name="checkbox" type="checkbox" checked={hideSettings} onChange={checkboxChange}/> 
+                                        <label className="tgl-btn" htmlFor="cb1-6"/><span>Same settings to all lines</span>
+                                    </div>
+                                </div>) : null}
 
-            <div className="center row">
+                            <hr className="solid"></hr>
+                        </div>
+                            
+                        ))}
+
+                        <div className="meme-input-btn ">
+                            <button className="button-39" type="button" onClick={addLine}> <img src={AddIcon} alt="buttonpng" border="0" width={20} height={20} /> 
+                                Add Line</button>
+                        </div>
+
+                        <div className="meme-input-item">                
+                            <button className="meme-input-item">SUBMIT</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div className="display-meme">
+                    <div className="center settings-title grey">
+                        <h2 className="center">"{item.name}"</h2>
+                    </div>
+                    <div className="meme limit">
+                        <img draggable="false" className={(flip) ? "meme-flip " : null}  src={item.img} alt={item.name} />
+                        {lines.map((line, index) => (
+                                <DraggableText key={index} unique={index} line={line} imgId={item.id} boxCount={item.box_count}/>
+                        ))}
+                    </div>
+                </div>
+            </div>  
+
+
+            <div className=" col-6 center row flex display">
                 <label > original size {item.width} x {item.height}</label>
                 <label > boxes {item.box_count} </label>
                 <label > id {item.id} </label>
             </div>
-            </form>
 
             
             
