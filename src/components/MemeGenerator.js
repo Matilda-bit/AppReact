@@ -203,37 +203,41 @@ const MemeGenerator = () => {
                 <h1  className="center">MEME GENERATOR SECTION</h1>
             </div>
             <div className="random-meme-section container-1">
-                <div className="random ">
+                <div className="random-btn-box">
                     <button className="random-button pb-15 center align-items-center" onClick={handleSubmit}> 
                         <img draggable="false" src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
                         RANDOM MEME IMG </button>
                 </div>
 
-                <div className="meme-catalog" ref={scrollRef} >
+                <div className="meme-catalog scroll" ref={scrollRef}>
+                    
                     <ScrollSide 
-                        ctsStyle={"scroll-btn left suit-icon "} 
+                        ctsStyle={"scroll-btn left "} 
                         alt="Left Scroll" 
                         cstFunc={() => {scroll(-10)}}/>
-                    <div className="meme-images">
-                        {allMemeImgs.map((meme, index) => (
-                            <img 
-                            key={index} 
-                            src={meme.url} 
-                            alt={meme.name} 
-                            draggable="false"
-                            style={{ height: '90px', cursor: 'pointer' }} 
-                            onClick={() => setItem({
-                                id: meme.id,
-                                box_count: meme.box_count,
-                                height: meme.height,
-                                width: meme.width,
-                                name: meme.name,
-                                img: meme.url,
-                                data: meme
-                              })}
-                            />
-                        ))}
+
+                    <div >
+                        <div className="meme-images">
+                            {allMemeImgs.map((meme, index) => (
+                                <img 
+                                key={index} 
+                                src={meme.url} 
+                                alt={meme.name} 
+                                draggable="false"
+                                onClick={() => setItem({
+                                    id: meme.id,
+                                    box_count: meme.box_count,
+                                    height: meme.height,
+                                    width: meme.width,
+                                    name: meme.name,
+                                    img: meme.url,
+                                    data: meme
+                                })}
+                                />
+                            ))}
+                        </div>
                     </div>
+                    
 
                     <ScrollSide 
                         ctsStyle={"scroll-btn right suit-icon "} 
