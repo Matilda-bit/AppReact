@@ -1,10 +1,9 @@
 import React, { useRef } from 'react';
+import Mydata from '../utils/MemesLineLink';
 
-const DraggableComponent = ({key, line}) => {
+const DraggableComponent = ({unique, line, imgId, boxCount}) => {
     const dragElement = useRef(null);
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    console.log(line);
-    console.log('Hello');
 
     const dragMouseDown = (e) => {
         e.preventDefault();
@@ -28,19 +27,19 @@ const DraggableComponent = ({key, line}) => {
         document.onmouseup = null;
         document.onmousemove = null;
     };
-    console.log(line.text);
-    console.log('text');
+    const lineStyle = (unique >= boxCount) ? " line-default " : (Mydata[imgId].lines && Mydata[imgId].lines[unique]) ? Mydata[imgId].lines[unique] : null ;
     return (
-        <div ref={dragElement} id="meme meme-text" className='meme-text' 
-        style={{ position: 'absolute', top: '50px', left: '50px', marginLeft: 'auto', marginRight: 'auto', border: '1px solid black', padding: '10px' }}>
-            <div 
-                id="meme-text" 
-                key={key} 
-                className={` 'meme-text ' ${(key === 0) ? "top" : "bottom"} ${line.color} ${line.textAlign} font-size-${line.fontSize}`} 
-                style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', cursor: 'move' }}
-                onMouseDown={dragMouseDown}>
-                    {line.text}
-            </div>
+        <div ref={dragElement} 
+            id="meme-text" 
+            className={"meme-text " + lineStyle} 
+            >
+                <div 
+                    unique={unique} 
+                    className={` ${line.color} ${line.textAlign} font-size-${line.fontSize}`} 
+                    style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', cursor: 'move' }}
+                    onMouseDown={dragMouseDown}>
+                        {line.text}
+                </div>
         </div>
     );
 };

@@ -199,10 +199,12 @@ const MemeGenerator = () => {
 
     return (
         <div>
-            <h1 className="center">MEME GENERATOR SECTION</h1>
-            <div className="random-meme-section">
-                <div className="random width-30">
-                    <button className="pb-15 center align-items-center" onClick={handleSubmit}> 
+            <div className='title-section'>
+                <h1  className="center">MEME GENERATOR SECTION</h1>
+            </div>
+            <div className="random-meme-section container-1">
+                <div className="random ">
+                    <button className="random-button pb-15 center align-items-center" onClick={handleSubmit}> 
                         <img draggable="false" src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
                         RANDOM MEME IMG </button>
                 </div>
@@ -328,7 +330,7 @@ const MemeGenerator = () => {
                 <div className="meme limit">
                     <img draggable="false" className={(flip) ? "meme-flip " : null}  src={item.img} alt={item.name} />
                     {lines.map((line, index) => (
-                            <DraggableText key={index} line={line} />
+                            <DraggableText key={index} unique={index} line={line} imgId={item.id} boxCount={item.box_count}/>
                     ))}
                 </div>
             </div>
@@ -336,6 +338,7 @@ const MemeGenerator = () => {
             <div className="center row">
                 <label > original size {item.width} x {item.height}</label>
                 <label > boxes {item.box_count} </label>
+                <label > id {item.id} </label>
             </div>
             </form>
 
