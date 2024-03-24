@@ -36,6 +36,7 @@ const MemeGenerator = () => {
         width: 568,
         name: "One Does Not Simply",
         img: "https://i.imgflip.com/1bij.jpg",
+        caption: 446250,
         data: [],
     });
 
@@ -144,6 +145,7 @@ const MemeGenerator = () => {
             width: randMeme.width,
             name: randMeme.name,
             img: randMeme.url,
+            caption: randMeme.caption,
             data: randMeme
         });
     };
@@ -204,7 +206,7 @@ const MemeGenerator = () => {
             </div>
             <div className="random-meme-section container-1">
                 <div className="random-btn-box">
-                    <button className="random-button pb-15 center align-items-center" onClick={handleSubmit}> 
+                    <button className="random-button" onClick={handleSubmit}> 
                         <img draggable="false" src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
                         RANDOM MEME IMG </button>
                 </div>
@@ -247,7 +249,7 @@ const MemeGenerator = () => {
                 
             </div>
 
-            <div className="">
+            <div className="edit-area">
                 <form className="meme-form" onSubmit={handleSubmit}>
                     <div className="meme-input">
                         <div>
@@ -325,18 +327,18 @@ const MemeGenerator = () => {
                         </div>
                     </div>
                 </form>
-
                 <div className="display-meme">
-                    <div className="center settings-title grey">
-                        <h2 className="center">"{item.name}"</h2>
+                        <div className="center settings-title grey">
+                            <h2 className="center">"{item.name}"</h2>
+                        </div>
+                        <div id="meme-box" className="meme-box meme limit">
+                            <img draggable="false" className={((flip) ? "meme-flip " : "") + " meme-img "}  src={item.img} alt={item.name} />
+                            {lines.map((line, index) => (
+                                    <DraggableText key={index} unique={index} line={line} imgId={item.id} boxCount={item.box_count}/>
+                            ))}
+                        </div>
                     </div>
-                    <div className="meme limit">
-                        <img draggable="false" className={(flip) ? "meme-flip " : null}  src={item.img} alt={item.name} />
-                        {lines.map((line, index) => (
-                                <DraggableText key={index} unique={index} line={line} imgId={item.id} boxCount={item.box_count}/>
-                        ))}
-                    </div>
-                </div>
+             
             </div>  
 
 

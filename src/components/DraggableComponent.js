@@ -1,9 +1,25 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Mydata from '../utils/MemesLineLink';
 
 const DraggableComponent = ({unique, line, imgId, boxCount}) => {
     const dragElement = useRef(null);
+    const memeElement = useRef(null);
+    const [memeRect, setMemeRect] = useState(null);
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    const lineStyle = (unique >= boxCount || !Mydata[imgId]) ? 
+    " line-default line " : (Mydata[imgId].lines && Mydata[imgId].lines[unique]) ? 
+    Mydata[imgId].lines[unique] + " line " : " line " ;
+     
+    useEffect(() => {
+        const element = document.getElementById('meme-box');
+        if (element) {
+            setMemeRect(element.getBoundingClientRect());
+            memeElement.current = element;
+        }
+    }, []);
+
+    console.log(memeRect);
+    console.log(memeElement.current);
 
     const dragMouseDown = (e) => {
         e.preventDefault();
@@ -19,23 +35,43 @@ const DraggableComponent = ({unique, line, imgId, boxCount}) => {
         pos2 = pos4 - e.clientY;
         pos3 = e.clientX;
         pos4 = e.clientY;
-        dragElement.current.style.top = (dragElement.current.offsetTop - pos2) + "px";
-        dragElement.current.style.left = (dragElement.current.offsetLeft - pos1) + "px";
+       
+        if (!memeRect) {
+            dragElement.current.style.top = (dragElement.current.offsetTop - pos2) + "px";
+            dragElement.current.style.left = (dragElement.current.offsetLeft - pos1) + "px";
+            return;}
+        const { width: memeWidth, height: memeHeight } = memeRect;
+
+        const maxTop = memeHeight - dragElement.current.clientHeight;
+        const maxLeft = memeWidth - dragElement.current.clientWidth;
+
+
+        let newTop = dragElement.current.offsetTop - pos2;
+        let newLeft = dragElement.current.offsetLeft - pos1;
+        newTop = Math.min(Math.max(newTop, 0), maxTop);
+        newLeft = Math.min(Math.max(newLeft, 0), maxLeft);
+        console.log(maxTop);
+        console.log(maxLeft);
+
+        dragElement.current.style.top = newTop + "px";
+        dragElement.current.style.left = newLeft + "px";
     };
 
     const closeDragElement = () => {
         document.onmouseup = null;
         document.onmousemove = null;
     };
-    const lineStyle = (unique >= boxCount) ? " line-default " : (Mydata[imgId].lines && Mydata[imgId].lines[unique]) ? Mydata[imgId].lines[unique] : null ;
+
+
     return (
         <div ref={dragElement} 
             id="meme-text" 
             className={"meme-text " + lineStyle} 
+            // style={{ position: 'absolute' }}
             >
                 <div 
                     unique={unique} 
-                    className={` ${line.color} ${line.textAlign} font-size-${line.fontSize}`} 
+                    className={` ${line.color} ${line.textAlign} font-size-${line.fontSize} `} 
                     style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', cursor: 'move' }}
                     onMouseDown={dragMouseDown}>
                         {line.text}
