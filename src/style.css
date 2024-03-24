@@ -136,11 +136,8 @@ header > p {
 }
 
 .meme-box {
-    display: block;
-    /* margin-left: auto;
-    margin-right: auto; */
-    width: initial;
-    height: initial;
+    /* display: block; */
+
 }
 
 .meme{
@@ -206,7 +203,7 @@ button > img {
 
 .meme-text {
     position: relative;
-    width: 95%;
+    /* width: 95%; */
     margin: auto;
     padding: 0 2px;
     font-family: Impact, sans-serif;
@@ -215,7 +212,7 @@ button > img {
     position: absolute; 
 }
 
-.meme-text > div:active{
+.meme-text:active{
     margin: auto;
     padding: 0 2px;
     border: 1px dashed white; 

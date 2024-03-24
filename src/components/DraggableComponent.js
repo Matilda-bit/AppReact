@@ -31,15 +31,14 @@ const DraggableComponent = ({unique, line, imgId, boxCount}) => {
 
     const elementDrag = (e) => {
         e.preventDefault();
+
+        const dragRect = dragElement.current.getBoundingClientRect();
+            
         pos1 = pos3 - e.clientX;
         pos2 = pos4 - e.clientY;
         pos3 = e.clientX;
         pos4 = e.clientY;
        
-        if (!memeRect) {
-            dragElement.current.style.top = (dragElement.current.offsetTop - pos2) + "px";
-            dragElement.current.style.left = (dragElement.current.offsetLeft - pos1) + "px";
-            return;}
         const { width: memeWidth, height: memeHeight } = memeRect;
 
         const maxTop = memeHeight - dragElement.current.clientHeight;
@@ -67,7 +66,6 @@ const DraggableComponent = ({unique, line, imgId, boxCount}) => {
         <div ref={dragElement} 
             id="meme-text" 
             className={"meme-text " + lineStyle} 
-            // style={{ position: 'absolute' }}
             >
                 <div 
                     unique={unique} 
