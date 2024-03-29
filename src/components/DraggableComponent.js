@@ -33,24 +33,19 @@ const DraggableComponent = ({unique, line, imgId, boxCount}) => {
         e.preventDefault();
 
         const dragRect = dragElement.current.getBoundingClientRect();
-            
+         
         pos1 = pos3 - e.clientX;
         pos2 = pos4 - e.clientY;
         pos3 = e.clientX;
         pos4 = e.clientY;
        
-        const { width: memeWidth, height: memeHeight } = memeRect;
-
-        const maxTop = memeHeight - dragElement.current.clientHeight;
-        const maxLeft = memeWidth - dragElement.current.clientWidth;
-
-
+        const { x: minLeft, y: minTop, width: memeWidth, height: memeHeight } = memeRect;
+        const maxTop = memeHeight - dragElement.current.clientHeight - 5;
+        const maxLeft = memeWidth - dragElement.current.clientWidth - 5;
         let newTop = dragElement.current.offsetTop - pos2;
         let newLeft = dragElement.current.offsetLeft - pos1;
         newTop = Math.min(Math.max(newTop, 0), maxTop);
         newLeft = Math.min(Math.max(newLeft, 0), maxLeft);
-        console.log(maxTop);
-        console.log(maxLeft);
 
         dragElement.current.style.top = newTop + "px";
         dragElement.current.style.left = newLeft + "px";

@@ -329,23 +329,6 @@ const MemeGenerator = () => {
                     </div>
                 </form>
                 <MemeBox item={item} lines={lines} flip={flip}/>
-                {/* <div className="display-meme">
-                        <div className="center settings-title grey">
-                            <h2 className="center">"{item.name}"</h2>
-                        </div>
-                        <div id="meme-box" className="meme-box meme limit">
-                            <img draggable="false" className={((flip) ? "meme-flip " : "") + " meme-img "}  src={item.img} alt={item.name} />
-                            {lines.map((line, index) => (
-                                    <DraggableText 
-                                        key={index} 
-                                        unique={index} 
-                                        line={line} 
-                                        imgId={item.id} 
-                                        boxCount={item.box_count} 
-                                        item={item}/>
-                            ))}
-                        </div>
-                    </div> */}
              
             </div>  
 

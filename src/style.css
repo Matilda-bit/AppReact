@@ -160,7 +160,7 @@ header > p {
 }
 /* Memes Text Position Templates */
 .meme > .line-bottom {
-    bottom: 0;
+    top: calc(90% - 10px);
     justify-content: center;
 }
 
@@ -169,10 +169,15 @@ header > p {
     justify-content: center;
     /* height: 120%;  */
 }
-.meme > .line-top:active{
-    /* padding: 5px;
-    border: 1px dashed white;  */
-    /* top: relative !important; */
+/* .meme > .line-top:active{
+    display: table;
+} */
+
+/* .meme > .line:active{
+    display: table;
+} */
+.meme > .line{
+    display: table;
 }
 
 .meme > .line-default {
