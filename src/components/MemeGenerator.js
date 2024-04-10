@@ -6,9 +6,8 @@ import BtnIcon from '../assets/icons/btn/pokeball.png';
 import DeleteIcon from '../assets/icons/btn/garbage.png';
 import AddIcon from '../assets/icons/btn/add.png';
 import ScrollSide from "./ScrollSide";
-//import DraggableText from "./DraggableComponent";
-import MemeBox from "./MemeBox";
-//MemeBox
+import DraggableComponent from "./DraggableComponent";
+
 const MemeGenerator = () => {
     const [lines, setLines] = useState([
         {
@@ -27,6 +26,9 @@ const MemeGenerator = () => {
         }
     ]);
     const [hideSettings, setHideSettings] = useState(true);
+    const [picInfo, setPicInfo] = useState();
+    var containerRef = useRef(null);
+   
     //const [hideSettingsImg, setHideSettingsImg] = useState(true);
     const [flip, setFlip] = useState(false);
     const [allMemeImgs, setAllMemeImgs] = useState([]);
@@ -40,6 +42,17 @@ const MemeGenerator = () => {
         caption: 446250,
         data: [],
     });
+
+    
+    useEffect(() => {
+        // Update the memeElement ref whenever item changes
+        containerRef.current = document.getElementById('meme-box');
+
+        const test = containerRef.current.getBoundingClientRect();
+        setPicInfo(test);
+        //console.log(containerRef);
+        console.log(test);
+    }, [item]);
 
     useEffect(() => {
         fetch("https://api.imgflip.com/get_memes")
@@ -112,6 +125,7 @@ const MemeGenerator = () => {
                 return line;
             });
         });
+        
     };
 
     //checkboxChange
@@ -134,7 +148,7 @@ const MemeGenerator = () => {
             setHideSettings(!hideSettings);
         }
     };
-    
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const randNum = Math.floor(Math.random() * allMemeImgs.length);
@@ -200,6 +214,8 @@ const MemeGenerator = () => {
         }
     };
 
+
+
     return (
         <div>
             <div className='title-section'>
@@ -207,7 +223,8 @@ const MemeGenerator = () => {
             </div>
             <div className="random-meme-section container-1">
                 <div className="random-btn-box">
-                    <button className="random-button" onClick={handleSubmit}> 
+                    <button 
+                    className="random-button" onClick={handleSubmit}> 
                         <img draggable="false" src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
                         RANDOM MEME IMG </button>
                 </div>
@@ -328,7 +345,26 @@ const MemeGenerator = () => {
                         </div>
                     </div>
                 </form>
-                <MemeBox item={item} lines={lines} flip={flip}/>
+
+                <div className="display-meme">
+                    <div className="center settings-title grey">
+                        <h2 className="center">"{item.name}"</h2>
+                    </div>
+                    <div 
+                    id="meme-box" className="meme-box meme limit">
+                        <img draggable="false" className={(flip ? "meme-flip " : "") + "meme-img"} src={item.img} alt={item.name} />
+                        {lines.map((line, index) => (
+                            <DraggableComponent
+                                key={index}
+                                unique={index}
+                                line={line}
+                                imgId={item.id}
+                                boxCount={item.box_count}
+                                info={picInfo}
+                            />
+                        ))}
+                    </div>
+                </div>
              
             </div>  
 

@@ -1,15 +1,22 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import DraggableComponent from './DraggableComponent'; // Adjust the path as necessary
 
 const MemeBox = ({ item, lines, flip }) => {
+    
     const containerRef = useRef(null);
+
+    useEffect(() => {
+        // Update the memeElement ref whenever item changes
+        containerRef.current = document.getElementById('meme-box');
+        // console.log(containerRef);
+    }, [containerRef]);
 
     return (
         <div className="display-meme">
             <div className="center settings-title grey">
                 <h2 className="center">"{item.name}"</h2>
             </div>
-            <div id="meme-box" ref={containerRef} className="meme-box meme limit">
+            <div ref={containerRef} id="meme-box" className="meme-box meme limit">
                 <img draggable="false" className={(flip ? "meme-flip " : "") + "meme-img"} src={item.img} alt={item.name} />
                 {lines.map((line, index) => (
                     <DraggableComponent
