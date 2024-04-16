@@ -63,6 +63,26 @@ const MemeGenerator = () => {
             });
     }, []);
 
+    // const setItemFirst = () => {
+    //     if(allMemeImgs) {
+    //         const randNum = Math.floor(Math.random() * allMemeImgs.length);
+    //         const randMeme = allMemeImgs[randNum];
+    //         setItem({
+    //             id: randMeme.id,
+    //             box_count: randMeme.box_count,
+    //             height: randMeme.height,
+    //             width: randMeme.width,
+    //             name: randMeme.name,
+    //             img: randMeme.url,
+    //             caption: randMeme.caption,
+    //             data: randMeme
+    //         });
+    //     }
+
+    // };
+
+    // setItemFirst();
+
     useEffect(() => {
         const head = document.querySelector(".meme-images");
         let isDragging = false;
@@ -149,6 +169,8 @@ const MemeGenerator = () => {
         }
     };
 
+    
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const randNum = Math.floor(Math.random() * allMemeImgs.length);
@@ -217,7 +239,7 @@ const MemeGenerator = () => {
 
 
     return (
-        <div>
+        <>
             <div className='title-section'>
                 <h1  className="center">MEME GENERATOR SECTION</h1>
             </div>
@@ -374,10 +396,7 @@ const MemeGenerator = () => {
                 <label > boxes {item.box_count} </label>
                 <label > id {item.id} </label>
             </div>
-
-            
-            
-        </div>
+        </>
     );
 };
 
