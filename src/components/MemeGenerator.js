@@ -51,7 +51,7 @@ const MemeGenerator = () => {
         const test = containerRef.current.getBoundingClientRect();
         setPicInfo(test);
         //console.log(containerRef);
-        console.log(test);
+        //console.log(test);
     }, [item]);
 
     useEffect(() => {
