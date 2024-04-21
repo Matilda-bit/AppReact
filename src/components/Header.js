@@ -1,3 +1,5 @@
+import React from 'react';
+
 function Header(){
     return(
         <header>
@@ -7,7 +9,7 @@ function Header(){
             />
             <p>Meme Byte</p>
         </header>
-    )
+    );
 }
 
 export default Header;
