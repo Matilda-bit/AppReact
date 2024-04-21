@@ -27,7 +27,7 @@ const MemeGenerator = () => {
     ]);
     const [hideSettings, setHideSettings] = useState(true);
     const [picInfo, setPicInfo] = useState();
-    var containerRef = useRef(null);
+    var memeRef = useRef(null);
    
     //const [hideSettingsImg, setHideSettingsImg] = useState(true);
     const [flip, setFlip] = useState(false);
@@ -46,11 +46,11 @@ const MemeGenerator = () => {
     
     useEffect(() => {
         // Update the memeElement ref whenever item changes
-        containerRef.current = document.getElementById('meme-box');
+        memeRef.current = document.getElementById('meme-box');
 
-        const test = containerRef.current.getBoundingClientRect();
-        setPicInfo(test);
-        //console.log(containerRef);
+        const test = memeRef.current.getBoundingClientRect();
+        setPicInfo(() => memeRef.current.getBoundingClientRect());
+        //console.log(memeRef);
         //console.log(test);
     }, [item]);
 
@@ -78,7 +78,6 @@ const MemeGenerator = () => {
     //             data: randMeme
     //         });
     //     }
-
     // };
 
     // setItemFirst();
