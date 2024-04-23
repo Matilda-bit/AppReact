@@ -43,17 +43,15 @@ const MemeGenerator = () => {
         data: [],
     });
 
-    
+    //re-execute every time when the item will changed
     useEffect(() => {
         // Update the memeElement ref whenever item changes
         memeRef.current = document.getElementById('meme-box');
-
-        const test = memeRef.current.getBoundingClientRect();
         setPicInfo(() => memeRef.current.getBoundingClientRect());
-        //console.log(memeRef);
-        //console.log(test);
     }, [item]);
 
+    //called only once, at the first time when the comonent created
+    // cause of dependencies to [] array that never changed.
     useEffect(() => {
         fetch("https://api.imgflip.com/get_memes")
             .then(response => response.json())
@@ -133,8 +131,13 @@ const MemeGenerator = () => {
     };
 
 
-
+    //change the line set limit height by the meme height
     const handleChange = (event, index) => {
+        //need to check 
+    //     const check = document.getElementById(`line-${index}`);
+    //    const check2 = check.current.getBoundingClientRect();
+    //    console.log(check2);
+
         const { value } = event.target;
         setLines(prevLines => {
             return prevLines.map((line, i) => {
