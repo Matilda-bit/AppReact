@@ -7,6 +7,7 @@ import DeleteIcon from '../assets/icons/btn/garbage.png';
 import AddIcon from '../assets/icons/btn/add.png';
 import ScrollSide from "./ScrollSide";
 import DraggableComponent from "./DraggableComponent";
+//import TextGeneratorAI from "./TextGeneratorAI";
 
 const MemeGenerator = () => {
     const [lines, setLines] = useState([
@@ -27,6 +28,7 @@ const MemeGenerator = () => {
     ]);
     const [hideSettings, setHideSettings] = useState(true);
     const [picInfo, setPicInfo] = useState();
+    const [aiRequest, setAiRequest] = useState(false);
     var memeRef = useRef(null);
    
     //const [hideSettingsImg, setHideSettingsImg] = useState(true);
@@ -124,7 +126,7 @@ const MemeGenerator = () => {
     
     const scrollRef = useRef(null);
 
-    const scroll = (amount) => {
+    function scroll(amount){
         if (scrollRef.current) {
             scrollRef.current.scrollLeft += amount; // Adjust as needed
         }
@@ -132,7 +134,7 @@ const MemeGenerator = () => {
 
 
     //change the line set limit height by the meme height
-    const handleChange = (event, index) => {
+    function handleChange(event, index) {
         //need to check 
     //     const check = document.getElementById(`line-${index}`);
     //    const check2 = check.current.getBoundingClientRect();
@@ -151,7 +153,7 @@ const MemeGenerator = () => {
     };
 
     //checkboxChange
-    const checkboxChange = (event) => {
+    function checkboxChange(event) {
         const { name } = event.target;
         if (name === "checkbox") {
             setLines(prevLines => {
@@ -173,7 +175,7 @@ const MemeGenerator = () => {
 
     
 
-    const handleSubmit = (event) => {
+    function handleSubmit(event) {
         event.preventDefault();
         const randNum = Math.floor(Math.random() * allMemeImgs.length);
         const randMeme = allMemeImgs[randNum];
@@ -189,7 +191,7 @@ const MemeGenerator = () => {
         });
     };
 
-    const addLine = () => {
+    function addLine() {
         const newLine = {
             text: "",
             color: hideSettings ? lines[0].color : "color-white ",
@@ -199,7 +201,7 @@ const MemeGenerator = () => {
         setLines(prevLines => [...prevLines, newLine]);
     };
     
-    const setColor = (index, color) => {
+    function setColor(index, color) {
         setLines(prevLines => {
             return prevLines.map((line, i) => {
                 if ((i === index || (index === 0 && hideSettings))) {
@@ -210,7 +212,7 @@ const MemeGenerator = () => {
         });
     };
 
-    const setTextAlign = (index, textAlign) => {
+    function setTextAlign(index, textAlign) {
         setLines(prevLines => {
             return prevLines.map((line, i) => {
                 if ((i === index || (index === 0 && hideSettings))) {
@@ -221,7 +223,7 @@ const MemeGenerator = () => {
         });
     };
 
-    const setFontSize = (index, operation) => {
+    function setFontSize(index, operation) {
         setLines(prevLines => {
             return prevLines.map((line, i) => {
                 if ((i === index || (index === 0 && hideSettings)) && (operation === "reduce" || operation === "increase")) {
@@ -232,11 +234,15 @@ const MemeGenerator = () => {
         });
     };
 
-    const deleteLine = (index) => {
+    function deleteLine(index) {
         if (lines.length > 1) {
             setLines(prevLines => prevLines.filter((line, i) => i !== index));
         }
     };
+
+    // function handleTestClick() {
+        
+    // };
 
 
 
@@ -392,8 +398,17 @@ const MemeGenerator = () => {
              
             </div>  
 
+            <div className=" col-6 center row flex display">
+            <br/>
+                <button onClick={() => {setAiRequest(true)}}> Test</button>
+                <br/>
+            </div>
+
+             {/* {aiRequest && <TextGeneratorAI/>} */}
 
             <div className=" col-6 center row flex display">
+                <br/>
+                
                 <label > original size {item.width} x {item.height}</label>
                 <label > boxes {item.box_count} </label>
                 <label > id {item.id} </label>
