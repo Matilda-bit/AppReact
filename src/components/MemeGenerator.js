@@ -1,49 +1,48 @@
 import React, { useState, useEffect, useRef } from "react";
-import "../utils/MemesLink";
+import { useSelector, useDispatch } from 'react-redux';
+
 import SettingsLine from './SettingsLine'; // assuming you have created a separate Settings component
 import SettingsImg from './SettingsImg'; // assuming you have created a separate Settings component
-import BtnIcon from '../assets/icons/btn/pokeball.png';
+// import BtnIcon from '../assets/icons/btn/pokeball.png';
 import DeleteIcon from '../assets/icons/btn/garbage.png';
 import AddIcon from '../assets/icons/btn/add.png';
-import ScrollSide from "./ScrollSide";
+// import ScrollSide from "./ScrollSide";
 import DraggableComponent from "./DraggableComponent";
+import MemeCatalog from "./MemeCatalog";
 //import TextGeneratorAI from "./TextGeneratorAI";
 
 const MemeGenerator = () => {
-    const [lines, setLines] = useState([
-        {
-            title: "Top Text",
-            text: "",
-            color: "color-white ",
-            textAlign: 'text-align-center',
-            fontSize: 10
-        },
-        {
-            title: "Bottom Text",
-            text: "",
-            color: "color-white ",
-            textAlign: 'text-align-center',
-            fontSize: 10
-        }
-    ]);
-    const [hideSettings, setHideSettings] = useState(true);
+    const lines = useSelector(state => state.lines);
+    const hideSettings = useSelector(state => state.hideSettings);
+    const item = useSelector(state => state.item);
+    const flip = useSelector(state => state.flip);
+
+    const dispatch = useDispatch();
+    
     const [picInfo, setPicInfo] = useState();
     const [aiRequest, setAiRequest] = useState(false);
     var memeRef = useRef(null);
+
    
-    //const [hideSettingsImg, setHideSettingsImg] = useState(true);
-    const [flip, setFlip] = useState(false);
     const [allMemeImgs, setAllMemeImgs] = useState([]);
-    const [item, setItem] = useState({
-        id: "61579",
-        box_count: 2,
-        height: 335,
-        width: 568,
-        name: "One Does Not Simply",
-        img: "https://i.imgflip.com/1bij.jpg",
-        caption: 446250,
-        data: [],
-    });
+   
+
+    const setLines = (newLines) => {
+        dispatch({ type: 'SET_LINES', payload: newLines });
+    };
+
+    const setHideSettings = (hide) => {
+        dispatch({ type: 'SET_HIDE_SETTINGS', payload: hide });
+    };
+
+    const setItem = (newItem) => {
+        dispatch({ type: 'SET_ITEM', payload: newItem });
+    };
+
+    const setFlip = (flip) => {
+        dispatch({ type: 'FLIP_IMG', payload: flip });
+    };
+
 
     //re-execute every time when the item will changed
     useEffect(() => {
@@ -80,100 +79,41 @@ const MemeGenerator = () => {
     //     }
     // };
 
-    // setItemFirst();
+    //const scrollRef = useRef(null);
 
-    useEffect(() => {
-        const head = document.querySelector(".meme-images");
-        let isDragging = false;
-        let startX = 0;
-        let scrollLeft = 0;
-    
-        const startDragging = (e) => {
-            isDragging = true;
-            startX = e.pageX - head.offsetLeft;
-            scrollLeft = head.scrollLeft;
-        };
-    
-        const stopDragging = () => {
-            isDragging = false;
-        };
-    
-        const dragging = (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            const x = e.pageX - head.offsetLeft;
-            const diff = x - startX;
-            const direction = Math.sign(diff);
-            scrollLeft = scrollLeft - diff;
-            scroll(-direction*10);
-            head.scrollLeft = scrollLeft;
-            startX = x + direction; 
-        };
-    
-        head.addEventListener("mousedown", startDragging);
-        head.addEventListener("mouseup", stopDragging);
-        head.addEventListener("mouseleave", stopDragging);
-        head.addEventListener("mousemove", dragging);
-    
-        return () => {
-            head.removeEventListener("mousedown", startDragging);
-            head.removeEventListener("mouseup", stopDragging);
-            head.removeEventListener("mouseleave", stopDragging);
-            head.removeEventListener("mousemove", dragging);
-        };
-    }, []);
-    
-    
-    const scrollRef = useRef(null);
-
-    function scroll(amount){
-        if (scrollRef.current) {
-            scrollRef.current.scrollLeft += amount; // Adjust as needed
-        }
-    };
 
 
     //change the line set limit height by the meme height
     function handleChange(event, index) {
-        //need to check 
-    //     const check = document.getElementById(`line-${index}`);
-    //    const check2 = check.current.getBoundingClientRect();
-    //    console.log(check2);
-
         const { value } = event.target;
-        setLines(prevLines => {
-            return prevLines.map((line, i) => {
-                if (i === index) {
-                    return { ...line, text: value };
-                }
-                return line;
-            });
-        });
-        
+        updateLine(index, value);
+    };
+
+    function updateLine(index, newText) {
+        const newLines = [...lines];
+        newLines[index].text = newText;
+        setLines(newLines);
     };
 
     //checkboxChange
     function checkboxChange(event) {
         const { name } = event.target;
         if (name === "checkbox") {
-            setLines(prevLines => {
-                return prevLines.map((line, index) => {
-                    if (index !== 0) {
-                        return {
-                            ...line,
-                            textAlign: lines[0].textAlign,
-                            color: lines[0].color,
-                            fontSize: lines[0].fontSize
-                        };
-                    }
-                    return line;
-                });
+            const updateSettings = lines.map((line, index) => {
+                if (index !== 0) {
+                    return {
+                        ...line,
+                        textAlign: lines[0].textAlign,
+                        color: lines[0].color,
+                        fontSize: lines[0].fontSize
+                    };
+                }
+                return line;
             });
+            setLines(updateSettings);  
             setHideSettings(!hideSettings);
         }
     };
-
-    
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -191,6 +131,38 @@ const MemeGenerator = () => {
         });
     };
 
+
+    function setColor(index, color) {
+        const updatedData = lines.map((line, i) => {
+                if ((i === index || (index === 0 && hideSettings))) {
+                    return { ...line, color };
+                }
+                return line;
+            });
+        setLines(updatedData);
+    };
+
+    function setTextAlign(index, textAlign) {
+        const updatedLines = lines.map((line, i) => {
+                if ((i === index || (index === 0 && hideSettings))) {
+                    return { ...line, textAlign };
+                }
+                return line;
+            });
+        setLines(updatedLines);
+    };
+
+    function setFontSize(index, operation) {
+        const newLines = lines.map((line, i) => {
+                                if ((i === index || (index === 0 && hideSettings)) && (operation === "reduce" || operation === "increase")) {
+                                    return { ...line, fontSize: operation === "reduce" ? line.fontSize - 1 : line.fontSize + 1 };
+                                }
+                                return line;
+        });
+
+        setLines(newLines);
+    };
+
     function addLine() {
         const newLine = {
             text: "",
@@ -198,105 +170,29 @@ const MemeGenerator = () => {
             textAlign: hideSettings ? lines[0].textAlign : 'text-align-center ',
             fontSize: hideSettings ? lines[0].fontSize : 10
         };
-        setLines(prevLines => [...prevLines, newLine]);
-    };
-    
-    function setColor(index, color) {
-        setLines(prevLines => {
-            return prevLines.map((line, i) => {
-                if ((i === index || (index === 0 && hideSettings))) {
-                    return { ...line, color };
-                }
-                return line;
-            });
-        });
-    };
-
-    function setTextAlign(index, textAlign) {
-        setLines(prevLines => {
-            return prevLines.map((line, i) => {
-                if ((i === index || (index === 0 && hideSettings))) {
-                    return { ...line, textAlign };
-                }
-                return line;
-            });
-        });
-    };
-
-    function setFontSize(index, operation) {
-        setLines(prevLines => {
-            return prevLines.map((line, i) => {
-                if ((i === index || (index === 0 && hideSettings)) && (operation === "reduce" || operation === "increase")) {
-                    return { ...line, fontSize: operation === "reduce" ? line.fontSize - 1 : line.fontSize + 1 };
-                }
-                return line;
-            });
-        });
+        setLines([...lines, newLine]);
     };
 
     function deleteLine(index) {
         if (lines.length > 1) {
-            setLines(prevLines => prevLines.filter((line, i) => i !== index));
+            const newLines = lines.filter((line, i) => i !== index);
+            setLines(newLines);
         }
-    };
-
-    // function handleTestClick() {
-        
-    // };
-
-
+    }
 
     return (
         <>
+            <MemeCatalog
+                allMemeImgs={allMemeImgs}
+                setItem={setItem}
+                handleSubmit={handleSubmit}
+            />
+
+        <section>
             <div className='title-section'>
                 <h1  className="center">MEME GENERATOR SECTION</h1>
             </div>
-            <div className="random-meme-section container-1">
-                <div className="random-btn-box">
-                    <button 
-                    className="random-button" onClick={handleSubmit}> 
-                        <img draggable="false" src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
-                        RANDOM MEME IMG </button>
-                </div>
-
-                <div className="meme-catalog scroll" ref={scrollRef}>
-                    
-                    <ScrollSide 
-                        ctsStyle={"scroll-btn left "} 
-                        alt="Left Scroll" 
-                        cstFunc={() => {scroll(-10)}}/>
-
-                    <div >
-                        <div className="meme-images">
-                            {allMemeImgs.map((meme, index) => (
-                                <img 
-                                key={index} 
-                                src={meme.url} 
-                                alt={meme.name} 
-                                draggable="false"
-                                onClick={() => setItem({
-                                    id: meme.id,
-                                    box_count: meme.box_count,
-                                    height: meme.height,
-                                    width: meme.width,
-                                    name: meme.name,
-                                    img: meme.url,
-                                    data: meme
-                                })}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    
-
-                    <ScrollSide 
-                        ctsStyle={"scroll-btn right suit-icon "} 
-                        alt="Right Scroll" 
-                        cstFunc={() => {scroll(10)}}/>
-                </div>
-                
-            </div>
-
+    
             <div className="edit-area">
                 <form className="meme-form" onSubmit={handleSubmit}>
                     <div className="meme-input">
@@ -413,6 +309,7 @@ const MemeGenerator = () => {
                 <label > boxes {item.box_count} </label>
                 <label > id {item.id} </label>
             </div>
+            </section>
         </>
     );
 };
