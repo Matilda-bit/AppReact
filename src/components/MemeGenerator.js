@@ -9,6 +9,8 @@ import AddIcon from '../assets/icons/btn/add.png';
 // import ScrollSide from "./ScrollSide";
 import DraggableComponent from "./DraggableComponent";
 import MemeCatalog from "./MemeCatalog";
+import html2canvas from 'html2canvas';
+
 //import TextGeneratorAI from "./TextGeneratorAI";
 
 const MemeGenerator = () => {
@@ -20,13 +22,13 @@ const MemeGenerator = () => {
     const dispatch = useDispatch();
     
     const [picInfo, setPicInfo] = useState();
-    const [aiRequest, setAiRequest] = useState(false);
+    //const [aiRequest, setAiRequest] = useState(false);
     var memeRef = useRef(null);
 
    
     const [allMemeImgs, setAllMemeImgs] = useState([]);
    
-
+    //ACTIONS
     const setLines = (newLines) => {
         dispatch({ type: 'SET_LINES', payload: newLines });
     };
@@ -86,12 +88,8 @@ const MemeGenerator = () => {
     //change the line set limit height by the meme height
     function handleChange(event, index) {
         const { value } = event.target;
-        updateLine(index, value);
-    };
-
-    function updateLine(index, newText) {
         const newLines = [...lines];
-        newLines[index].text = newText;
+        newLines[index].text = value;
         setLines(newLines);
     };
 
@@ -117,19 +115,20 @@ const MemeGenerator = () => {
 
     function handleSubmit(event) {
         event.preventDefault();
-        const randNum = Math.floor(Math.random() * allMemeImgs.length);
-        const randMeme = allMemeImgs[randNum];
-        setItem({
-            id: randMeme.id,
-            box_count: randMeme.box_count,
-            height: randMeme.height,
-            width: randMeme.width,
-            name: randMeme.name,
-            img: randMeme.url,
-            caption: randMeme.caption,
-            data: randMeme
+        const memeBox = document.getElementById('meme-box');
+    
+        // Use html2canvas to render the meme-box to a canvas
+        html2canvas(memeBox, { useCORS: true }).then(canvas => {
+            // Convert the canvas to a data URL
+            const dataUrl = canvas.toDataURL();
+    
+            // Optionally, create a link element to download the image
+            const a = document.createElement('a');
+            a.setAttribute('download', 'meme.png');
+            a.setAttribute('href', dataUrl);
+            a.click();
         });
-    };
+    }
 
 
     function setColor(index, color) {
@@ -189,8 +188,9 @@ const MemeGenerator = () => {
             />
 
         <section>
-            <div className='title-section'>
-                <h1  className="center">MEME GENERATOR SECTION</h1>
+        <hr className="solid"></hr>
+            <div className='title-section generator'>
+                <h1  className="center ">MEME GENERATOR SECTION</h1>
             </div>
     
             <div className="edit-area">
@@ -262,19 +262,21 @@ const MemeGenerator = () => {
                         ))}
 
                         <div className="meme-input-btn ">
-                            <button className="button-39" type="button" onClick={addLine}> <img src={AddIcon} alt="buttonpng" border="0" width={20} height={20} /> 
-                                Add Line</button>
+                            <button className="button-39 " type="button" onClick={addLine}> <img src={AddIcon} alt="buttonpng" border="0" width={20} height={20} /> 
+                                 Add Text</button>
                         </div>
 
-                        <div className="meme-input-item">                
+                        <button className="download-btn" style={{verticalAlign: 'middle'}}><span>Download</span></button>
+
+                        {/* <div className="meme-input-item">                
                             <button className="meme-input-item">SUBMIT</button>
-                        </div>
+                        </div> */}
                     </div>
                 </form>
 
                 <div className="display-meme">
                     <div className="center settings-title grey">
-                        <h2 className="center">"{item.name}"</h2>
+                        <h2 className="center font-comic">{item.name}</h2>
                     </div>
                     <div 
                     id="meme-box" className="meme-box meme limit">
@@ -294,11 +296,11 @@ const MemeGenerator = () => {
              
             </div>  
 
-            <div className=" col-6 center row flex display">
+            {/* <div className=" col-6 center row flex display">
             <br/>
                 <button onClick={() => {setAiRequest(true)}}> Test</button>
                 <br/>
-            </div>
+            </div> */}
 
              {/* {aiRequest && <TextGeneratorAI/>} */}
 
