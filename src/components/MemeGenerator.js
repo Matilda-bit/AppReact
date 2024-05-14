@@ -11,7 +11,7 @@ import DraggableComponent from "./DraggableComponent";
 import MemeCatalog from "./MemeCatalog";
 import html2canvas from 'html2canvas';
 
-//import TextGeneratorAI from "./TextGeneratorAI";
+import TextGeneratorAI from "./TextGeneratorAI";
 
 const MemeGenerator = () => {
     const lines = useSelector(state => state.lines);
@@ -22,7 +22,7 @@ const MemeGenerator = () => {
     const dispatch = useDispatch();
     
     const [picInfo, setPicInfo] = useState();
-    //const [aiRequest, setAiRequest] = useState(false);
+    const [aiRequest, setAiRequest] = useState(false);
     var memeRef = useRef(null);
 
    
@@ -195,6 +195,16 @@ const MemeGenerator = () => {
     
             <div className="edit-area">
                 <form className="meme-form" onSubmit={handleSubmit}>
+                    <div>
+                        <div className=" col-4 center row flex display">
+                            <br/>
+                            <button onClick={() => {setAiRequest(true)}}> Test</button>
+                            <br/>
+                        </div>
+                        {aiRequest && <TextGeneratorAI/>}
+                    </div>
+
+
                     <div className="meme-input">
                         <div>
                             <div className="title-line">
@@ -296,14 +306,7 @@ const MemeGenerator = () => {
              
             </div>  
 
-            {/* <div className=" col-6 center row flex display">
-            <br/>
-                <button onClick={() => {setAiRequest(true)}}> Test</button>
-                <br/>
-            </div> */}
-
-             {/* {aiRequest && <TextGeneratorAI/>} */}
-
+            
             <div className=" col-6 center row flex display">
                 <br/>
                 

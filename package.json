@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/core": "^7.24.5",
     "bootstrap": "^5.3.3",
     "html2canvas": "^1.4.1",
     "openai": "^4.38.3",
