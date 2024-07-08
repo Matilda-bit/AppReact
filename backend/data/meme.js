@@ -5,52 +5,52 @@ const { readData, writeData } = require('./util');
 
 async function getAll() {
   const storedData = await readData();
-  if (!storedData.events) {
-    throw new NotFoundError('Could not find any events.');
+  if (!storedData.memes) {
+    throw new NotFoundError('Could not find any memes.');
   }
-  return storedData.events;
+  return storedData.memes;
 }
 
 async function get(id) {
   const storedData = await readData();
-  if (!storedData.events || storedData.events.length === 0) {
-    throw new NotFoundError('Could not find any events.');
+  if (!storedData.memes || storedData.memes.length === 0) {
+    throw new NotFoundError('Could not find any memes.');
   }
 
-  const event = storedData.events.find((ev) => ev.id === id);
-  if (!event) {
-    throw new NotFoundError('Could not find event for id ' + id);
+  const meme = storedData.memes.find((ev) => ev.id === id);
+  if (!meme) {
+    throw new NotFoundError('Could not find meme for id ' + id);
   }
 
-  return event;
+  return meme;
 }
 
 async function add(data) {
   const storedData = await readData();
-  storedData.events.unshift({ ...data, id: generateId() });
+  storedData.memes.unshift({ ...data, id: generateId() });
   await writeData(storedData);
 }
 
 async function replace(id, data) {
   const storedData = await readData();
-  if (!storedData.events || storedData.events.length === 0) {
-    throw new NotFoundError('Could not find any events.');
+  if (!storedData.memes || storedData.memes.length === 0) {
+    throw new NotFoundError('Could not find any memes.');
   }
 
-  const index = storedData.events.findIndex((ev) => ev.id === id);
+  const index = storedData.memes.findIndex((ev) => ev.id === id);
   if (index < 0) {
-    throw new NotFoundError('Could not find event for id ' + id);
+    throw new NotFoundError('Could not find meme for id ' + id);
   }
 
-  storedData.events[index] = { ...data, id };
+  storedData.memes[index] = { ...data, id };
 
   await writeData(storedData);
 }
 
 async function remove(id) {
   const storedData = await readData();
-  const updatedData = storedData.events.filter((ev) => ev.id !== id);
-  await writeData({ ...storedData, events: updatedData });
+  const updatedData = storedData.memes.filter((ev) => ev.id !== id);
+  await writeData({ ...storedData, memes: updatedData });
 }
 
 exports.getAll = getAll;

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import ScrollSide from "./ScrollSide";
 import BtnIcon from '../assets/icons/btn/pokeball.png';
 

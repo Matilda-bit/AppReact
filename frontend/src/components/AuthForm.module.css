@@ -6,6 +6,7 @@
 .form label,
 .form input,
 .form textarea {
+  color: var(--color-primary-100);
   display: block;
   width: 100%;
 }
@@ -45,4 +46,7 @@
 
 .actions a:hover {
   background-color: var(--color-gray-800);
+}
+h1 {
+  color: var(--color-primary-100);
 }

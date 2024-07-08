@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import DraggableComponent from './DraggableComponent'; // Adjust the path as necessary
+import DraggableComponent from '../DraggableComponent'; // Adjust the path as necessary
 
 const MemeBox = ({ item, lines, flip }) => {
     

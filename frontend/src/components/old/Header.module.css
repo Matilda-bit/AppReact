@@ -1,0 +1,35 @@
+.staticHeader{
+    height: 110px;
+    display: flex;
+    align-items: center;
+    background: #313131;
+    background: -webkit-linear-gradient(to right,#313131,#c7ede6);
+    background: linear-gradient(to right,#313131,#c7ede6);
+    border-bottom: 7px solid #313131;
+}
+
+.staticHeader > p {
+    text-shadow:
+    2px 2px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    0 2px 0 #000,
+    2px 0 0 #000,
+    0 -2px 0 #000,
+    -2px 0 0 #000,
+    2px 2px 5px #000;
+}
+
+.staticHeader > img {
+    height: 100%;
+    margin-left: 1%;
+    padding-bottom: 5px;
+}
+
+.staticHeader > p {
+    font-family: Impact, sans-serif;
+    color: whitesmoke;
+    font-size:50px;
+    margin-left: 60px;
+}

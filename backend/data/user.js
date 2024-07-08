@@ -1,7 +1,7 @@
 const { hash } = require('bcryptjs');
 const { v4: generateId } = require('uuid');
 
-const { NotFoundError } = require('../../../event-catalog-be/backend/util/errors');
+const { NotFoundError } = require('../util/errors');
 const { readData, writeData } = require('./util');
 
 async function add(data) {

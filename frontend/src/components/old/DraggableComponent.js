@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import Mydata from '../utils/MemesLineLink';
+import Mydata from '../../util/MemesLineLink';
 
 const DraggableComponent = ({unique, line, imgId, boxCount, info}) => {
     const dragElement = useRef(null);

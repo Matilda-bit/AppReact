@@ -7,7 +7,7 @@ import SettingsImg from './SettingsImg'; // assuming you have created a separate
 import DeleteIcon from '../assets/icons/btn/garbage.png';
 import AddIcon from '../assets/icons/btn/add.png';
 // import ScrollSide from "./ScrollSide";
-import DraggableComponent from "./DraggableComponent";
+import DraggableComponent from "../DraggableComponent";
 import MemeCatalog from "./MemeCatalog";
 import html2canvas from 'html2canvas';
 
@@ -63,25 +63,6 @@ const MemeGenerator = () => {
                 setAllMemeImgs(memes);
             });
     }, []);
-
-    // const setItemFirst = () => {
-    //     if(allMemeImgs) {
-    //         const randNum = Math.floor(Math.random() * allMemeImgs.length);
-    //         const randMeme = allMemeImgs[randNum];
-    //         setItem({
-    //             id: randMeme.id,
-    //             box_count: randMeme.box_count,
-    //             height: randMeme.height,
-    //             width: randMeme.width,
-    //             name: randMeme.name,
-    //             img: randMeme.url,
-    //             caption: randMeme.caption,
-    //             data: randMeme
-    //         });
-    //     }
-    // };
-
-    //const scrollRef = useRef(null);
 
 
 

@@ -1,12 +1,12 @@
 const express = require('express');
 
 const { getAll, get, add, replace, remove } = require('../data/meme');
-const { checkAuth } = require('../../../event-catalog-be/backend/util/auth');
+const { checkAuth } = require('../util/auth');
 const {
   isValidText,
   isValidDate,
   isValidImageUrl,
-} = require('../../../event-catalog-be/backend/util/validation');
+} = require('../util/validation');
 
 const router = express.Router();
 
