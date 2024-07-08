@@ -14,7 +14,7 @@ backend/node_modules
 /build
 
 # ai
-/src/utils/ai
+frontend/src/utils/ai
 
 # misc
 .DS_Store
