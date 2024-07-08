@@ -1,54 +1,27 @@
-import fs from 'node:fs/promises';
+const bodyParser = require('body-parser');
+const express = require('express');
 
-import bodyParser from 'body-parser';
-import express from 'express';
+const eventRoutes = require('./routes/memes');
+const authRoutes = require('./routes/auth');
 
 const app = express();
 
-app.use(express.static('images'));//only for png img files
 app.use(bodyParser.json());
-
-// CORS
-
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*'); // allow all domains
-  res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-             
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type,Authorization');
   next();
 });
 
-app.get('/memes', async (req, res) => {
-  const fileContent = await fs.readFile('./data/memes.json');
+app.use(authRoutes);
 
-  const memesData = JSON.parse(fileContent);
+app.use('/memes', eventRoutes);
 
-  res.status(200).json({ memes: memesData });
+app.use((error, req, res, next) => {
+  const status = error.status || 500;
+  const message = error.message || 'Something went wrong.';
+  res.status(status).json({ message: message });
 });
 
-app.get('/user-memes', async (req, res) => {
-
-  const fileContent = await fs.readFile('./data/user-memes.json');
-
-  const memes = JSON.parse(fileContent);
-
-  res.status(200).json({ memes });
-});
-
-app.put('/user-memes', async (req, res) => {
-  const memes = req.body.memes;
-
-  await fs.writeFile('./data/user-places.json', JSON.stringify(memes));
-
-  res.status(200).json({ message: 'User nenes updated!' });
-});
-
-// 404
-app.use((req, res, next) => {
-  if (req.method === 'OPTIONS') {
-    return next();
-  }
-  res.status(404).json({ message: '404 - Not Found' });
-});
-
-app.listen(3000);
+app.listen(8080);
