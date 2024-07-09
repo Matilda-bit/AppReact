@@ -29,7 +29,7 @@ function MemesNavigation() {
                   isActive ? classes.active : undefined
                 }
               >
-                New Memes
+                New Meme
               </NavLink>
             </li>
           )}

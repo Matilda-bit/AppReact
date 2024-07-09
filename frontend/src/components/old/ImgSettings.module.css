@@ -1,0 +1,26 @@
+
+.settings-img-area {
+    width: 90%;
+    height: 60%;
+    margin: 0 5px 0 0;
+    border: 2px dashed var(--color-gray-700);
+    border-radius: 10%;
+    background-color: var(--color-gray-800);
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.settings-img-items {
+    margin: 10px;
+    justify-content: center;
+}
+
+.flip-option {
+    margin-bottom: 5px;
+    padding-left: 2px;
+    cursor: pointer;
+    flex-direction: column;
+    width: 30%;
+}
+
+

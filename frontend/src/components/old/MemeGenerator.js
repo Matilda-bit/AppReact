@@ -2,16 +2,22 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 
 import SettingsLine from './SettingsLine'; // assuming you have created a separate Settings component
-import SettingsImg from './SettingsImg'; // assuming you have created a separate Settings component
+import ImgSettings from './ImgSettings'; // assuming you have created a separate Settings component
 // import BtnIcon from '../assets/icons/btn/pokeball.png';
-import DeleteIcon from '../assets/icons/btn/garbage.png';
-import AddIcon from '../assets/icons/btn/add.png';
+import DeleteIcon from '../../assets/icons/btn/garbage.png';
+import AddIcon from '../../assets/icons/btn/add.png';
 // import ScrollSide from "./ScrollSide";
-import DraggableComponent from "../DraggableComponent";
+import DraggableComponent from "./DraggableComponent";
 import MemeCatalog from "./MemeCatalog";
 import html2canvas from 'html2canvas';
 
-import TextGeneratorAI from "./TextGeneratorAI";
+import TextLine from './TextLine'; // Adjust the path as per your project structure
+import SetSameSettings from './SetSameSettings'; // Adjust the path as per your project structure
+
+
+
+// import TextGeneratorAI from "./TextGeneratorAI";
+import "../../style.css";
 
 const MemeGenerator = () => {
     const lines = useSelector(state => state.lines);
@@ -22,7 +28,7 @@ const MemeGenerator = () => {
     const dispatch = useDispatch();
     
     const [picInfo, setPicInfo] = useState();
-    const [aiRequest, setAiRequest] = useState(false);
+    // const [aiRequest, setAiRequest] = useState(false);
     var memeRef = useRef(null);
 
    
@@ -113,6 +119,7 @@ const MemeGenerator = () => {
 
 
     function setColor(index, color) {
+        console.log("I'm trying!!");
         const updatedData = lines.map((line, i) => {
                 if ((i === index || (index === 0 && hideSettings))) {
                     return { ...line, color };
@@ -176,27 +183,11 @@ const MemeGenerator = () => {
     
             <div className="edit-area">
                 <form className="meme-form" onSubmit={handleSubmit}>
-                    <div>
-                        <div className=" col-4 center row flex display">
-                            <br/>
-                            <button onClick={() => {setAiRequest(true)}}> Test</button>
-                            <br/>
-                        </div>
-                        {aiRequest && <TextGeneratorAI/>}
-                    </div>
-
-
                     <div className="meme-input">
-                        <div>
-                            <div className="title-line">
-                                <label >Image Settings</label>
-                            </div>
-                            <SettingsImg
-                                setFlip={() => setFlip(!flip)}
-                            />
 
-                            <hr className="solid"></hr>
-                        </div>
+                        <ImgSettings
+                            setFlip={() => setFlip(!flip)}
+                        />
 
                         {lines.map((line, index) => (
                             <div key={index}>
@@ -238,19 +229,33 @@ const MemeGenerator = () => {
                                 </div>
                                 }
                             </div>
-                            
-                            {(index === 0 && lines.length > 1) ? 
-                                (<div >
-                                    <div className="checkbox-wrapper-6"> 
-                                        <input className="tgl tgl-light" id="cb1-6" name="checkbox" type="checkbox" checked={hideSettings} onChange={checkboxChange}/> 
-                                        <label className="tgl-btn" htmlFor="cb1-6"/><span>Same settings to all lines</span>
-                                    </div>
-                                </div>) : null}
+                        
+                            {index === 0 && lines.length > 1 && (
+                                <SetSameSettings
+                                    hideSettings={hideSettings}
+                                    checkboxChange={checkboxChange}
+                                />
+                            )}
 
                             <hr className="solid"></hr>
                         </div>
                             
                         ))}
+
+                        {/* {lines.map((line, index) => (
+                                        <TextLine
+                                            key={index}
+                                            index={index}
+                                            line={line}
+                                            template={lines[0]} // Adjust as per your requirement
+                                            setColor={(color) => setColor(index, color)} // Example, adjust based on your logic
+                                            setTextAlign={(textAlign) => setTextAlign(index, textAlign)} // Example
+                                            setFontSize={(operation) => setFontSize(index, operation)} // Example
+                                            handleChange={handleChange}
+                                            deleteLine={deleteLine}
+                                            hideSettings={hideSettings}
+                                        />
+                                    ))} */}
 
                         <div className="meme-input-btn ">
                             <button className="button-39 " type="button" onClick={addLine}> <img src={AddIcon} alt="buttonpng" border="0" width={20} height={20} /> 
@@ -266,11 +271,12 @@ const MemeGenerator = () => {
                 </form>
 
                 <div className="display-meme">
-                    <div className="center settings-title grey">
+                    {/* <div className="center settings-title grey">
                         <h2 className="center font-comic">{item.name}</h2>
-                    </div>
+                    </div> */}
                     <div 
-                    id="meme-box" className="meme-box meme limit">
+                    id="meme-box" 
+                    className="meme-box meme limit">
                         <img draggable="false" className={(flip ? "meme-flip " : "") + "meme-img"} src={item.img} alt={item.name} />
                         {lines.map((line, index) => (
                             <DraggableComponent
@@ -282,6 +288,9 @@ const MemeGenerator = () => {
                                 info={picInfo}
                             />
                         ))}
+                    </div>
+                    <div className="center settings-title grey">
+                        <h2 className="center font-comic">{item.name}</h2>
                     </div>
                 </div>
              

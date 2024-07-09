@@ -1,5 +1,5 @@
 import React from 'react';
-import Arrow from '../assets/icons/fontSize/up.png';
+import Arrow from '../../assets/icons/fontSize/up.png';
 
 const ScrollSide = ({ctsStyle, alt, cstFunc}) => {
     let isScrolling = false;

@@ -44,8 +44,36 @@ body {
   background-color: #242424;
 }
 
+h2 {
+  color: var(--color-gray-100);
+}
+
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.title-line {
+  margin-bottom: 15px;
+  font-family: Comic Sans MS, Comic Sans, cursive !important;
+  color: var(--color-gray-100);
+  font-weight: bold;
+}
+
+
+label {
+  font-family: Courier New, monospace;
+  color: var(--color-gray-100);
+  font-weight: bold;
+}
+
+.settings {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.icon-invert {
+  filter: brightness(0%) invert(100%);
 }

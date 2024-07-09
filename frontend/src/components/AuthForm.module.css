@@ -6,9 +6,12 @@
 .form label,
 .form input,
 .form textarea {
-  color: var(--color-primary-100);
   display: block;
   width: 100%;
+}
+
+.form label{
+  color: var(--color-primary-100);
 }
 
 .form input,

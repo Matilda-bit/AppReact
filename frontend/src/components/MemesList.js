@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import classes from './MemesList.module.css';
+import MemeGenerator from './old/MemeGenerator';
 
 function MemesList({memes}) {
   // const memes = useLoaderData();
@@ -23,6 +24,8 @@ function MemesList({memes}) {
           </li>
         ))}
       </ul>
+      <MemeGenerator
+            />
     </div>
   );
 }

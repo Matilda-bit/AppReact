@@ -9,10 +9,11 @@ const DraggableComponent = ({unique, line, imgId, boxCount, info}) => {
                 const maxTop = memeHeight - dragElement.current.clientHeight - 5;
                 const maxLeft = memeWidth - dragElement.current.clientWidth - 5;
                 let newTop = dragElement.current.offsetTop - pos2;
-                let newLeft = dragElement.current.offsetLeft - pos1;
+                const newLeft1 = dragElement.current.offsetLeft - pos1;
                 newTop = Math.min(Math.max(newTop, 1), maxTop);
-                newLeft = Math.min(Math.max(newLeft, 1), maxLeft);
+                const newLeft = Math.min(Math.max(newLeft1, 1), maxLeft);
                 dragElement.current.style.top = newTop + "px"; 
+                dragElement.current.style.left = newLeft + "px";
         }}, [info, line]);
 
 

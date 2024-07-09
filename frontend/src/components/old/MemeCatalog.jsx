@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 // import { useDispatch } from 'react-redux';
 import ScrollSide from "./ScrollSide";
-import BtnIcon from '../assets/icons/btn/pokeball.png';
+import BtnIcon from '../../assets/icons/btn/pokeball.png';
 
 function MemeCatalog({ allMemeImgs, setItem }) {
     const scrollRef = useRef(null);
