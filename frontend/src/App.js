@@ -17,25 +17,10 @@ import NewsletterPage, { action as newsletterAction } from './pages/Newsletter';
 import AuthenticationPage, {
   action as authAction,
 } from './pages/Authentication';
+import { action as logoutAction } from './pages/Logout';
 
 import { action as manipulateMemeAction } from './components/MemeForm';
 import { checkAuthLoader, tokenLoader } from './util/auth';
-import { action as logoutAction } from './pages/Logout';
-
-// import Header from "./components/Header";
-// import MemeGenerator from "./components/MemeGenerator";
-
-// function App(){
-
-//         return(
-//             <div>
-//                 <Header />
-//                 <MemeGenerator />
-//             </div>
-//         )
-// }
-// export default App;
-
 
 
 const router = createBrowserRouter([
@@ -46,7 +31,9 @@ const router = createBrowserRouter([
       id: 'root',
       loader: tokenLoader,
       children: [
-        { index: true, element: <HomePage /> },
+        { index: true, 
+          element: <HomePage />,
+        },
         {
           path: 'memes',
           element: <MemesRootLayout />,
