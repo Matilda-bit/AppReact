@@ -2,9 +2,9 @@ import React from 'react';
 import FlipIcon from '../../assets/icons/btn/flip.png';
 
 import classes from './ImgSettings.module.css';
+//check polina title-line > delete
 
-
-const ImgSettings = ({setFlip }) => {
+const ImgSettings = ({flip, flipY, setFlip, setFlipY }) => {
     return (
 
         <div>
@@ -16,17 +16,20 @@ const ImgSettings = ({setFlip }) => {
 
                 <div className={classes['settings-img-items']}>
                     <label>Flip</label>
-                    <fieldset className={`icon-invert ${classes['flip-option']}`} onClick={() => setFlip()}>
-                        <img src={FlipIcon} alt="flip" width="30" height="25" />
-                    </fieldset>
+                    <div className={`row jc-center ${classes['margin-10']} `}>
+                      
+                        <fieldset className={`icon-invert ${classes['flip-option']} ${classes['margin-lr-5']}`} onClick={() => setFlip()}>
+                            <img src={FlipIcon} alt="flip" width="30" height="25" />
+                        </fieldset>
+                        
+                        <fieldset className={` icon-invert ${classes['flip-option']} ${classes['margin-lr-5']} ${classes.rotate}`} onClick={() => setFlipY()}>
+                            <img src={FlipIcon} alt="flipY" width="30" height="25" />
+                        </fieldset>
+                       
+                    
+                        
+                    </div>
                 </div>
-                <div className={classes['settings-img-items']}>
-                    <label>Flip</label>
-                    <fieldset className={`icon-invert ${classes['flip-option']}`} onClick={() => setFlip()}>
-                        <img src={FlipIcon} alt="flip" width="30" height="25" />
-                    </fieldset>
-                </div>
-
             </div>
 
             <hr className="solid"></hr>

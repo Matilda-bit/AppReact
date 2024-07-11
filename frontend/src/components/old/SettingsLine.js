@@ -6,6 +6,8 @@ import FontSize from '../../assets/icons/fontSize/font-size.png';
 import ReduceSize from '../../assets/icons/fontSize/down.png';
 import IncreaseSize from '../../assets/icons/fontSize/up.png';
 
+import classes from './SettingsLine.module.css';
+
 const SettingsLine = ({index, line, template, setColor, setTextAlign, setFontSize, hideSettings }) => {
     const tem = index === 0; 
     let reduce = line.fontSize > 6;
@@ -15,49 +17,49 @@ const SettingsLine = ({index, line, template, setColor, setTextAlign, setFontSiz
     }
     return (
         <div className="settings">
-            <div className="input-settings-color">
+            <div className="">
                 <label>Color</label>
-                <div className="color-options">
+                <div className={classes['color-options']}>
                     <div
-                        className={((line.color === 'color-black ')? "option-selected " : "color-option ")}
+                        className={((line.color === 'color-black ')? classes['option-selected'] : classes['color-option'])}
                         style={{ backgroundColor: "black" }}
-                        onClick={() => { setColor((hideSettings && index !== 0) ? template.color : 'color-black '); }}
+                        onClick={() => { setColor((hideSettings && index !== 0) ? template.color : classes['option-selected']); }}
                     />
                     <div
-                        className={"color-option " + ((line.color === 'color-white ')? "option-selected " : null)}
+                        className={classes['color-option'] + " " + ((line.color === 'color-white ')? classes['option-selected'] : null)}
                         style={{ backgroundColor: "white" }}
                         onClick={() => { setColor((hideSettings && index !== 0) ? template.color : 'color-white '); }}
                     />
                 </div>
             </div>
 
-            <div className="input-settings-color">
+            <div className="">
                 <label>Text Align</label>
-                <div className="display-flex">
-                    <div className="align-option" 
+                <div className={classes['display-flex']}>
+                    <div className={classes['align-option']}
                     onClick={() => { setTextAlign((hideSettings && index !== 0) ? template.setTextAlign : ' text-align-left '); }}
                     >
                         <img src={AlignLeftIcon} alt="Left Align" width="25" height="15" />
                     </div>
-                    <div className="align-option" onClick={() => { setTextAlign(' text-align-center '); hideSettings && setTextAlign(' text-align-center '); }}>
+                    <div className={classes['align-option']} onClick={() => { setTextAlign(' text-align-center '); hideSettings && setTextAlign(' text-align-center '); }}>
                         <img src={AlignCenterIcon} alt="Center Align" width="25" height="15" />
                     </div>
-                    <div className="align-option" onClick={() => { setTextAlign(' text-align-right '); hideSettings && setTextAlign(' text-align-right '); }}>
+                    <div className={classes['align-option']} onClick={() => { setTextAlign(' text-align-right '); hideSettings && setTextAlign(' text-align-right '); }}>
                         <img src={AlignRightIcon} alt="Right Align" width="25" height="15" />
                     </div>
                 </div>
             </div>
 
-            <div className="input-settings-color">
-                <label className="font-monospace">Font Size</label>
-                <div className="display-flex">
-                    <fieldset className="font-size-option" onClick={() => reduce ? setFontSize("reduce") : null}>
+            <div className="">
+                <label>Font Size</label>
+                <div className={classes['display-flex']}>
+                    <fieldset className={classes['font-size-option']} onClick={() => reduce ? setFontSize("reduce") : null}>
                         <img src={ReduceSize} alt="Font Size" width="15" height="15" />
                     </fieldset>
-                    <div className="font-size-option no-cursor">
+                    <div className={classes['font-size-option'] + " " + classes['no-cursor']}>
                         <img src={FontSize} alt="Font Size" width="25" height="25" />
                     </div>
-                    <fieldset className="font-size-option" onClick={() => increase ? setFontSize("increase") : null}>
+                    <fieldset className={classes['font-size-option']} onClick={() => increase ? setFontSize("increase") : null}>
                         <img src={IncreaseSize} alt="Font Size" width="15" height="15" />
                     </fieldset>
                 </div>
