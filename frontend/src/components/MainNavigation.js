@@ -39,6 +39,16 @@ function MainNavigation() {
           </li>
           <li>
             <NavLink
+              to="/user-memes"
+              className={({ isActive }) =>
+                isActive ? classes.active : undefined
+              }
+            >
+              My Memes
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to="/newsletter"
               className={({ isActive }) =>
                 isActive ? classes.active : undefined

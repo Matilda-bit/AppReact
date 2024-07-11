@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { Suspense } from 'react';
+import React from 'react';
 
 import PageContent from '../components/PageContent';
 import {
