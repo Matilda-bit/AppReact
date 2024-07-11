@@ -38,6 +38,9 @@
   --color-primary-800: #fab833;
   --color-primary-900: #f6ad1b;
 }
+.grey {
+  color:#727272;   
+}
 
 body {
   margin: 0;
@@ -56,6 +59,10 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.center {
+  text-align: center;
 }
 
 .title-line {
@@ -80,4 +87,19 @@ label {
 
 .icon-invert {
   filter: brightness(0%) invert(100%);
+}
+
+.font-comic {
+  font-family: Comic Sans MS, Comic Sans, cursive !important;
+}
+
+
+.margin-10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.rotate {
+  rotate: var(90);
+
 }
