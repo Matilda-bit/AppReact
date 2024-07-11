@@ -54,6 +54,9 @@ function MemeForm({ method, meme }) {
         });
 }, []);
 
+
+
+
   // const {
   //   isFetching,
   //   fetchedData,
@@ -102,6 +105,9 @@ function cancelHandler() {
     //change the line set limit height by the meme height
     function handleChange(event, index) {
       const { value } = event.target;
+      if(value && hideSettings){
+        setColor(0, lines[0].color);
+      }
       const newLines = [...lines];
       newLines[index].text = value;
       setLines(newLines);
@@ -146,7 +152,8 @@ function cancelHandler() {
 
 
   function setColor(index, color) {
-      console.log("I'm trying!!");
+      console.log("I'm trying setColor!!");
+      //console.log(color);
       const updatedData = lines.map((line, i) => {
               if ((i === index || (index === 0 && hideSettings))) {
                   return { ...line, color };
@@ -155,6 +162,10 @@ function cancelHandler() {
           });
       setLines(updatedData);
   };
+  useEffect(() => {
+    setColor(0,'color-white');
+
+  }, []);
 
   function setTextAlign(index, textAlign) {
       const updatedLines = lines.map((line, i) => {
@@ -180,8 +191,8 @@ function cancelHandler() {
   function addLine() {
       const newLine = {
           text: "",
-          color: hideSettings ? lines[0].color : "color-white ",
-          textAlign: hideSettings ? lines[0].textAlign : 'text-align-center ',
+          color: hideSettings ? lines[0].color : "color-white",
+          textAlign: hideSettings ? lines[0].textAlign : 'text-align-center',
           fontSize: hideSettings ? lines[0].fontSize : 10
       };
       setLines([...lines, newLine]);
@@ -248,7 +259,7 @@ function cancelHandler() {
                               <textarea
                                   type="text"
                                   name={"text-" + {index}}
-                                  className={classes['margin-10'] + (index !== 0) ? classes.lines : classes['line-0']}
+                                  className={classes['margin-10'] +  " "  + (index !== 0) ? classes.lines : classes['line-0']}
                                   placeholder={index === 0 ? "Top Text" : (index < 2 ? "Bottom Text" : `Text #${index+1}`)}
                                   value={line.text}
                                   onChange={(event) => handleChange(event, index)}

@@ -15,20 +15,22 @@ const SettingsLine = ({index, line, template, setColor, setTextAlign, setFontSiz
     if(!tem && hideSettings) {
         return null;
     }
+
+
     return (
         <div className="settings">
             <div className="">
                 <label>Color</label>
                 <div className={classes['color-options']}>
                     <div
-                        className={((line.color === 'color-black ')? classes['option-selected'] : classes['color-option'])}
+                        className={((line.color === 'color-black') ? classes['option-selected'] : classes['color-option'])}
                         style={{ backgroundColor: "black" }}
-                        onClick={() => { setColor((hideSettings && index !== 0) ? template.color : classes['option-selected']); }}
+                        onClick={() => { setColor((hideSettings && index !== 0) ? template.color : 'color-black'); }}
                     />
                     <div
-                        className={classes['color-option'] + " " + ((line.color === 'color-white ')? classes['option-selected'] : null)}
+                        className={classes['color-option'] + " " + ((line.color == 'color-white')? classes['option-selected'] : null)}
                         style={{ backgroundColor: "white" }}
-                        onClick={() => { setColor((hideSettings && index !== 0) ? template.color : 'color-white '); }}
+                        onClick={() => { setColor((hideSettings && index !== 0) ? template.color : 'color-white'); }}
                     />
                 </div>
             </div>
@@ -37,14 +39,14 @@ const SettingsLine = ({index, line, template, setColor, setTextAlign, setFontSiz
                 <label>Text Align</label>
                 <div className={classes['display-flex']}>
                     <div className={classes['align-option']}
-                    onClick={() => { setTextAlign((hideSettings && index !== 0) ? template.setTextAlign : ' text-align-left '); }}
+                    onClick={() => { setTextAlign((hideSettings && index !== 0) ? template.setTextAlign : 'text-align-left'); }}
                     >
                         <img src={AlignLeftIcon} alt="Left Align" width="25" height="15" />
                     </div>
-                    <div className={classes['align-option']} onClick={() => { setTextAlign(' text-align-center '); hideSettings && setTextAlign(' text-align-center '); }}>
+                    <div className={classes['align-option']} onClick={() => { setTextAlign('text-align-center'); hideSettings && setTextAlign('text-align-center'); }}>
                         <img src={AlignCenterIcon} alt="Center Align" width="25" height="15" />
                     </div>
-                    <div className={classes['align-option']} onClick={() => { setTextAlign(' text-align-right '); hideSettings && setTextAlign(' text-align-right '); }}>
+                    <div className={classes['align-option']} onClick={() => { setTextAlign('text-align-right'); hideSettings && setTextAlign('text-align-right'); }}>
                         <img src={AlignRightIcon} alt="Right Align" width="25" height="15" />
                     </div>
                 </div>

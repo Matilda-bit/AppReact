@@ -118,6 +118,7 @@ button > img {
     text-transform: uppercase;
     letter-spacing: 1px;
     position: absolute; 
+    
 }
 
 .meme-text:active{

@@ -2,12 +2,13 @@ import React, { useRef, useEffect } from "react";
 // import { useDispatch } from 'react-redux';
 import ScrollSide from "./ScrollSide";
 import BtnIcon from '../../assets/icons/btn/pokeball.png';
+import classes from './MemeCatalog.module.css';
 
 function MemeCatalog({ allMemeImgs, setItem }) {
     const scrollRef = useRef(null);
 
     useEffect(() => {
-        const head = document.querySelector(".meme-images");
+        const head = document.querySelector("#meme-images");
         let isDragging = false;
         let startX = 0;
         let scrollLeft = 0;
@@ -72,22 +73,22 @@ function MemeCatalog({ allMemeImgs, setItem }) {
 
     return (
         <section id='meme-catalog-section-new'>
-            <div className='title-section center'>
+            <div className={`${classes['title-section']} center`}>
                 <h1>Meme Catalog </h1>
                 <p className="">
                     Please, select a meme you want from the catalog list or use the button to render a random meme.
                 </p>
             </div>
 
-            <div className="random-meme-section container-1 ">
-                <div className="meme-catalog scroll" ref={scrollRef}>
+            <div className={`${classes['random-meme-section']} `}>
+                <div className={` ${classes['meme-catalog']} ${classes['scroll']} `} ref={scrollRef}>
                     <ScrollSide
-                        ctsStyle={"scroll-btn left "}
+                        ctsStyle={` ${classes['scroll-btn']} ${classes.left} `}
                         alt="Left Scroll"
                         cstFunc={() => scroll(-10)} />
 
                     <div >
-                        <div className="meme-images">
+                        <div id="meme-images" className={classes['meme-images']}>
                             {allMemeImgs.map((meme, index) => (
                                 <img
                                     key={index}
@@ -108,15 +109,15 @@ function MemeCatalog({ allMemeImgs, setItem }) {
                         </div>
                     </div>
                     <ScrollSide
-                        ctsStyle={"scroll-btn right suit-icon "}
+                        ctsStyle={` ${classes['scroll-btn']} ${classes.right} `}
                         alt="Right Scroll"
                         cstFunc={() => { scroll(10) }} />
                 </div>
             </div>
 
-            <div className="random-btn-box center">
+            <div className={`${classes['random-btn-box']} center`}>
                 <button
-                    className="random-button" onClick={handleSubmit}>
+                    className={classes['random-button']} onClick={handleSubmit}>
                     <img draggable="false" src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
                     RANDOM MEME IMG
                 </button>

@@ -23,6 +23,7 @@ const initialState = {
     hideSettings: true,
     picInfo: null,
     flip: false,
+    flipY: false,
     allMemeImgs: [],
     item: {
       id: "61579",
@@ -47,6 +48,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, item: action.payload };
     case 'FLIP_IMG':
         return { ...state, flip: action.payload };
+    case 'FLIP_Y_IMG':
+      return { ...state, flipY: action.payload };
     case 'SET_LINES':
       return { ...state, lines: action.payload };
     case 'SET_HIDE_SETTINGS':

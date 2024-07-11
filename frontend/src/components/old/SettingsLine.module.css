@@ -68,6 +68,18 @@
     display: flex;
 }
 
+
+h1 {
+    font-family: Impact, sans-serif;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+p {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
 /*text-align*/
 .align-option {
     filter: brightness(0%) invert(100%);
@@ -142,3 +154,42 @@
 .font-size-20 {
     font-size: 700%;
 }
+.meme > .meme-text{
+    display: flex;
+    flex-direction: row;
+}
+
+/* Memes Text Position Templates */
+.meme > .line-bottom {
+    top: calc(90% - 10px);
+    justify-content: center;
+}
+
+.meme > .line-top {
+    top: 0;
+    justify-content: center;
+    /* height: 120%;  */
+}
+.meme > .line-top:active{
+    display: table;
+}
+
+.meme > .line:active{
+    display: table;
+}
+
+.meme-text {
+    position: relative;
+    margin: auto;
+    padding: 0 2px;
+    font-family: Impact, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: absolute; 
+}
+
+/* .meme-text:active{
+    margin: auto;
+    padding: 0 2px;
+    border: 1px dashed white; 
+} */

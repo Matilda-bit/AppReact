@@ -1,5 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from 'react-redux';
+// import { useFetch } from '../../hooks/useFetch.js';
+import {
+    Form,
+    // useNavigate,
+    // useNavigation,
+    // useActionData,
+    // json,
+    // redirect
+  } from 'react-router-dom';
 
 import SettingsLine from './SettingsLine'; // assuming you have created a separate Settings component
 import ImgSettings from './ImgSettings'; // assuming you have created a separate Settings component
@@ -8,10 +17,11 @@ import DeleteIcon from '../../assets/icons/btn/garbage.png';
 import AddIcon from '../../assets/icons/btn/add.png';
 // import ScrollSide from "./ScrollSide";
 import DraggableComponent from "./DraggableComponent";
+// import Error from '../../pages/Error.js';
 import MemeCatalog from "./MemeCatalog";
 import html2canvas from 'html2canvas';
 
-import TextLine from './TextLine'; // Adjust the path as per your project structure
+// import TextLine from './TextLine'; // Adjust the path as per your project structure
 import SetSameSettings from './SetSameSettings'; // Adjust the path as per your project structure
 
 
@@ -59,8 +69,14 @@ const MemeGenerator = () => {
         setPicInfo(() => memeRef.current.getBoundingClientRect());
     }, [item]);
 
+
+
     //called only once, at the first time when the comonent created
     // cause of dependencies to [] array that never changed.
+    //need to add await and try catch and move to separate file and call it 
+    //memeForm have the same code
+    //or maybe will be good solution to create a new custom hook that do this useEffect
+    //
     useEffect(() => {
         fetch("https://api.imgflip.com/get_memes")
             .then(response => response.json())
@@ -69,6 +85,29 @@ const MemeGenerator = () => {
                 setAllMemeImgs(memes);
             });
     }, []);
+    // const {
+    //     isFetching,
+    //     fetchedData,
+    //     setFetchedData,
+    //     error
+    //   } = useFetch();
+
+    //     useEffect(() => {
+            
+        
+    //           if (error) {
+    //             return <Error title="An error occurred1!" message={error.message} />;
+    //           }
+        
+    //           if(!isFetching){
+    //             console.log(fetchedData)
+    //               setAllMemeImgs(fetchedData.data.memes);
+    //           }
+        
+    // }, []);
+   
+
+      //
 
 
 
@@ -182,7 +221,7 @@ const MemeGenerator = () => {
             </div>
     
             <div className="edit-area">
-                <form className="meme-form" onSubmit={handleSubmit}>
+                <Form className="meme-form" onSubmit={handleSubmit}>
                     <div className="meme-input">
 
                         <ImgSettings
@@ -193,7 +232,8 @@ const MemeGenerator = () => {
                             <div key={index}>
                             <div className="meme-input-item">
                                 <div className="title-line">
-                                    <label >{index === 0 ? "Text " + (index+1) : "Text " + (index+1)}</label>
+                                <label>Text {`#${index + 1}`}: </label>
+
                                 </div>
                                 <SettingsLine 
                                     index={index}
@@ -209,7 +249,7 @@ const MemeGenerator = () => {
                                     type="text"
                                     name={"text-" + {index}}
                                     className={"margin-10 " + (index !== 0) ?  "lines " : "line-0 "}
-                                    placeholder={index === 0 ? "Top Text" : "Bottom Text"}
+                                    placeholder={"Top Text"}
                                     value={line.text}
                                     onChange={(event) => handleChange(event, index)}
                                 />  
@@ -219,11 +259,11 @@ const MemeGenerator = () => {
                                         type="text"
                                         name={"text-" + {index}}
                                         className={"margin-10 " + (index !== 0) ?  "lines " : "line-0 "}
-                                        placeholder={index === 0 ? "Top Text" : "Bottom Text"}
+                                        placeholder={index === 0 ? "Top Text" : (index < 2 ? "Bottom Text" : `Text #${index+1}`)}
                                         value={line.text}
                                         onChange={(event) => handleChange(event, index)}
                                     />  
-                                    <button className="btn-delete" type="submit" onClick={() => deleteLine(index)}>
+                                    <button className="btn-delete" onClick={() => deleteLine(index)}>
                                         <img draggable="false" src={DeleteIcon} alt="Delete" border="0" width={45} height={45}/>
                                     </button>    
                                 </div>
@@ -262,18 +302,13 @@ const MemeGenerator = () => {
                                  Add Text</button>
                         </div>
 
-                        <button className="download-btn" style={{verticalAlign: 'middle'}}><span>Download</span></button>
+                        <button className="button-39" type="button" style={{verticalAlign: 'middle'}} onClick={addLine}>Save in My Memes</button>
+                        <button className="download-btn" style={{verticalAlign: 'middle'}} type="submit"><span>Download</span></button>
 
-                        {/* <div className="meme-input-item">                
-                            <button className="meme-input-item">SUBMIT</button>
-                        </div> */}
                     </div>
-                </form>
+                </Form>
 
                 <div className="display-meme">
-                    {/* <div className="center settings-title grey">
-                        <h2 className="center font-comic">{item.name}</h2>
-                    </div> */}
                     <div 
                     id="meme-box" 
                     className="meme-box meme limit">
