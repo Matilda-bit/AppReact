@@ -6,6 +6,7 @@ import ErrorPage from './pages/Error';
 import HomePage from './pages/Home';
 import MemesRootLayout from './pages/Layout/MemesRoot';
 import MemesPage, { loader as memesLoader } from './pages/Memes';
+import UserMemesPage, { loader as userMemesLoader } from './pages/UserMemes';
 import MemeDetailPage, {
     loader as memeDetailLoader,
     action as deleteMemeAction,
@@ -70,15 +71,27 @@ const router = createBrowserRouter([
             },
           ],
         },
+
         {
-          path: 'auth',
-          element: <AuthenticationPage />,
-          action: authAction,
+          path: 'user-memes' ,
+          element: <MemesRootLayout />,
+          children: [
+            {
+              index: true,
+              element: <UserMemesPage />,
+              loader: userMemesLoader,
+            }
+          ]
         },
         {
           path: 'newsletter',
           element: <NewsletterPage />,
           action: newsletterAction,
+        },
+        {
+          path: 'auth',
+          element: <AuthenticationPage />,
+          action: authAction,
         },
         {
           path: 'logout',
