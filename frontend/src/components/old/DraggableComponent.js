@@ -4,23 +4,19 @@ import Mydata from '../../util/MemesLineLink';
 import classes from './DraggableComponent.module.css';
 
 const DraggableComponent = ({unique, line, imgId, boxCount, info}) => {
-    console.log(" DraggableComponent");
     const dragElement = useRef(null);
     const color = line.color;
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    if(dragElement.current){
-        const memeBox = document.getElementById('meme-box');    
 
-        console.log(`dragElement.current.style.top: ${dragElement.current.style.top}`); 
-        console.log(info); 
-    }
 
     useEffect(() => {
-        if(unique === 0){
-            dragElement.current.style.top =  "0px"; 
-        }else if(unique > 1){
-            dragElement.current.style.top = `calc(50% + ${unique*5}px)`; 
-            dragElement.current.style.left =`calc(50% + ${unique*5}px)`;
+        if(unique){
+            if(unique === 0){
+                dragElement.current.style.top =  "0px"; 
+            }else if(unique > 1){
+                dragElement.current.style.top = `calc(50% + ${unique*5}px)`; 
+                dragElement.current.style.left =`calc(50% + ${unique*5}px)`;
+            }
         }
     }, []);
 
@@ -35,7 +31,6 @@ const DraggableComponent = ({unique, line, imgId, boxCount, info}) => {
                 newTop = Math.min(Math.max(newTop, 1), maxTop);
                 newLeft = Math.min(Math.max(newLeft, 1), maxLeft);
                 dragElement.current.style.top = newTop + "px"; 
-                console.log(`dragElement.current.style.top: ${dragElement.current}`);
                 dragElement.current.style.left = newLeft + "px";
                 if(unique === 1){
                     dragElement.current.style.top =  `${(memeHeight - 50)}px`; 
@@ -85,17 +80,11 @@ const DraggableComponent = ({unique, line, imgId, boxCount, info}) => {
         document.onmousemove = null;
     };
 
-    const test = `${classes[color]} ${classes[line.textAlign]} ${classes[`font-size-${line.fontSize}`]}`;
-console.log("TEST");
-console.log(test);
-console.log(line);
-console.log(color);
-console.log(lineStyle);
 //lineStyle
 //test
     return (
         <div ref={dragElement} 
-            id="meme-text" 
+            id={`meme-text-${unique}`}
             className={classes['meme-text'] + " " + lineStyle} 
             onMouseDown={dragMouseDown}
             >
