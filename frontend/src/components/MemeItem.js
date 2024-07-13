@@ -5,6 +5,7 @@ import classes from './MemeItem.module.css';
 
 function MemeItem({ meme }) {
   const submit = useSubmit();
+  console.log(meme);
 
   function startDeleteHandler() {
     const proceed = window.confirm('Are you sure?');
@@ -16,7 +17,7 @@ function MemeItem({ meme }) {
 
   return (
     <article className={classes.meme}>
-      <img src={meme.image} alt={meme.title} />
+      <img src={meme.item.img} alt={meme.item.name} />
       <h1>{meme.title}</h1>
       <time>{meme.date}</time>
       <p>{meme.description}</p>

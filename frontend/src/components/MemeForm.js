@@ -5,7 +5,7 @@ import {
   useNavigation,
   useActionData,
   json,
-  redirect
+  redirect,
 } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import html2canvas from 'html2canvas';
@@ -25,8 +25,7 @@ import classes from './MemeForm.module.css';
 
 function MemeForm({ method, meme }) {
   
-  console.log("MemeFrom ...")
-  const data = useActionData();
+  const actionData = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation(); 
 
@@ -54,22 +53,6 @@ function MemeForm({ method, meme }) {
         });
 }, []);
 
-
-
-
-  // const {
-  //   isFetching,
-  //   fetchedData,
-  //   setFetchedData,
-  //   error
-  // } = useFetch();
-
-  // //fetchedData.data.memes
-
-  // if (error) {
-  //   return <Error title="An error occurred!" message={error.message} />;
-  // }
-  // setAllMemeImgs(fetchedData.data.memes);
   //ACTIONS
   const setLines = (newLines) => {
     dispatch({ type: 'SET_LINES', payload: newLines });
@@ -123,7 +106,9 @@ function cancelHandler() {
                       ...line,
                       textAlign: lines[0].textAlign,
                       color: lines[0].color,
-                      fontSize: lines[0].fontSize
+                      fontSize: lines[0].fontSize,
+                      x: 0,
+                      y: 0
                   };
               }
               return line;
@@ -133,27 +118,69 @@ function cancelHandler() {
       }
   };
 
-  function handleSubmit(event) {
-      event.preventDefault();
-      const memeBox = document.getElementById('meme-box');
-  
-      // Use html2canvas to render the meme-box to a canvas
-      html2canvas(memeBox, { useCORS: true }).then(canvas => {
-          // Convert the canvas to a data URL
-          const dataUrl = canvas.toDataURL();
-  
-          // Optionally, create a link element to download the image
-          const a = document.createElement('a');
-          a.setAttribute('download', 'meme.png');
-          a.setAttribute('href', dataUrl);
-          a.click();
-      });
+  function handleDownload(event) {
+    event.preventDefault();
+    const memeBox = document.getElementById('meme-box');
+
+    // Use html2canvas to render the meme-box to a canvas
+    html2canvas(memeBox, { useCORS: true }).then(canvas => {
+        // Convert the canvas to a data URL
+        const dataUrl = canvas.toDataURL();
+
+        // Optionally, create a link element to download the image
+        const a = document.createElement('a');
+        a.setAttribute('download', 'meme.png');
+        a.setAttribute('href', dataUrl);
+        a.click();
+    });
   }
 
+  function handleSubmit(event) {
+  console.log("Click!!")
+  event.preventDefault();
+
+  const dataToSubmit = generateData();
+
+  const formData = new FormData(event.target);
+    const searchParams = new URLSearchParams();
+
+    for (const [key, value] of formData.entries()) {
+      searchParams.append(key, value);
+    }
+
+    // Append the generated data to the searchParams
+    searchParams.append('generatedData', dataToSubmit);
+    // navigation.setParams(params);
+
+    console.log("end of hamdleSubmit")
+    navigate("/memes/new", {replace: true});
+  }
+
+  const generateData = () => {
+    const memeBox = document.getElementById('meme-box');
+    const  updatedLines = lines.map((line, index) => {
+      const memeTextElement = document.getElementById(`meme-text-${index}`);
+      if (memeTextElement) {
+        const { offsetLeft: x, offsetTop: y } = memeTextElement;
+        return {
+          ...line,
+          x,
+          y,
+        };
+      }
+      return line;
+    });
+      const data = {
+        lines: updatedLines,
+        item: item,
+        flip: flip,
+        flipY: flipY,
+        // memeBox: memeBox
+      };
+      return data;
+  };
 
   function setColor(index, color) {
-      console.log("I'm trying setColor!!");
-      //console.log(color);
       const updatedData = lines.map((line, i) => {
               if ((i === index || (index === 0 && hideSettings))) {
                   return { ...line, color };
@@ -162,11 +189,19 @@ function cancelHandler() {
           });
       setLines(updatedData);
   };
+
+
   useEffect(() => {
+    if(meme){
+      //update the state
+      setLines(meme.lines);
+      setItem(meme.item);
+      setFlip(meme.flip);
+      setFlipY(meme.flipY);
+    }
     setColor(0,'color-white');
-
   }, []);
-
+  
   function setTextAlign(index, textAlign) {
       const updatedLines = lines.map((line, i) => {
               if ((i === index || (index === 0 && hideSettings))) {
@@ -209,7 +244,6 @@ function cancelHandler() {
             <MemeCatalog
                 allMemeImgs={allMemeImgs}
                 setItem={setItem}
-                handleSubmit={handleSubmit}
             />
 
             <section>
@@ -219,9 +253,20 @@ function cancelHandler() {
             <div className={classes['edit-area']}>
               <Form 
               className={`${classes['meme-form']} ${classes.form}`} 
+              method={method}
+              id="meme-form"
+              name="meme-form"
+              htmlFor="meme-form"
               onSubmit={handleSubmit}
-              >
-                <div className={`${classes['meme-input']}`}>
+              > 
+                 {actionData && actionData.errors && (
+                  <ul>
+                    {Object.values(actionData.errors).map((err) => (
+                      <li key={err}>{err}</li>
+                    ))}
+                  </ul>
+                )}
+                 <div className={`${classes['meme-input']}`}>
 
                   <ImgSettings
                       flip={flip}
@@ -232,11 +277,14 @@ function cancelHandler() {
 
                   {lines.map((line, index) => (
                       <div key={index}>
+                        <hr className="solid"></hr>
                       <div className={classes['meme-input-item']}>
                         <div className="title-line">
                           <label>Text {`#${index + 1}`}: </label>
                         </div>
                         <SettingsLine 
+                            id={`line-` + index}
+                            name={`line-` + index}
                             index={index}
                             line={lines[index]}
                             template={lines[0]}
@@ -247,7 +295,7 @@ function cancelHandler() {
                         />
 
                           {(index === 0) ? <textarea
-                              type="text"
+                              type="input"
                               name={"text-" + {index}}
                               className={`${classes['margin-10']} ${index !== 0 ? classes.lines : classes['line-0']}`}
                               placeholder={"Top Text"}
@@ -257,7 +305,8 @@ function cancelHandler() {
                           : 
                           <div className={classes['display-flex']}>
                               <textarea
-                                  type="text"
+                                  id={"text-" + {index}}
+                                  type="input"
                                   name={"text-" + {index}}
                                   className={classes['margin-10'] +  " "  + (index !== 0) ? classes.lines : classes['line-0']}
                                   placeholder={index === 0 ? "Top Text" : (index < 2 ? "Bottom Text" : `Text #${index+1}`)}
@@ -277,18 +326,17 @@ function cancelHandler() {
                               checkboxChange={checkboxChange}
                           />
                       )}
-
-                      <hr className="solid"></hr>
                   </div>
                   ))}
 
-                    <div className="meme-input-btn ">
+                    <div className={classes['meme-input-btn'] + " center"}>
                         <button 
-                        className={classes['button-39']} 
+                        className={classes['button-39'] + " margin-10"} 
                         type="button" onClick={addLine}> 
                           <img 
                           src={AddIcon} 
                           alt="buttonpng" 
+                          className="icon-invert margin-r-10"
                           border="0" 
                           width={20} 
                           eight={20} 
@@ -296,170 +344,113 @@ function cancelHandler() {
                               Add Text Line
                         </button>
                     </div>
+                    <hr className="solid"></hr>
+                    <div ></div>
 
                     <button 
-                    className={classes['button-39']} 
-                    type="button" 
+                    className={classes['button-39'] + " margin-10"} 
+                    type="submit"
                     style={{verticalAlign: 'middle'}} 
-                    onClick={addLine}>
-                      Save in My Memes
+                    disabled={isSubmitting}
+                    >
+                       {isSubmitting ? 'Saving...' : 'Save Meme'}
                     </button>
 
                     <div className="center">
                       <button 
                       className={classes['download-btn']} 
                       style={{verticalAlign: 'middle'}} 
-                      type="submit">
+                      type="button" 
+                      onClick={handleDownload}
+                      >
                         <span>Download</span>
                       </button>
                     </div>
-
                 </div>
-            </Form>
+        <div className={classes.actions}>
+          <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
+            Cancel
+          </button>
+        </div>
+        </Form>
 
-                <div className={`${classes['display-meme'] + classes.form}`}>
-                    <div 
-                    id="meme-box" 
-                    className={`${classes['meme-box']} center`}>
-                        <img 
-                        draggable="false" 
-                        className={(flip ? classes['meme-flip'] : "") + " " + (flipY ? classes['meme-flip-y'] : "")} 
-                        src={item.img} 
-                        alt={item.name} 
-                        />
-                        {lines.map((line, index) => (
-                            <DraggableComponent
-                                key={index}
-                                unique={index}
-                                line={line}
-                                imgId={item.id}
-                                boxCount={item.box_count}
-                                info={picInfo}
-                            />
-                        ))}
-                    </div>
-                    <div className="center">
-                        <h2 className="center font-comic">{item.name}</h2>
-                    </div>
-                </div>
-                </div>
-
-    
-            
-<div className=" col-6 center row flex display">
-    <br/> 
-    
-    <label > original size {item.width} x {item.height}</label>
-    <label > boxes {item.box_count} </label>
-    <label > id {item.id} </label>
-</div>
-</section>
-             
-
-
-    <Form method={method} className={classes.form}>
-      {data && data.errors && (
-        <ul>
-          {Object.values(data.errors).map((err) => (
-            <li key={err}>{err}</li>
-          ))}
-        </ul>
-      )}
-      <p>
-        <label htmlFor="title">Title</label>
-        <input
-          id="title"
-          type="text"
-          name="title"
-          required
-          defaultValue={meme ? meme.title : ''}
-        />
-      </p>
-      <p>
-        <label htmlFor="image">Image</label>
-        <input
-          id="image"
-          type="url"
-          name="image"
-          required
-          defaultValue={meme ? meme.image : ''}
-        />
-      </p>
-      <p>
-        <label htmlFor="date">Date</label>
-        <input
-          id="date"
-          type="date"
-          name="date"
-          required
-          defaultValue={meme ? meme.date : ''}
-        />
-      </p>
-      <p>
-        <label htmlFor="description">Description</label>
-        <textarea
-          id="description"
-          name="description"
-          rows="5"
-          required
-          defaultValue={meme ? meme.description : ''}
-        />
-      </p>
-      <div className={classes.actions}>
-        <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
-          Cancel
-        </button>
-        <button disabled={isSubmitting}>
-          {isSubmitting ? 'Submitting...' : 'Save'}
-        </button>
+        <div className={`${classes['display-meme'] + classes.form}`}>
+            <div 
+            id="meme-box" 
+            className={`${classes['meme-box']} center`}>
+                <img 
+                draggable="false" 
+                className={(flip ? classes['meme-flip'] : "") + " " + (flipY ? classes['meme-flip-y'] : "")} 
+                src={item.img} 
+                alt={item.name} 
+                />
+                {lines.map((line, index) => (
+                    <DraggableComponent
+                        key={index}
+                        unique={index}
+                        line={line}
+                        imgId={item.id}
+                        boxCount={item.box_count}
+                        info={picInfo}
+                    />
+                ))}
+            </div>
+            <div className="center margin-10">
+                <h2 className="font-comic">{item.name}</h2>
+            </div>
+        </div>
+      </div>   
+      <div className=" col-6 center row flex display">
+          <br/> 
+          
+          <label > original size {item.width} x {item.height}</label>
+          <label > boxes {item.box_count} </label>
+          <label > id {item.id} </label>
       </div>
-    </Form>
+      </section>
     </>
   );
 }
 
 export default MemeForm;
 
+//export async function action({ request, params }) {
+export async function action(memeData, method) {
 
-export async function action({ request, params }) {
-  const method = request.method;
-  console.log("method");
-  console.log(method);
-  console.log(params);
-  const data = await request.formData();
-
-  const memeData = {
-    title: data.get('title'),
-    image: data.get('image'),
-    date: data.get('date'),
-    description: data.get('description'),
-  };
-  console.log(memeData)
+  console.log("action function runs: ");
 
   let url = 'http://localhost:8080/memes';
 
   if (method === 'PATCH') {
-    const memeId = params.memeId;
-    url = 'http://localhost:8080/memes/' + memeId;
+    const memeId = memeData.id;
+    url = 'http://localhost:8080/memes/' + memeId; 
   }
+
+  console.log(url);
+  console.log("method: " + method);
+  // console.log( "id: " + memeData.id);
+  console.log("memeData: ");
+  console.log(memeData);
 
   const token = getAuthToken();
-  const response = await fetch(url, {
-    method: method,
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token
-    },
-    body: JSON.stringify(memeData),
-  });
-
-  if (response.status === 422) {
-    return response;
-  }
-
-  if (!response.ok) {
-    throw json({ message: 'Could not save meme.' }, { status: 500 });
-  }
+    const response = await fetch(url, {
+      method: method,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify(memeData),
+    });
+  
+    if (response.status === 422) {
+      return response;
+    }
+  
+    if (!response.ok) {
+      throw json({ message: 'Could not save meme.' }, { status: 500 });
+    }
+    console.log("RESPONSE!!!!!")
+    console.log(response);
 
   return redirect('/memes');
 }
