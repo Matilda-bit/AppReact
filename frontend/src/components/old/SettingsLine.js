@@ -28,7 +28,7 @@ const SettingsLine = ({index, line, template, setColor, setTextAlign, setFontSiz
                         onClick={() => { setColor((hideSettings && index !== 0) ? template.color : 'color-black'); }}
                     />
                     <div
-                        className={classes['color-option'] + " " + ((line.color == 'color-white')? classes['option-selected'] : null)}
+                        className={classes['color-option'] + " " + ((line.color === 'color-white')? classes['option-selected'] : null)}
                         style={{ backgroundColor: "white" }}
                         onClick={() => { setColor((hideSettings && index !== 0) ? template.color : 'color-white'); }}
                     />
