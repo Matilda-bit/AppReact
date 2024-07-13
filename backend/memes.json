@@ -1,1 +1,30 @@
-{"memes":[{"title":"new meme1","image":"https://c.files.bbci.co.uk/7CC2/production/_118283913_29xp-meme-mobilemasterat3x-v3.jpg","date":"1000-06-06","description":"test fire","id":"a03ce746-de0e-4112-8c58-83b850607d23"},{"title":"testing 1","image":"https://media.sproutsocial.com/uploads/meme-example.jpg","date":"1993-06-06","description":"test test ","id":"1d748ced-e68b-4947-bcab-d24b200a4fc7"}],"users":[{"email":"test@test.com","password":"$2a$12$jPtW/oirNTECq.ZZgM8PiuGJt5tDOdGVuhzb8VLGr6PNTDenx9hV.","id":"4378bb46-7400-4549-8234-c5b901ccc63f"},{"email":"test1@test.com","password":"$2a$12$QO0fqx8pV4lY5xkbtCKhRuXhn.kPKz30nAC6V3LBWtsH1ODfX/onK","id":"f8149cc7-761e-4fb8-ac43-07e60b956926"}]}
+{"memes":[
+    {"lines":[{"title":"Top Text","text":"asdfasdf","color":"color-white","textAlign":"text-align-center","fontSize":10,"x":1,"y":364},
+    {"title":"Bottom Text","text":"asdfsadf","color":"color-white","textAlign":"text-align-center","fontSize":10,"x":1,"y":590}],
+    "item":{"id":"101956210","box_count":2,"height":600,"width":600,"name":"Whisper and Goosebumps","img":"https://i.imgflip.com/1op9wy.jpg",
+    "data":{"id":"101956210","name":"Whisper and Goosebumps","url":"https://i.imgflip.com/1op9wy.jpg","width":600,"height":600,"box_count":2,"captions":47250}},
+    "flip":false,"flipY":false,"id":"62861bd9-4c32-4712-98f4-21fd27841020"},
+    
+    {"lines":[{"title":"Top Text","text":"polina","color":"color-white","textAlign":"text-align-center","fontSize":10,"x":508,"y":192},
+    {"title":"Bottom Text","text":"german","color":"color-white","textAlign":"text-align-center","fontSize":10,"x":74,"y":156}],
+    "item":{"id":"249257686","box_count":2,"height":284,"width":460,"name":"Bugs bunny communist","img":"https://i.imgflip.com/44eggm.png",
+    "data":{"id":"249257686","name":"Bugs bunny communist","url":"https://i.imgflip.com/44eggm.png","width":460,"height":284,"box_count":2,"captions":42000}},
+    "flip":false,"flipY":false,"id":"809db15c-c3ac-47d6-b0a0-fdee39723d46"},
+    
+    {"lines":[{"title":"Top Text","text":"adsfasdf","color":"color-white","textAlign":"text-align-center","fontSize":10,"x":1,"y":364},
+    {"title":"Bottom Text","text":"asdfasdf","color":"color-white","textAlign":"text-align-center","fontSize":10,"x":1,"y":590}],
+    "item":{"id":"259237855","box_count":2,"height":470,"width":470,"name":"Laughing Leo","img":"https://i.imgflip.com/4acd7j.png",
+    "data":{"id":"259237855","name":"Laughing Leo","url":"https://i.imgflip.com/4acd7j.png","width":470,"height":470,"box_count":2,"captions":93500}},
+    "flip":false,"flipY":false,"id":"a1889c7c-e00e-43d4-a9d9-377d10eb46af"},
+
+    {"lines":[{"title":"Top Text","text":"sd","color":"color-white","textAlign":"text-align-center","fontSize":10,"x":264,"y":206},
+    {"title":"Bottom Text","text":"df","color":"color-white","textAlign":"text-align-center","fontSize":10,"x":115,"y":135}],
+    "item":{"id":"252600902","box_count":2,"height":540,"width":960,"name":"Always Has Been","img":"https://i.imgflip.com/46e43q.png",
+    "data":{"id":"252600902","name":"Always Has Been","url":"https://i.imgflip.com/46e43q.png","width":960,"height":540,"box_count":2,"captions":182750}},
+    "flip":false,"flipY":false,"id":"a8a7877d-a2dc-4563-934b-b3c179001321"},
+
+
+    {"lines":[{"title":"Top Text","text":"test1","color":"color-white","textAlign":"text-align-center","fontSize":10,"x":1,"y":364},
+    {"title":"Bottom Text","text":"test4","color":"color-white","textAlign":"text-align-center","fontSize":10,"x":1,"y":378}],
+    "item":{"id":"112126428","box_count":3,"height":800,"width":1200,"name":"Distracted Boyfriend","img":"https://i.imgflip.com/1ur9b0.jpg","data":{"id":"112126428","name":"Distracted Boyfriend","url":"https://i.imgflip.com/1ur9b0.jpg","width":1200,"height":800,"box_count":3,"captions":1028500}},"flip":false,"flipY":false,"id":"56f66054-d24b-4218-bd6c-131ca6874edd"},{"lines":[{"title":"Top Text","text":"sdfsdfs","color":"color-white","textAlign":"text-align-center","fontSize":10,"x":1,"y":364},{"title":"Bottom Text","text":"rthrth","color":"color-white","textAlign":"text-align-center","fontSize":10,"x":1,"y":329}],"item":{"id":"61579","box_count":2,"height":335,"width":568,"name":"One Does Not Simply","img":"https://i.imgflip.com/1bij.jpg","caption":446250,"data":[]},"flip":false,"flipY":false,"id":"cdcf27c1-eb15-49bc-9b9a-cfae841c8836"}],
+    "users":[{"email":"test@test.com","password":"$2a$12$jPtW/oirNTECq.ZZgM8PiuGJt5tDOdGVuhzb8VLGr6PNTDenx9hV.","id":"4378bb46-7400-4549-8234-c5b901ccc63f"},{"email":"test1@test.com","password":"$2a$12$QO0fqx8pV4lY5xkbtCKhRuXhn.kPKz30nAC6V3LBWtsH1ODfX/onK","id":"f8149cc7-761e-4fb8-ac43-07e60b956926"}]}
