@@ -10,14 +10,18 @@ const initialState = {
         text: "",
         color: "color-white ",
         textAlign: 'text-align-center',
-        fontSize: 10
+        fontSize: 10,
+        x: 0,
+        y: 0
       },
       {
         title: "Bottom Text",
         text: "",
         color: "color-white ",
         textAlign: 'text-align-center',
-        fontSize: 10
+        fontSize: 10,
+        x: 0,
+        y: 0
       }
     ],
     hideSettings: true,
@@ -33,7 +37,7 @@ const initialState = {
       name: "One Does Not Simply",
       img: "https://i.imgflip.com/1bij.jpg",
       caption: 446250,
-      data: [],
+      data: [],//history
     }
 };
 //     }
