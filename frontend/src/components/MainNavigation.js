@@ -34,17 +34,18 @@ function MainNavigation() {
                 isActive ? classes.active : undefined
               }
             >
-              Memes
+              My Memes
             </NavLink>
           </li>
           <li>
             <NavLink
               to="/user-memes"
+              //feed
               className={({ isActive }) =>
                 isActive ? classes.active : undefined
               }
             >
-              My Memes
+              Memes
             </NavLink>
           </li>
           <li>
