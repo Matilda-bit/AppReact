@@ -12,15 +12,18 @@ function MemesList({memes}) {
     return (
       <div className={classes.memes}>
         <h1>All Memes</h1>
-        <ul className={classes.list}>
-          {memes.map((meme) => (
+        <ul className={classes.list + " " +  classes['meme-catalog']}>
+          {memes.map((meme,index) => (
             <li key={meme.id} className={classes.item}>
-              <Link to={meme.id}>
-                <img src={meme.image} alt={meme.title} />
-                <div className={classes.content}>
-                  <h2>{meme.title}</h2>
-                  <time>{meme.date}</time>
-                </div>
+              <Link to={`/memes/${meme.id}}`}>
+                  <div id="meme-images" className={classes.content + " " + classes['meme-images']}>
+                          <img
+                              key={index}
+                              src={meme.item.img}
+                              alt={meme.item.name}
+                              draggable="false"
+                          />
+                  </div>
               </Link>
             </li>
           ))}

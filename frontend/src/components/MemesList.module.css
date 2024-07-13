@@ -8,8 +8,10 @@ p {
 
 .list {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  flex-direction: row;
+}
+.item {
+  align-content: center;
 }
 
 .item a {
@@ -27,14 +29,48 @@ p {
 }
 
 .item img {
-  width: 33%;
   object-fit: cover;
 }
 
 .content {
-  padding: 1rem;
   color: var(--color-primary-100);
 }
-.item h2 {
+/* .item h2 {
   margin: 0 0 1rem 0;
+} */
+
+.meme-images {
+  display: flex;
+  gap: 3px;
+  padding: 5px 5px;
+}
+
+.meme-images > img {
+  /* height: 150px; */
+  cursor: pointer;
+  max-height: 200px;
+  max-width: 308px; 
+}
+
+.meme-images > img:hover {
+  border: 1px solid #46ff80;
+  -webkit-box-shadow: 0 0 10px #fff;
+      box-shadow: 0 0 10px #fff;
+  }
+/* END Me
+
+
+/* Memes Catalog */
+.meme-catalog {
+  height: auto;
+  /* max-width: ; */
+  /* height: 110px !important; */
+  width: relative; 
+  border: 2px solid #2d2d2d; 
+  -webkit-box-shadow: 0 0 5px #fff;
+  box-shadow: 0 0 5px #fff;
+  border-radius: 5px;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  /* stretch */
 }
