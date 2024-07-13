@@ -36,65 +36,43 @@ router.post('/', async (req, res, next) => {
   const data = req.body;
 
   let errors = {};
-
-  if (!isValidText(data.title)) {
-    errors.title = 'Invalid title.';
-  }
-
-  if (!isValidText(data.description)) {
-    errors.description = 'Invalid description.';
-  }
-
-  if (!isValidDate(data.date)) {
-    errors.date = 'Invalid date.';
-  }
-
-  if (!isValidImageUrl(data.image)) {
-    errors.image = 'Invalid image.';
-  }
-
-  if (Object.keys(errors).length > 0) {
-    return res.status(422).json({
-      message: 'Adding the meme failed due to validation errors.',
-      errors,
-    });
-  }
-
-  try {
+  //here I need to add conditions to check validation of the sended data
+  if(data){
+     try {
     await add(data);
     res.status(201).json({ message: 'Meme saved.', meme: data });
   } catch (error) {
     next(error);
   }
+} else {
+  console.log("Data is EMPTY");
+}
+ 
 });
 
 router.patch('/:id', async (req, res, next) => {
   const data = req.body;
 
   let errors = {};
+  //here I need to add conditions to check validation of the sended data
+  // if (!isValidText(data.description)) {
+  //   errors.description = 'Invalid description.';
+  // }
 
-  if (!isValidText(data.title)) {
-    errors.title = 'Invalid title.';
-  }
+  // if (!isValidDate(data.date)) {
+  //   errors.date = 'Invalid date.';
+  // }
 
-  if (!isValidText(data.description)) {
-    errors.description = 'Invalid description.';
-  }
+  // if (!isValidImageUrl(data.image)) {
+  //   errors.image = 'Invalid image.';
+  // }
 
-  if (!isValidDate(data.date)) {
-    errors.date = 'Invalid date.';
-  }
-
-  if (!isValidImageUrl(data.image)) {
-    errors.image = 'Invalid image.';
-  }
-
-  if (Object.keys(errors).length > 0) {
-    return res.status(422).json({
-      message: 'Updating the meme failed due to validation errors.',
-      errors,
-    });
-  }
+  // if (Object.keys(errors).length > 0) {
+  //   return res.status(422).json({
+  //     message: 'Updating the meme failed due to validation errors.',
+  //     errors,
+  //   });
+  // }
 
   try {
     await replace(req.params.id, data);
