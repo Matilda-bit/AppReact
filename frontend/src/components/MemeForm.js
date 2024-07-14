@@ -25,7 +25,7 @@ import classes from './MemeForm.module.css';
 
 function MemeForm({ method, meme }) {
   
-  const actionData = useActionData();
+  // const data = useActionData();
   const navigate = useNavigate();
   const navigation = useNavigation(); 
 
@@ -135,25 +135,12 @@ function cancelHandler() {
     });
   }
 
-  function handleSubmit(event) {
-  console.log("Click!!")
+  async function handleSubmit(event) {
   event.preventDefault();
+  const dataToSubmit = await generateData();
+  await action({params: dataToSubmit, method: method.toUpperCase()});
+  navigate("/memes/");
 
-  const dataToSubmit = generateData();
-
-  const formData = new FormData(event.target);
-    const searchParams = new URLSearchParams();
-
-    for (const [key, value] of formData.entries()) {
-      searchParams.append(key, value);
-    }
-
-    // Append the generated data to the searchParams
-    searchParams.append('generatedData', dataToSubmit);
-    // navigation.setParams(params);
-
-    console.log("end of hamdleSubmit")
-    navigate("/memes/new", {replace: true});
   }
 
   const generateData = () => {
@@ -171,6 +158,7 @@ function cancelHandler() {
       return line;
     });
       const data = {
+        //id
         lines: updatedLines,
         item: item,
         flip: flip,
@@ -201,6 +189,17 @@ function cancelHandler() {
     }
     setColor(0,'color-white');
   }, []);
+
+  useEffect(() => {
+    if(meme){
+      //update the state
+      setLines(meme.lines);
+      setItem(meme.item);
+      setFlip(meme.flip);
+      setFlipY(meme.flipY);
+    }
+  }, [meme]);
+
   
   function setTextAlign(index, textAlign) {
       const updatedLines = lines.map((line, i) => {
@@ -241,11 +240,10 @@ function cancelHandler() {
   }
 
   return (<>
-            <MemeCatalog
+  {!meme &&  (<MemeCatalog
                 allMemeImgs={allMemeImgs}
                 setItem={setItem}
-            />
-
+            />)}
             <section>
             <hr className="solid"></hr>
             <h1  className="center">MEME GENERATOR SECTION</h1>
@@ -256,16 +254,16 @@ function cancelHandler() {
               method={method}
               id="meme-form"
               name="meme-form"
-              htmlFor="meme-form"
               onSubmit={handleSubmit}
+              action='/memes/new'
               > 
-                 {actionData && actionData.errors && (
+                 {/* {data && data.errors && (
                   <ul>
-                    {Object.values(actionData.errors).map((err) => (
+                    {Object.values(data.errors).map((err) => (
                       <li key={err}>{err}</li>
                     ))}
                   </ul>
-                )}
+                )} */}
                  <div className={`${classes['meme-input']}`}>
 
                   <ImgSettings
@@ -308,8 +306,8 @@ function cancelHandler() {
                                   id={"text-" + {index}}
                                   type="input"
                                   name={"text-" + {index}}
-                                  className={classes['margin-10'] +  " "  + (index !== 0) ? classes.lines : classes['line-0']}
-                                  placeholder={index === 0 ? "Top Text" : (index < 2 ? "Bottom Text" : `Text #${index+1}`)}
+                                  className={classes['margin-10'] +  " "  + classes.lines }
+                                  placeholder={index < 2 ? "Bottom Text" : `Text #${index+1}`}
                                   value={line.text}
                                   onChange={(event) => handleChange(event, index)}
                               />  
@@ -389,6 +387,7 @@ function cancelHandler() {
                         key={index}
                         unique={index}
                         line={line}
+                        meme={meme}
                         imgId={item.id}
                         boxCount={item.box_count}
                         info={picInfo}
@@ -414,43 +413,37 @@ function cancelHandler() {
 
 export default MemeForm;
 
-//export async function action({ request, params }) {
-export async function action(memeData, method) {
-
-  console.log("action function runs: ");
-
-  let url = 'http://localhost:8080/memes';
-
-  if (method === 'PATCH') {
-    const memeId = memeData.id;
-    url = 'http://localhost:8080/memes/' + memeId; 
+  export async function action({ params, method }) {
+    console.log("action function runs: ");
+    console.log(params);
+    console.log(method);
+  
+    let url = 'http://localhost:8080/memes';
+  
+    if (method === 'PATCH') {
+      const memeId = params.id;
+      url = 'http://localhost:8080/memes/' + memeId; 
+    }
+  
+    const token = getAuthToken();
+      const response = await fetch(url, {
+        method: method,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        },
+        body: JSON.stringify(params),
+      });
+    
+      if (response.status === 422) {
+        return response;
+      }
+    
+      if (!response.ok) {
+        throw json({ message: 'Could not save meme.' }, { status: 500 });
+      }
+      console.log("RESPONSE!!!!!")
+      console.log(response);
+  
+    return redirect('/memes');
   }
-
-  console.log(url);
-  console.log("method: " + method);
-  // console.log( "id: " + memeData.id);
-  console.log("memeData: ");
-  console.log(memeData);
-
-  const token = getAuthToken();
-    const response = await fetch(url, {
-      method: method,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
-      },
-      body: JSON.stringify(memeData),
-    });
-  
-    if (response.status === 422) {
-      return response;
-    }
-  
-    if (!response.ok) {
-      throw json({ message: 'Could not save meme.' }, { status: 500 });
-    }
-    console.log("RESPONSE!!!!!")
-    console.log(response);
-
-  return redirect('/memes');
-}
