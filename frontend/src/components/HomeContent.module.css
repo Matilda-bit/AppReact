@@ -1,0 +1,58 @@
+.gif {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+    margin: 20px auto;
+    display: block;
+  }
+  
+  .description {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.6;
+    margin: 10px 0;
+  }
+  
+  .link {
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  
+  .button {
+    display: inline-block;
+    margin: 15px 0;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  .coming-soon {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 20px 0 10px;
+  }
+  
+  .solid {
+    border: 1px solid #ccc;
+  }
+  
+  .list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .list li {
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
