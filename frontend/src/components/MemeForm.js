@@ -329,7 +329,7 @@ function cancelHandler() {
 
                     <div className={classes['meme-input-btn'] + " center"}>
                         <button 
-                        className={classes['button-39'] + " margin-10"} 
+                        className={classes['add-new-line'] + " margin-10"} 
                         type="button" onClick={addLine}> 
                           <img 
                           src={AddIcon} 
@@ -343,33 +343,34 @@ function cancelHandler() {
                         </button>
                     </div>
                     <hr className="solid"></hr>
-                    <div ></div>
 
-                    <button 
-                    className={classes['button-39'] + " margin-10"} 
-                    type="submit"
-                    style={{verticalAlign: 'middle'}} 
-                    disabled={isSubmitting}
-                    >
-                       {isSubmitting ? 'Saving...' : 'Save Meme'}
-                    </button>
+                    <div className={classes.buttons}>
+                      <div className={classes.left}>
+                        <button 
+                        className={classes['add-new-line']  + " " + classes.save} 
+                        type="submit"
+                        style={{verticalAlign: 'middle'}} 
+                        disabled={isSubmitting}
+                        >
+                          {isSubmitting ? 'Saving...' : 'Save Meme'}
+                        </button>
 
-                    <div className="center">
-                      <button 
-                      className={classes['download-btn']} 
-                      style={{verticalAlign: 'middle'}} 
-                      type="button" 
-                      onClick={handleDownload}
-                      >
-                        <span>Download</span>
-                      </button>
+                        <button 
+                        className={classes['download-btn']} 
+                        style={{verticalAlign: 'middle'}} 
+                        type="button" 
+                        onClick={handleDownload}
+                        >
+                          <span>Download</span>
+                        </button>  
+                      </div>                 
+                        <div className={classes.actions}>
+                          <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
+                            Cancel
+                          </button>
+                        </div>                       
                     </div>
-                </div>
-        <div className={classes.actions}>
-          <button type="button" onClick={cancelHandler} disabled={isSubmitting}>
-            Cancel
-          </button>
-        </div>
+                </div>       
         </Form>
 
         <div className={`${classes['display-meme'] + classes.form}`}>
