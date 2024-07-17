@@ -3,16 +3,16 @@ import Mydata from '../../util/MemesLineLink';
 
 import classes from './DraggableComponent.module.css';
 
-const DraggableComponent = ({unique, line, imgId, boxCount, info}) => {
+const DraggableComponent = ({unique, line, method, imgId, boxCount, info}) => {
     const dragElement = useRef(null);
     const color = line.color;
     let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
-
     useEffect(() => {
         if(unique){
             if(unique === 0){
-                dragElement.current.style.top =  "0px"; 
+                dragElement.current.style.top =  "1px";
+                dragElement.current.style.left = "1px"; 
             }else if(unique > 1){
                 dragElement.current.style.top = `calc(50% + ${unique*5}px)`; 
                 dragElement.current.style.left =`calc(50% + ${unique*5}px)`;
@@ -20,11 +20,21 @@ const DraggableComponent = ({unique, line, imgId, boxCount, info}) => {
         }
     }, []);
 
+
+    useEffect(() => {
+        dragElement.current.style.top = `${line.x}px)`; 
+        dragElement.current.style.left =`${line.y}px)`;
+    }, []);
+
     
     useEffect(() => {
         if(info){
+            if(method === 'patch' && line.x && line.y){ //update
+                dragElement.current.style.top =  line.y + "px"; 
+                dragElement.current.style.left = line.x + "px";
+            } else { //create
                 const { width: memeWidth, height: memeHeight } = info;
-                const maxTop = memeHeight - dragElement.current.clientHeight - 15;
+                const maxTop = memeHeight - dragElement.current.clientHeight - 50;
                 const maxLeft = memeWidth - dragElement.current.clientWidth - 15;
                 let newTop = dragElement.current.offsetTop - pos2;
                 let newLeft = dragElement.current.offsetLeft - pos1;
@@ -33,8 +43,14 @@ const DraggableComponent = ({unique, line, imgId, boxCount, info}) => {
                 dragElement.current.style.top = newTop + "px"; 
                 dragElement.current.style.left = newLeft + "px";
                 if(unique === 1){
-                    dragElement.current.style.top =  `${(memeHeight - 50)}px`; 
+                    dragElement.current.style.top =  `${maxTop}}px`; 
+                    dragElement.current.style.left = '1px';
                 }
+                if(unique === 0){
+                    dragElement.current.style.top =  `1px`; 
+                    dragElement.current.style.left = '1px';
+                }
+            }
         }
     }, [info,line]);
 
@@ -80,8 +96,6 @@ const DraggableComponent = ({unique, line, imgId, boxCount, info}) => {
         document.onmousemove = null;
     };
 
-//lineStyle
-//test
     return (
         <div ref={dragElement} 
             id={`meme-text-${unique}`}
