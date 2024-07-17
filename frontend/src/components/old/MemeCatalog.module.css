@@ -92,7 +92,7 @@
 
 .meme-catalog > .right{
     position: absolute;
-    top: 464px;
+    top: 479px;
     right: calc(10% - 90px);
     border-top-right-radius: 3px;
 }
@@ -155,7 +155,6 @@ transform: rotate(270deg);
 }
 
 .meme-images {
-
     display: flex;
     gap: 5px;
     padding: 5px 25px;
