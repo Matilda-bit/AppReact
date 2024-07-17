@@ -5,7 +5,6 @@ import classes from './MemeItem.module.css';
 
 function MemeItem({ meme }) {
   const submit = useSubmit();
-  console.log(meme);
 
   function startDeleteHandler() {
     const proceed = window.confirm('Are you sure?');
