@@ -157,7 +157,7 @@ button > img {
 } */
 
 
-
+/* 
 .random-meme-section {
     width: 90%;
     padding: 20px auto;
@@ -183,19 +183,19 @@ button > img {
         margin-top: 15px;
         margin-bottom: 10px;
     }
-  }
+  } */
 
 /* Random Meme Button */
-  .random-btn-box{
+  /* .random-btn-box{
     margin-top: 20px;
     margin-left: 20px;
     margin-right: 20px;
     align-items: center;
-  }
+  } */
 
 
 
-.random-button {
+/* .random-button {
     cursor: pointer;
     border: 2px solid #000;
     background: 
@@ -210,15 +210,15 @@ button > img {
     font-size: 23px;
     color: #fff;
     border-radius: 5px 25px; 
-}
-.random-button:hover {
-    border: 1px solid var(--color-primary-700);
+} */
+/* .random-button:hover {
+    border: 1px solid var(--color-primary-700); */
     /* -webkit-box-shadow: 0 0 10px var(--color-primary-900);
     box-shadow: 0 0 10px var(--color-primary-900); */
-}
+/* } */
 /* END Random Meme Button */
 
-.edit-area {
+/* .edit-area {
     display: flex;
     flex-direction: column-reverse;
     width: 100%;
@@ -238,8 +238,8 @@ button > img {
         width: 80% !important;
         margin: 20px auto;
     }
-}
-
+} */
+/* 
 .meme-input {
     display: flex;
     flex-direction: column;
@@ -251,7 +251,7 @@ button > img {
     width: 90% !important;
     flex-direction: initial;
     justify-content: center;
-} 
+}  */
 
 
 /* .meme-input-item { 
@@ -275,44 +275,6 @@ button > img {
 .font-comic {
     font-family: Comic Sans MS, Comic Sans, cursive !important;
 }
-
-/* .margin-10 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.pt-5 {
-    padding-top: 5px;
-} */
-/* .border-cst {
-    border-radius: 1px;
-    border-color: #555555;
-    border-style: double;
-} */
-/* 
-.meme-input-item > textarea, input{
-    width: 100%;
-    height: 28px;
-    min-height: 50px;
-    padding-left: 10px;
-    padding-top: 5px;
-    font-size: 16px;
-}
-
-div > textarea{
-    width: 100%;
-    height: 28px;
-    min-height: 50px;
-    padding-left: 10px;
-    padding-top: 5px;
-    font-size: 16px;
-}
-
-.btn-delete {
-    border: none;
-    cursor: pointer;
-    appearance: none;
-    background-color: inherit;
-} */
 
 .input-pretender {
     width: 90%;
@@ -346,47 +308,3 @@ div > textarea{
     margin-bottom: 10px;
 }
 
-/* CSS */
-/* delete */
-/* 
-.button-39 {
-    background-color: #00BFA6;
-    padding: 8px 10px;
-    color: #fff;
-    letter-spacing: 2px;
-    cursor: pointer;
-    border-radius: 10px;
-    border: 2px dashed #00BFA6;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    transition: .4s;
-   }
-
-   .button-39 span:last-child {
-    display: none;
-   }
-   
-   .button-39:hover {
-    transition: .4s;
-    border: 2px dashed #00BFA6;
-    background-color: #fff;
-   }
-   
-   .button-39:active {
-    background-color: #87dbd0;
-   }
-    */
-
-/* 
-.navbar {
-    height:100px;
-    background-color: #333;
-    color: whitesmoke;
-    margin-bottom: 15px;
-    text-align: center;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-} */
-  
