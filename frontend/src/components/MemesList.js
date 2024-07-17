@@ -7,6 +7,7 @@ import classes from './MemesList.module.css';
 function MemesList({memes}) {
   // const memes = useLoaderData();
   console.log("MemesList");
+  console.log(memes);
 
   if(memes) {
     return (
@@ -15,7 +16,7 @@ function MemesList({memes}) {
         <ul className={classes.list + " " +  classes['meme-catalog']}>
           {memes.map((meme,index) => (
             <li key={meme.id} className={classes.item}>
-              <Link to={`/memes/${meme.id}}`}>
+              <Link to={`/memes/${meme.id}`}>
                   <div id="meme-images" className={classes.content + " " + classes['meme-images']}>
                           <img
                               key={index}
