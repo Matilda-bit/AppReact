@@ -32,16 +32,6 @@ p {
         margin: 20px auto;
     }
 }
-
-.meme-box {
-    /* display: block; */
-}
-@media only screen and (max-width: 1000px) and (min-width: 367px) and (-webkit-min-device-pixel-ratio: 1)  {
-    .meme-box {    
-        width: auto;
-       
-    }
-  }
 .meme{
     position: relative;
     /* width: 100%; */

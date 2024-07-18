@@ -11,8 +11,8 @@ const initialState = {
         color: "color-white ",
         textAlign: 'text-align-center',
         fontSize: 10,
-        x: 0,
-        y: 0
+        x: 1,
+        y: 1
       },
       {
         title: "Bottom Text",
@@ -20,8 +20,8 @@ const initialState = {
         color: "color-white ",
         textAlign: 'text-align-center',
         fontSize: 10,
-        x: 0,
-        y: 0
+        x: 1,
+        y: 1,
       }
     ],
     hideSettings: true,

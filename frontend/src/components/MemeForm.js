@@ -107,8 +107,8 @@ function cancelHandler() {
                       textAlign: lines[0].textAlign,
                       color: lines[0].color,
                       fontSize: lines[0].fontSize,
-                      x: 0,
-                      y: 0
+                      x: 1,
+                      y: 1
                   };
               }
               return line;
@@ -275,7 +275,7 @@ function cancelHandler() {
 
                   {lines.map((line, index) => (
                       <div key={index}>
-                        <hr className="solid"></hr>
+                      <hr className="solid"></hr>
                       <div className={classes['meme-input-item']}>
                         <div className="title-line">
                           <label>Text {`#${index + 1}`}: </label>
@@ -392,6 +392,7 @@ function cancelHandler() {
                         imgId={item.id}
                         boxCount={item.box_count}
                         info={picInfo}
+                        method={method}
                     />
                 ))}
             </div>
@@ -400,12 +401,10 @@ function cancelHandler() {
             </div>
         </div>
       </div>   
-      <div className=" col-6 center row flex display">
+      <div className="center row flex display">
           <br/> 
           
-          <label > original size {item.width} x {item.height}</label>
-          <label > boxes {item.box_count} </label>
-          <label > id {item.id} </label>
+          <label > original size {item.width} x {item.height} | boxes {item.box_count} | id {item.id}</label>
       </div>
       </section>
     </>

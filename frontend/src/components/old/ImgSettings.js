@@ -38,8 +38,6 @@ const ImgSettings = ({flip, flipY, setFlip, setFlipY }) => {
                 </div>  
             </div>)
              }
-
-            <hr className="solid"></hr>
         </div>
         
     );

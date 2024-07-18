@@ -6,9 +6,8 @@ function NewMemePage() {
   console.log("NewMemePage...");
 
   return (
-  <>
     <MemeForm method="post" />
-  </>);
+  );
 }
 
 export default NewMemePage;
