@@ -20,8 +20,9 @@ This project aims to provide a fun and creative way for users to express themsel
 
 
 ## Please Support me!
-Boosty - https://boosty.to/meme-byte
-Patreon - https://www.patreon.com/memebyte
+- Boosty - https://boosty.to/meme-byte
 
-![Example Image](https://github.com/Matilda-bit/Meme-Generator-React/blob/master/src/assets/icons/screenshots/Screenshot%202024-04-16%20at%2021.47.47.png?raw=true)
+- Patreon - https://www.patreon.com/memebyte
+
+![Example Image](https://github.com/Matilda-bit/Meme-Generator-React/blob/master/fronted/src/assets/icons/screenshots/Screenshot%202024-04-16%20at%2021.47.47.png?raw=true)
 
