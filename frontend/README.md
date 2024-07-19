@@ -20,7 +20,7 @@ This project aims to provide a fun and creative way for users to express themsel
 
 
 ## Please Support me!
-- Boosty - https://boosty.to/meme-byte
+- !Boosty(https://boosty.to/meme-byte)
 
 - Patreon - https://www.patreon.com/memebyte
 
