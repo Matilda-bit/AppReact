@@ -12,25 +12,33 @@ function HomeContent() {
         alt="Funny GIF"
         className="gif"
       />
-      <p className="description">
-        Browse our amazing memes <Link to="/memes" className="link">Memes</Link> or create a <Link to="/memes/new" className="link">New One</Link>!
+      <p className={classes.description}>
+        Browse our amazing memes <Link to="/user-memes" className={classes.link}>memes</Link> or create a <Link to="/memes/new" className={classes.link}>new one</Link>!
+      <br/>A funny moment on the internet can make your day.
+      <br/>Why not share that joy with others?
+      <br/>With MemeByte’s free meme generator, you can easily transform memorable moments into viral memes.
+      <br/>Create your own unique brand of humor and brighten someone else's day in minutes!
+      <br/>
       </p>
-      <p className={classes.description}>A funny moment on the internet can make your day.</p>
-      <p className="description">Why not share that joy with others?</p>
-      <p className="description">With MemeByte’s free meme generator, you can easily transform memorable moments into viral memes.</p>
-      <p className="description">Create your own unique brand of humor and brighten someone else's day in minutes!</p>
-      <Link to="/memes/new" className="button">Create Meme</Link>
-      <p className="description">Browse our memes to laugh or get inspired and find a humorous muse to create your own meme!</p>
-      <Link to="/memes" className="button">Memes</Link>
-      <p className="coming-soon">Will be added soon:</p>
+      <Link to="/memes/new" className={classes.button}>Create Meme</Link>
+      <p className={classes.description}>Browse our memes to laugh or get inspired and find a humorous muse to create your own meme!</p>
+      <Link to="/memes" className={classes.button}>Memes</Link>
       <hr className="solid"></hr>
-      <ul className="list">
+      <p className={classes["coming-soon"]}>Will be added soon:</p>
+      <ul className={classes.list}>
         <li><strong>Advertising</strong>:</li>
-        <p className="description">- Banners and display advertising: Placing advertising banners on the site. You can use networks like Google AdSense.</p>
+        <p className={classes.updates}> - Banners and display advertising: 
+          <br/>Placing advertising banners on the site. 
+          <br/>We will can use networks like Google AdSense.
+        </p>
         <hr className="solid"></hr>
         <li><strong>Payments from users:</strong>:</li>
-        <p className="description">Donations: Placement of donation buttons through platforms like Patreon, Boosty, PayPal or Ko-fi. Donators can receive bonuses or recognition on the site.</p>
-        <p className="description">Sale of merch: Create an online store selling meme-related goods such as T-shirts, mugs and other souvenirs.</p>
+        <p className={classes.updates}> - Donations: 
+          <br/>Placement of donation buttons through platforms like: 
+          <br/> Patreon, Boosty, PayPal or Ko-fi. 
+          <br/>Donators can receive bonuses or recognition on the site.</p>
+        <p className={classes.updates}> - Sale of merch: 
+          <br/>Create an online store selling meme-related goods such as: T-shirts, mugs and other souvenirs.</p>
         <hr className="solid"></hr>
       </ul>
     </>
