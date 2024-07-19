@@ -18,13 +18,12 @@ This project is a web application built with React that allows users to create a
 
 This project aims to provide a fun and creative way for users to express themselves through memes, with a focus on simplicity and ease of use.
 
+![Example Image](https://github.com/Matilda-bit/Meme-Generator-React/blob/master/frontend/src/assets/icons/screenshots/Screenshot%202024-07-19%20at%2020.28.07.png)
 
 ## Please Support me!
 - [Boosty](https://boosty.to/meme-byte)
 
 - [Patreon](https://www.patreon.com/memebyte)
 
-![Example Image](https://github.com/Matilda-bit/Meme-Generator-React/blob/master/frontend/src/assets/icons/screenshots/Screenshot%202024-07-19%20at%2020.28.07.png)
-
-
+![Example Image](https://github.com/Matilda-bit/Meme-Generator-React/blob/master/frontend/src/assets/icons/screenshots/Screenshot%202024-07-19%20at%2019.30.03.png)
 
