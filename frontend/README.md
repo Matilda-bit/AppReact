@@ -10,11 +10,18 @@ This project is a web application built with React that allows users to create a
 
 ## Technologies Used
 - React
+  - Hooks
+  - Redux   
 - JavaScript (ES6+)
 - HTML/CSS
 - Various libraries for image manipulation and text rendering
 
 This project aims to provide a fun and creative way for users to express themselves through memes, with a focus on simplicity and ease of use.
+
+
+## Please Support me!
+Boosty - https://boosty.to/meme-byte
+Patreon - https://www.patreon.com/memebyte
 
 ![Example Image](https://github.com/Matilda-bit/Meme-Generator-React/blob/master/src/assets/icons/screenshots/Screenshot%202024-04-16%20at%2021.47.47.png?raw=true)
 
