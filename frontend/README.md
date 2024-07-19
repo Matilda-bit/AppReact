@@ -24,8 +24,7 @@ This project aims to provide a fun and creative way for users to express themsel
 
 - [Patreon](https://www.patreon.com/memebyte)
 
-![Example Image](https://github.com/Matilda-bit/Meme-Generator-React/blob/master/frontend/src/assets/icons/screenshots/Screenshot%202024-04-16%20at%2021.47.47.png?raw=true)
+![Example Image](https://github.com/Matilda-bit/Meme-Generator-React/blob/master/frontend/src/assets/icons/screenshots/Screenshot%202024-07-19%20at%2020.28.07.png)
 
 
-![Test Video]([https://github.com/Matilda-bit/Meme-Generator-React/blob/master/frontend/src/assets/icons/screenshots/Screenshot%202024-04-16%20at%2021.47.47.png?raw=true](https://github.com/Matilda-bit/Meme-Generator-React/blob/master/frontend/src/assets/icons/screenshots/Meme%20Generator%20-%2019%20July%202024%20(2).mp4))
 
