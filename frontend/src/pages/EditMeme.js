@@ -5,8 +5,7 @@ import MemeForm from '../components/MemeForm';
 
 function EditMemePage() {
   const data = useRouteLoaderData('meme-detail');
-
-  return <MemeForm method="patch" meme={data.meme} />;
+  return <MemeForm id={data.meme.id} method="patch" meme={data.meme} />;
 }
 
 export default EditMemePage;
