@@ -14,9 +14,11 @@ const ImgSettings = ({flip, flipY, setFlip, setFlipY }) => {
 
         <div>
             <div className={`title-line row hide-settings-img`}>
-                <fieldset className={classes['font-size-option'] + " " + classes['hide-settings-img'] + " icon-invert cursor-pointer"} onClick={() => setHideSettingsImg(!hideSetthingsImg)}>
+                <fieldset 
+                className={`${classes['font-size-option']} ${classes['hide-settings-img']} icon-invert cursor-pointer`}
+                onClick={() => setHideSettingsImg(!hideSetthingsImg)}>
                 <label >Image Settings</label>
-                    <img src={!hideSetthingsImg ? ArrowDown : ArrowUp} alt="Font Size" width="15" height="15" />
+                    <img src={!hideSetthingsImg ? ArrowDown : ArrowUp} alt="Toggle Settings" width="15" height="15" />
                 </fieldset>
             </div>
 
@@ -27,11 +29,17 @@ const ImgSettings = ({flip, flipY, setFlip, setFlipY }) => {
                     <label>Flip</label>
                     <div className={`row jc-center ${classes['margin-10']} `}>
                     
-                    <fieldset className={`icon-invert ${classes['flip-option']} ${classes['margin-lr-5']}`} onClick={() => setFlip()}>
+                    <fieldset 
+                        className={`icon-invert ${classes['flip-option']} ${classes['margin-lr-5']}`} 
+                        onClick={() => setFlip()}
+                        >
                         <img src={FlipIcon} alt="flip" width="30" height="25" />
                     </fieldset>
                     
-                    <fieldset className={` icon-invert ${classes['flip-option']} ${classes['margin-lr-5']} ${classes.rotate}`} onClick={() => setFlipY()}>
+                    <fieldset 
+                        className={` icon-invert ${classes['flip-option']} ${classes['margin-lr-5']} ${classes.rotate}`} 
+                        onClick={() => setFlipY()}
+                        >
                         <img src={FlipIcon} alt="flipY" width="30" height="25" />
                     </fieldset>
                     </div>
