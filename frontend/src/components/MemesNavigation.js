@@ -25,6 +25,7 @@ function MemesNavigation() {
             <li>
               <NavLink
                 to="/memes/new"
+                //to={{pathname: "/memes/new", state:["a"]}} // test
                 className={({ isActive }) =>
                   isActive ? classes.active : undefined
                 }

@@ -92,7 +92,7 @@
 
 .meme-catalog > .right{
     position: absolute;
-    top: 479px;
+    top: 449px;
     right: calc(10% - 90px);
     border-top-right-radius: 3px;
 }

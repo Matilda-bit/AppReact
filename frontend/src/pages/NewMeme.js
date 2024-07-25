@@ -4,6 +4,7 @@ import MemeForm from '../components/MemeForm';
 
 function NewMemePage() {
   console.log("NewMemePage...");
+  //mb in this level I can call dispatch and send it to the MemeForm
 
   return (
     <MemeForm method="post" />

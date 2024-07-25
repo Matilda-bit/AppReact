@@ -3,7 +3,6 @@ import {
   Form,
   useNavigate,
   useNavigation,
-  useActionData,
   json,
   redirect,
 } from 'react-router-dom';
@@ -20,10 +19,23 @@ import MemeCatalog from "./old/MemeCatalog";
 import DeleteIcon from './../assets/icons/btn/garbage.png';
 import AddIcon from './../assets/icons/btn/add.png';
 
+import * as memeActions from '../store/actions/meme';
+
+
 import { getAuthToken } from '../util/auth';
 import classes from './MemeForm.module.css';
 
-function MemeForm({ method, meme }) {
+/**
+ * This MemeForm component function used for create and edit meme
+ * 
+ * @param {} param0 
+ * @returns 
+ */
+function MemeForm({id, method, meme }) {
+  const dispatch = useDispatch();
+  const state1 = useSelector(state => state);
+  // console.log("MemeForm...");
+  // console.log(state1);
   
   // const data = useActionData();
   const navigate = useNavigate();
@@ -40,9 +52,7 @@ function MemeForm({ method, meme }) {
   // const [aiRequest, setAiRequest] = useState(false);
   var memeRef = useRef(null);
 
- 
   const [allMemeImgs, setAllMemeImgs] = useState([]);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
@@ -53,26 +63,11 @@ function MemeForm({ method, meme }) {
         });
 }, []);
 
-  //ACTIONS
-  const setLines = (newLines) => {
-    dispatch({ type: 'SET_LINES', payload: newLines });
-};
-
-const setHideSettings = (hide) => {
-    dispatch({ type: 'SET_HIDE_SETTINGS', payload: hide });
-};
-
-const setItem = (newItem) => {
-    dispatch({ type: 'SET_ITEM', payload: newItem });
-};
-
-const setFlip = (flip) => {
-    dispatch({ type: 'FLIP_IMG', payload: flip });
-};
-const setFlipY = (flip) => {
-  dispatch({ type: 'FLIP_Y_IMG', payload: flip });
-};
-//FLIP_IMG_X
+// useEffect(() => {
+//   if(method === "post") {
+//     dispatch({type: ''});
+//   }
+// }, [method, id]);
 
     //re-execute every time when the item will changed
   useEffect(() => {
@@ -93,7 +88,7 @@ function cancelHandler() {
       }
       const newLines = [...lines];
       newLines[index].text = value;
-      setLines(newLines);
+      dispatch(memeActions.setLines(newLines));
   };
 
   //checkboxChange
@@ -107,44 +102,57 @@ function cancelHandler() {
                       textAlign: lines[0].textAlign,
                       color: lines[0].color,
                       fontSize: lines[0].fontSize,
-                      x: 1,
-                      y: 1
+                      x: line.x,
+                      y: line.y,
                   };
               }
               return line;
           });
-          setLines(updateSettings);  
-          setHideSettings(!hideSettings);
+          dispatch(memeActions.setLines(updateSettings));  
+          dispatch(memeActions.setHideSettings(!hideSettings));
       }
   };
 
-  function handleDownload(event) {
-    event.preventDefault();
+function html2Canvas() {
     const memeBox = document.getElementById('meme-box');
+    return html2canvas(memeBox, { useCORS: true }).then(canvas => {
+        // Convert the canvas to a data URL and return it
+        return canvas.toDataURL();
+    });
+}
 
-    // Use html2canvas to render the meme-box to a canvas
-    html2canvas(memeBox, { useCORS: true }).then(canvas => {
-        // Convert the canvas to a data URL
-        const dataUrl = canvas.toDataURL();
+function html2Canvas2() {
+  const memeBox = document.getElementById('meme-box');
+  return html2canvas(memeBox, { useCORS: true }).then(canvas => {
+      return new Promise((resolve) => {
+          canvas.toBlob(blob => {
+              resolve(blob);
+          }, 'image/png');
+      });
+  });
+}
 
-        // Optionally, create a link element to download the image
+function handleDownload(event) {
+    event.preventDefault();
+    html2Canvas().then(dataUrl => {
+        // Create a link element to download the image
         const a = document.createElement('a');
         a.setAttribute('download', 'meme.png');
         a.setAttribute('href', dataUrl);
         a.click();
     });
-  }
+}
 
   async function handleSubmit(event) {
   event.preventDefault();
   const dataToSubmit = await generateData();
   await action({params: dataToSubmit, method: method.toUpperCase()});
+  dispatch({type: ''});
   navigate("/memes/");
-
   }
 
-  const generateData = () => {
-    const memeBox = document.getElementById('meme-box');
+  const generateData = async () => {
+    //const memeBox = document.getElementById('meme-box');
     const  updatedLines = lines.map((line, index) => {
       const memeTextElement = document.getElementById(`meme-text-${index}`);
       if (memeTextElement) {
@@ -157,12 +165,18 @@ function cancelHandler() {
       }
       return line;
     });
+
+    const img = await html2Canvas2();
+    const url = URL.createObjectURL(img);
+      console.log(url);
+
       const data = {
-        //id
+        id,
         lines: updatedLines,
         item: item,
         flip: flip,
         flipY: flipY,
+        img:url 
         // memeBox: memeBox
       };
       return data;
@@ -175,28 +189,20 @@ function cancelHandler() {
               }
               return line;
           });
-      setLines(updatedData);
+          dispatch(memeActions.setLines(updatedData));
   };
 
 
   useEffect(() => {
-    if(meme){
-      //update the state
-      setLines(meme.lines);
-      setItem(meme.item);
-      setFlip(meme.flip);
-      setFlipY(meme.flipY);
+    if(id && method === "patch"){
+      dispatch(memeActions.setMeme(meme));
     }
     setColor(0,'color-white');
-  }, []);
+  }, [id, method]);
 
   useEffect(() => {
-    if(meme){
-      //update the state
-      setLines(meme.lines);
-      setItem(meme.item);
-      setFlip(meme.flip);
-      setFlipY(meme.flipY);
+    if(id && method === "patch"){
+      dispatch(memeActions.setMeme(meme));
     }
   }, [meme]);
 
@@ -208,7 +214,7 @@ function cancelHandler() {
               }
               return line;
           });
-      setLines(updatedLines);
+          dispatch(memeActions.setLines(updatedLines));
   };
 
   function setFontSize(index, operation) {
@@ -219,7 +225,7 @@ function cancelHandler() {
                               return line;
       });
 
-      setLines(newLines);
+      dispatch(memeActions.setLines(newLines));
   };
 
   function addLine() {
@@ -229,20 +235,20 @@ function cancelHandler() {
           textAlign: hideSettings ? lines[0].textAlign : 'text-align-center',
           fontSize: hideSettings ? lines[0].fontSize : 10
       };
-      setLines([...lines, newLine]);
+      dispatch(memeActions.setLines([...lines, newLine]));
   };
 
   function deleteLine(index) {
       if (lines.length > 1) {
           const newLines = lines.filter((line, i) => i !== index);
-          setLines(newLines);
+          dispatch(memeActions.setLines(newLines));
       }
   }
 
   return (<>
   {!meme &&  (<MemeCatalog
                 allMemeImgs={allMemeImgs}
-                setItem={setItem}
+                setItem={dispatch(memeActions.setItem)}
             />)}
             <section>
             <hr className="solid"></hr>
@@ -252,8 +258,6 @@ function cancelHandler() {
               <Form 
               className={`${classes['meme-form']} ${classes.form}`} 
               method={method}
-              id="meme-form"
-              name="meme-form"
               onSubmit={handleSubmit}
               action='/memes/new'
               > 
@@ -269,8 +273,8 @@ function cancelHandler() {
                   <ImgSettings
                       flip={flip}
                       flipY={flipY}
-                      setFlip={() => setFlip(!flip)}
-                      setFlipY={() => setFlipY(!flipY)}
+                      setFlip={() => dispatch(memeActions.setFlip(!flip))}
+                      setFlipY={() => dispatch(memeActions.setFlipY(!flipY))}
                   />
 
                   {lines.map((line, index) => (
@@ -385,6 +389,7 @@ function cancelHandler() {
                 />
                 {lines.map((line, index) => (
                     <DraggableComponent
+                    //need to update the lines with x, y
                         key={index}
                         unique={index}
                         line={line}
@@ -403,7 +408,6 @@ function cancelHandler() {
       </div>   
       <div className="center row flex display">
           <br/> 
-          
           <label > original size {item.width} x {item.height} | boxes {item.box_count} | id {item.id}</label>
       </div>
       </section>
@@ -417,6 +421,8 @@ export default MemeForm;
     console.log("action function runs: ");
     console.log(params);
     console.log(method);
+
+    // const formData = new FormData();
   
     let url = 'http://localhost:8080/memes';
   
