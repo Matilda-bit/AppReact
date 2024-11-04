@@ -33,9 +33,6 @@ import classes from './MemeForm.module.css';
  */
 function MemeForm({id, method, meme }) {
   const dispatch = useDispatch();
-  const state1 = useSelector(state => state);
-  // console.log("MemeForm...");
-  // console.log(state1);
   
   // const data = useActionData();
   const navigate = useNavigate();
@@ -61,13 +58,8 @@ function MemeForm({id, method, meme }) {
             const { memes } = response.data;
             setAllMemeImgs(memes);
         });
+    
 }, []);
-
-// useEffect(() => {
-//   if(method === "post") {
-//     dispatch({type: ''});
-//   }
-// }, [method, id]);
 
     //re-execute every time when the item will changed
   useEffect(() => {
@@ -76,19 +68,19 @@ function MemeForm({id, method, meme }) {
       setPicInfo(() => memeRef.current.getBoundingClientRect());
   }, [item]);
 
-function cancelHandler() {
-  navigate('..');
-}
+  function cancelHandler() {
+    navigate('..');
+  }
 
-    //change the line set limit height by the meme height
-    function handleChange(event, index) {
-      const { value } = event.target;
-      if(value && hideSettings){
-        setColor(0, lines[0].color);
-      }
-      const newLines = [...lines];
-      newLines[index].text = value;
-      dispatch(memeActions.setLines(newLines));
+  //change the line set limit height by the meme height
+  function handleChange(event, index) {
+    const { value } = event.target;
+    if(value && hideSettings){
+      setColor(0, lines[0].color);
+    }
+    const newLines = [...lines];
+    newLines[index].text = value;
+    dispatch(memeActions.setLines(newLines));
   };
 
   //checkboxChange
@@ -143,43 +135,43 @@ function handleDownload(event) {
     });
 }
 
-  async function handleSubmit(event) {
+async function handleSubmit(event) {
   event.preventDefault();
   const dataToSubmit = await generateData();
   await action({params: dataToSubmit, method: method.toUpperCase()});
   dispatch({type: ''});
   navigate("/memes/");
-  }
+}
 
-  const generateData = async () => {
-    //const memeBox = document.getElementById('meme-box');
-    const  updatedLines = lines.map((line, index) => {
-      const memeTextElement = document.getElementById(`meme-text-${index}`);
-      if (memeTextElement) {
-        const { offsetLeft: x, offsetTop: y } = memeTextElement;
-        return {
-          ...line,
-          x,
-          y,
-        };
-      }
-      return line;
-    });
-
-    const img = await html2Canvas2();
-    const url = URL.createObjectURL(img);
-      console.log(url);
-
-      const data = {
-        id,
-        lines: updatedLines,
-        item: item,
-        flip: flip,
-        flipY: flipY,
-        img:url 
-        // memeBox: memeBox
+const generateData = async () => {
+  //const memeBox = document.getElementById('meme-box');
+  const  updatedLines = lines.map((line, index) => {
+    const memeTextElement = document.getElementById(`meme-text-${index}`);
+    if (memeTextElement) {
+      const { offsetLeft: x, offsetTop: y } = memeTextElement;
+      return {
+        ...line,
+        x,
+        y,
       };
-      return data;
+    }
+    return line;
+  });
+
+  const img = await html2Canvas2();
+  const url = URL.createObjectURL(img);
+  console.log(url);
+
+  const data = {
+    id,
+    lines: updatedLines,
+    item: item,
+    flip: flip,
+    flipY: flipY,
+    img:url 
+    // memeBox: memeBox
+  };
+  return data;
   };
 
   function setColor(index, color) {
@@ -198,12 +190,14 @@ function handleDownload(event) {
       dispatch(memeActions.setMeme(meme));
     }
     setColor(0,'color-white');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, method]);
 
   useEffect(() => {
     if(id && method === "patch"){
       dispatch(memeActions.setMeme(meme));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [meme]);
 
   

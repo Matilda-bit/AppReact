@@ -18,12 +18,14 @@ const DraggableComponent = ({unique, line, method, imgId, boxCount, info}) => {
                 dragElement.current.style.left =`calc(50% + ${unique*5}px)`;
             }
         }
-    }, []);
+    }, [unique]);
 
 
     useEffect(() => {
         dragElement.current.style.top = `${line.x}px)`; 
         dragElement.current.style.left =`${line.y}px)`;
+        //?
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     
@@ -52,6 +54,7 @@ const DraggableComponent = ({unique, line, method, imgId, boxCount, info}) => {
                 }
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [info,line]);
 
  

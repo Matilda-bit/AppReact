@@ -102,9 +102,6 @@ const router = createBrowserRouter([
   ]);
   
   function App() {
-
-    console.log("test");
-    console.log(router);
     return <RouterProvider router={router} />;
   }
   

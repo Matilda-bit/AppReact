@@ -21,3 +21,25 @@
   .list a.active {
     color: var(--color-primary-800);
   }
+
+  
+/* ---------------------------MEDIA QUERYs--------------------------------- */
+  @media (min-width: 1251px) and (max-width: 3000px) {
+
+  }
+
+  @media (min-width: 801px) and (max-width: 1250px) {
+
+  }
+
+  @media screen and (max-width: 800px) {
+
+  }
+
+  @media screen and (min-width: 500px) { 
+
+  }
+
+  @media screen and (max-width: 500px) {
+
+  }

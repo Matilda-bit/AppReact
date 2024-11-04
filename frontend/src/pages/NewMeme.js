@@ -3,7 +3,7 @@ import MemeForm from '../components/MemeForm';
 // import AvailableMemeTemplates from '../components/AvailableMemeTemplates';
 
 function NewMemePage() {
-  console.log("NewMemePage...");
+  console.log("NewMemePage rendered...");
   //mb in this level I can call dispatch and send it to the MemeForm
 
   return (

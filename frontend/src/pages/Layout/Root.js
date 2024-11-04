@@ -9,7 +9,6 @@ import { getTokenDuration } from '../../util/auth';
 function RootLayout() {
   const token = useLoaderData();
   const submit = useSubmit();
-  // const navigation = useNavigation();
   useEffect(() => {
     if (!token) {
       return;
@@ -21,7 +20,6 @@ function RootLayout() {
     }
 
     const tokenDuration = getTokenDuration();
-    console.log(tokenDuration);
 
     setTimeout(() => {
       submit(null, { action: '/logout', method: 'post' });

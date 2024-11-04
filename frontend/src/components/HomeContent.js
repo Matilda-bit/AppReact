@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 // import './HomePage.css'; // Import the CSS file
 
 function HomeContent() {
+  console.log('Welcome to the Home page \nHomeContent rendered...')
   return (
     <>
       <img
