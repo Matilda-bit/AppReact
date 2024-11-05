@@ -18,7 +18,7 @@ const ImgSettings = ({flip, flipY, setFlip, setFlipY }) => {
                 className={`${classes['font-size-option']} ${classes['hide-settings-img']} icon-invert cursor-pointer`}
                 onClick={() => setHideSettingsImg(!hideSetthingsImg)}>
                 <label >Image Settings</label>
-                    <img src={!hideSetthingsImg ? ArrowDown : ArrowUp} alt="Toggle Settings" width="15" height="15" />
+                    <img className={classes['hide-set-img']} src={!hideSetthingsImg ? ArrowDown : ArrowUp} alt="Toggle Settings" width="15" height="15" />
                 </fieldset>
             </div>
 

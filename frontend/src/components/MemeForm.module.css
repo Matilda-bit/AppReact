@@ -77,7 +77,7 @@
 .meme-input {
   display: flex;
   flex-direction: column;
-  margin-right: 15px;
+  margin: 15px;
 } 
 .meme-input-item { 
   display: flex;
@@ -129,27 +129,35 @@
   cursor: pointer;
   appearance: none;
   background-color: inherit;
+  height: 4.5rem;
+  width: 4.5rem;
 }
 
 .meme-input-btn {
   display: flex;
-  width: 90% !important;
-  flex-direction: initial;
+  flex-direction: row;
   justify-content: center;
   cursor: pointer;
+  margin-bottom: 10px;
 } 
 
 .meme-input-btn > button {
-  position: relative;
-  width: 200px;
+  display: flex;
+  flex-direction: row;
+  width: 220px;
   height: 50px;
-  letter-spacing: 1.5px;
-  margin-bottom: 10px;
+  letter-spacing: 0.1rem;
+}
+
+.meme-input-btn > button img {
+  width: 2.5rem;
+  height: 2.5rem;
+  align-self: center;
 }
 
 .add-new-line {
   background-color: #2e9f90;
-  padding: 0.7rem 1.5rem;
+  padding: 0.7rem 1rem;
   color: #fff;
   letter-spacing: 2px;
   cursor: pointer;
@@ -158,6 +166,7 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
   transition: .4s;
  }
+
  .add-new-line.save {
   margin-right: 1rem;
   border: none !important;
@@ -355,4 +364,27 @@ box-shadow: 0px 14px 56px -11px #1875FF;
 .meme-catalog > .left{
   position: absolute !important;
   border-top-left-radius: 3px;
+}
+
+
+ /* ---------------------------MEDIA QUERYs--------------------------------- */
+@media (min-width: 1251px) and (max-width: 3000px) {
+
+}
+
+@media (min-width: 801px) and (max-width: 1250px) {
+
+}
+
+@media (min-width: 501px) and (max-width: 800px) {
+
+}
+
+@media (max-width: 500px) {
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

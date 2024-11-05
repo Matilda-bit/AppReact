@@ -1,3 +1,14 @@
+.settings {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .settings img{
+   height: 2rem;
+   width: 2rem;
+  }
+
 /* color boxes    */
 .color-options {
     display: flex;
@@ -193,3 +204,21 @@ p {
     padding: 0 2px;
     border: 1px dashed white; 
 } */
+
+
+/* ---------------------------MEDIA QUERYs--------------------------------- */
+@media (min-width: 1251px) and (max-width: 3000px) {
+
+}
+
+@media (min-width: 801px) and (max-width: 1250px) {
+
+}
+
+@media (min-width: 501px) and (max-width: 800px) {
+
+}
+
+@media (max-width: 500px) {
+
+}

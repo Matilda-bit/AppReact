@@ -1,5 +1,5 @@
 .staticHeader{
-    height: 110px;
+    height: 150px;
     display: flex;
     align-items: center;
     background: #313131;
@@ -8,7 +8,19 @@
     border-bottom: 7px solid #313131;
 }
 
+.staticHeader img {
+    height: 100%;
+    margin: 0 1%;
+    padding-bottom: 5px;
+    width: auto;
+}
+
 .staticHeader > p {
+    font-family: Impact, sans-serif;
+    color: whitesmoke;
+    font-size:50px;
+    margin-left: 60px;
+
     text-shadow:
     2px 2px 0 #000,
     -2px -2px 0 #000,
@@ -21,15 +33,35 @@
     2px 2px 5px #000;
 }
 
-.staticHeader > img {
-    height: 100%;
-    margin-left: 1%;
-    padding-bottom: 5px;
+@media (min-width: 1251px) and (max-width: 3000px) {
+
 }
 
-.staticHeader > p {
-    font-family: Impact, sans-serif;
-    color: whitesmoke;
-    font-size:50px;
-    margin-left: 60px;
+@media (min-width: 801px) and (max-width: 1250px) {
+
+}
+
+@media screen and (max-width: 800px) {
+
+}
+
+@media screen and (min-width: 500px) { 
+
+}
+
+@media screen and (max-width: 500px) {
+    .staticHeader{
+        height: 155px;
+        padding-top: 10px;
+    }
+
+    .staticHeader > p {
+    font-size:40px;
+    margin-left: 0px;
+    }
+
+    .staticHeader > img {
+        margin-left: 3px;
+        margin-right: 3px;
+    }
 }

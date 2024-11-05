@@ -13,37 +13,40 @@
 }
 
 .settings-img-items {
-    margin: 10px;
-    justify-content: center;
+  margin: 10px;
+  justify-content: center;
 }
 
 .flip-option {
-    margin-bottom: 5px;
-    padding-left: 2px;
-    cursor: pointer;
-    flex-direction: column;
-    width: 30%;
+  margin-bottom: 5px;
+  padding-left: 2px;
+  cursor: pointer;
+  flex-direction: column;
+  width: 4rem;
+}
+fieldset .hide-set-img {
+  max-width: 25px !important;
+  max-height: 25px !important;
+}
+.rotate  > img{
+  transform: rotate(270deg);
 }
 
-.rotate  > img{
-    transform: rotate(270deg);
-  }
+.margin-10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
-  .margin-10 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
+.jc-center {
+  justify-content: space-around;
+}
 
-  .jc-center {
-    justify-content: space-around;
-  }
+.margin-lr-5 {
+  margin-left: 5px;
+  margin-right: 5px;
+}
 
-  .margin-lr-5 {
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-
-  .hide-settings-img {
-    display:flex;
-    justify-content: flex-start;
-  }
+.hide-settings-img {
+  display:flex;
+  justify-content: flex-start;
+}

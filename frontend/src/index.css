@@ -44,7 +44,7 @@
 
 body {
   margin: 0;
-  background-color: #242424;
+  background-color: #1a191a;
 }
 hr {
   border-top: 1px solid var(--color-primary-200); 
@@ -79,11 +79,11 @@ label {
   font-weight: bold;
 }
 
-.settings {
+/* .settings {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-}
+} */
 
 .icon-invert {
   filter: brightness(0%) invert(100%);

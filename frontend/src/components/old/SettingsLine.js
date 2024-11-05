@@ -18,7 +18,7 @@ const SettingsLine = ({index, line, template, setColor, setTextAlign, setFontSiz
 
 
     return (
-        <div className="settings">
+        <div className={classes.settings}>
             <div className="">
                 <label>Color</label>
                 <div className={classes['color-options']}>

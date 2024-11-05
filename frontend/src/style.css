@@ -154,13 +154,4 @@ button > img {
     width: 95%;
 }
 
-.meme-input-btn > button {
-    position: relative;
-    width: 200px;
-    height: 40px;
-    letter-spacing: 1.5px;
-    color: black;
-    background: whitesmoke;
-    margin-bottom: 10px;
-}
 

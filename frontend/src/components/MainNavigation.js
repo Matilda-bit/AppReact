@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, NavLink, useRouteLoaderData } from 'react-router-dom';
 
 import classes from './MainNavigation.module.css';
-import NewsletterSignup from './NewsletterSignup';
+// import NewsletterSignup from './NewsletterSignup';
 
 import Header from "./old/Header";
 
@@ -79,7 +79,7 @@ function MainNavigation() {
           )}
         </ul>
       </nav>
-      <NewsletterSignup />
+      {/* <NewsletterSignup /> */}
     </header>
     </>
   );

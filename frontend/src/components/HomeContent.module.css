@@ -1,7 +1,6 @@
 
-@import url('https://fonts.cdnfonts.com/css/new-walt-disney-font');
-
-                
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@400;600&display=swap');
+               
 
 .gif {
     width: 100%;
@@ -10,71 +9,80 @@
     margin: 20px auto;
     display: block;
   }
-  
-  .description {
-    font-size: 1.9em;
-    color: #d5d5d5;
-    line-height: 1.6;
-    margin: 10px 0;
-    font-family: 'New Walt Disney Font', sans-serif;
-                                                
-  }
 
-  .updates {
-    font-size: 1.1em;
-    color: #d5d5d5;
-    line-height: 1.6;
-    margin: 10px 0;
-    font-family: "Lucida Console", "Courier New", monospace; 
-    font-weight: bold;                                            
-  }
+p {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+p, a, li {
+  font-family: 'Poppins', sans-serif;
+}
+
+img {
+  width: 100%;           /* Ensures the image scales down to fit the container */
+  height: auto;          /* Maintains the aspect ratio */
+  max-width: 750px;      /* Limits the image width to prevent it from expanding too much on larger screens */
+  display: block;        /* Avoids any inline spacing issues */
+  margin: 0 auto;        /* Centers the image horizontally */
+  padding: 5px;
+}
+
+.updates {
+  font-size: 1.1em;
+  color: #d5d5d5;
+  line-height: 1.6;
+  margin: 0 auto;
+  font-family: "Lucida Console", "Courier New", monospace; 
+  font-weight: bold;                                            
+}
 
 
-  
-  .link {
-    color: #81bcfa;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  .link:hover {
-    text-decoration: underline;
-  }
-  
-  .button {
-    display: inline-block;
-    margin: 15px 0;
-    padding: 10px 20px;
-    background-color: #007BFF;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-  
-  .button:hover {
-    background-color: #0056b3;
-  }
-  
-  .coming-soon {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin: 20px 0 10px;
-  }
-  
-  .solid {
-    border: 1px solid #ccc;
-  }
-  
-  .list {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .list li {
-    font-weight: bold;
-    margin: 10px 0;
-    font-family: "Lucida Console", "Courier New", monospace; 
-  }
+
+.link {
+  color: #81bcfa;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.button {
+  display: inline-block;
+  margin: 15px 0;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.coming-soon {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0 auto;
+}
+
+.solid {
+  border: 1px solid #ccc;
+}
+
+.list {
+  list-style-type: none;
+}
+
+.list li {
+  font-weight: bold;
+  margin: 10px 0;
+  font-family: "Lucida Console", "Courier New", monospace; 
+}
   
 
 /* ---------------------------MEDIA QUERYs--------------------------------- */
@@ -95,8 +103,11 @@
 }
 
 @media screen and (max-width: 500px) {
+  p {
+    padding: 10px 20px;
+  }
 
- img {
-  max-width: 360px;
-}
+  img {
+      max-width: 360px;
+    }
 }

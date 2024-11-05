@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from "react";
-// import { useDispatch } from 'react-redux';
-import ScrollSide from "./ScrollSide";
+// import ScrollSide from "./ScrollSide";
 import BtnIcon from '../../assets/icons/btn/pokeball.png';
 import classes from './MemeCatalog.module.css';
 
@@ -82,10 +81,10 @@ function MemeCatalog({ allMemeImgs, setItem }) {
 
             <div className={`${classes['random-meme-section']} `}>
                 <div className={` ${classes['meme-catalog']} ${classes['scroll']} `} ref={scrollRef}>
-                    <ScrollSide
+                    {/* <ScrollSide
                         ctsStyle={` ${classes['scroll-btn']} ${classes.left} `}
                         alt="Left Scroll"
-                        cstFunc={() => scroll(-10)} />
+                        cstFunc={() => scroll(-10)} /> */}
 
                     <div >
                         <div id="meme-images" className={classes['meme-images']}>
@@ -108,18 +107,18 @@ function MemeCatalog({ allMemeImgs, setItem }) {
                             ))}
                         </div>
                     </div>
-                    <ScrollSide
+                    {/* <ScrollSide
                         ctsStyle={` ${classes['scroll-btn']} ${classes.right} `}
                         alt="Right Scroll"
-                        cstFunc={() => { scroll(10) }} />
+                        cstFunc={() => { scroll(10) }} /> */}
                 </div>
             </div>
 
             <div className={`${classes['random-btn-box']} center`}>
                 <button
                     className={classes['random-button']} onClick={handleSubmit}>
-                    <img draggable="false" src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
-                    RANDOM MEME IMG
+                    <img  className={classes.button} draggable="false" src={BtnIcon} alt="buttonpng" border="0" width={35} height={35} />
+                    RANDOM MEME
                 </button>
             </div>
 

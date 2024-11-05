@@ -2,11 +2,10 @@
 /* Random meme and catalog section */
 
 .random-meme-section {
-    width: 90%;
+    width: 100%;
     padding: 20px auto;
     height: 170px;
-    margin-left: 90px;
-    margin-right: 90px;
+    margin: 0 auto;
 }
 
 @media only screen and (max-width: 1000px) and (-webkit-min-device-pixel-ratio: 1) {
@@ -51,6 +50,8 @@
   } */
 
 .random-button {
+    display: flex;
+    margin: 0 auto;
     cursor: pointer;
     border: 2px solid #000;
     background: 
@@ -65,7 +66,21 @@
     font-size: 23px;
     color: #fff;
     border-radius: 5px 25px; 
+    justify-content: center;
+    font-weight: bold;
+    align-items: center;
 }
+
+.random-button img {
+    max-width: 35px;
+    max-height: 35px;
+    margin: 5px;
+}
+
+.random-button > #text {
+   padding-top: 5px;
+}
+
 .random-button:hover {
     border: 1px solid var(--color-primary-700);
     /* -webkit-box-shadow: 0 0 10px var(--color-primary-900);
@@ -75,16 +90,16 @@
 
 /* Memes Catalog */
 .meme-catalog {
+    margin-top: 10px;
     height: 165px !important;
-    /* height: 110px !important; */
-    width: relative; 
+    /* width: relative;  */
     border: 2px solid #2d2d2d; 
     -webkit-box-shadow: 0 0 5px #fff;
     box-shadow: 0 0 5px #fff;
     border-radius: 5px;
 }
 
-.meme-catalog > fieldset{
+/* .meme-catalog > fieldset{
     display: flex;
     flex-direction: row !important;
     align-items: space-between !important;
@@ -92,20 +107,21 @@
 
 .meme-catalog > .right{
     position: absolute;
-    top: 449px;
-    right: calc(10% - 90px);
+    top: 478px;
+    left: calc(1000px - 10%);
     border-top-right-radius: 3px;
 }
 
 .meme-catalog > .left{
     position: absolute !important;
     border-top-left-radius: 3px;
-}
+} */
 
 .scroll {
     overflow-x: scroll;
     align-items: center;
     white-space: nowrap;
+    position: relative;
 }
 
 .scroll-btn {
@@ -113,7 +129,9 @@
     cursor: pointer;
     height: 108px;
     align-items: center;
-    position: fixed;
+    top: 0;
+
+    /* position: fixed; */
 }
 
 .scroll-btn:active {
@@ -123,12 +141,11 @@
 .scroll-btn > img {
     -webkit-filter: invert(1);
    filter: invert(1);
-   transform: rotate(90deg);
+   /* transform: rotate(90deg); */
 }
-
+/* 
 .scroll-btn.left {
     height: 165px;
-    /* height: 100px; */
 
     width: 80px;
     background: linear-gradient(to right, rgba(0,0,0,0.5), transparent);
@@ -140,7 +157,6 @@ transform: rotate(270deg);
 
 .scroll-btn.right {
     height: 165px;
-    /* height: 100px; */
 
     width: 80px;
     background: linear-gradient(to left, rgba(0,0,0,0.5), transparent);
@@ -152,13 +168,39 @@ transform: rotate(270deg);
         top: 241px;
         right: calc(10% - 10px);
     }
+} */
+
+.scroll-btn.left {
+    height: 165px;
+    width: 80px;
+    position: absolute;
+    /* top: 0; */
+    left: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.5), transparent);
+}
+
+.scroll-btn.left > img {
+    transform: rotate(270deg);
+}
+
+.scroll-btn.right {
+    height: 165px;
+    width: 80px;
+    position: absolute;
+   
+    right: 0;
+    background: linear-gradient(to left, rgba(0,0,0,0.5), transparent);
+}
+
+.scroll-btn.right > img {
+    transform: rotate(90deg);
 }
 
 .meme-images {
     display: flex;
     gap: 5px;
     padding: 5px 25px;
-    padding-left: 74px;
+    /* padding-left: 74px; */
 }
 
 .meme-images > img {
@@ -181,4 +223,42 @@ transform: rotate(270deg);
     .title-section.generator {
         height: 40px;
     }
+
+    .title-section {
+        height: 160px;
+    }
+}
+
+
+/* ---------------------------MEDIA QUERYs--------------------------------- */
+@media (min-width: 1251px) and (max-width: 3000px) {
+
+}
+
+@media (min-width: 801px) and (max-width: 1250px) {
+  
+
+}
+
+@media (min-width: 501px) and (max-width: 800px) {
+  
+}
+
+@media (max-width: 500px) {
+
+    .random-meme-section {
+        height: 200px;
+    }
+
+    .meme-catalog {
+        /* margin-top: 10px; */
+        height: 200px !important;
+    }
+
+    .meme-images > img {
+        height: 180px;
+        cursor: pointer;
+    }
+
+
 }

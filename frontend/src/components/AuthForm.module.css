@@ -1,6 +1,7 @@
 .form {
   max-width: 40rem;
   margin: 2rem auto;
+  padding-bottom: 10px;
 }
 
 .form label,
@@ -25,6 +26,7 @@
   gap: 1rem;
   justify-content: flex-end;
   align-items: center;
+  padding-right: 15px;
 }
 
 .actions button {
@@ -52,4 +54,28 @@
 }
 h1 {
   color: var(--color-primary-100);
+}
+
+
+/* ---------------------------MEDIA QUERYs--------------------------------- */
+@media (min-width: 1251px) and (max-width: 3000px) {
+
+}
+
+@media (min-width: 801px) and (max-width: 1250px) {
+ 
+
+}
+
+@media (min-width: 501px) and (max-width: 800px) {
+
+
+}
+
+@media (max-width: 500px) {
+  
+  .form h1{
+    padding-left: 15px;
+  }
+
 }

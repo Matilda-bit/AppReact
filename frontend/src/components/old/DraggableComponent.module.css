@@ -1,6 +1,6 @@
 /* Memes Text Position Templates */
 .meme > .line-bottom {
-    top: calc(90% - 10px);
+    top: 100%;
     justify-content: center;
 }
 
