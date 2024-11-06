@@ -26,22 +26,23 @@ const ImgSettings = ({flip, flipY, setFlip, setFlipY }) => {
             (<div className={`settings ${classes['settings-img-area']}`}>
 
                 <div className={classes['settings-img-items']}>
-                    <label>Flip</label>
-                    <div className={`row jc-center ${classes['margin-10']} `}>
-                    
-                    <fieldset 
-                        className={`icon-invert ${classes['flip-option']} ${classes['margin-lr-5']}`} 
-                        onClick={() => setFlip()}
-                        >
-                        <img src={FlipIcon} alt="flip" width="30" height="25" />
-                    </fieldset>
-                    
-                    <fieldset 
-                        className={` icon-invert ${classes['flip-option']} ${classes['margin-lr-5']} ${classes.rotate}`} 
-                        onClick={() => setFlipY()}
-                        >
-                        <img src={FlipIcon} alt="flipY" width="30" height="25" />
-                    </fieldset>
+                    <div className={classes['flip-img']}>
+                        <label>Flip</label>
+                        <div className={`row jc-center ${classes['margin-10']} `}>                        
+                            <fieldset 
+                                className={`icon-invert ${classes['flip-option']} ${classes['margin-lr-5']}`} 
+                                onClick={() => setFlip()}
+                                >
+                                <img src={FlipIcon} alt="flip" width="30" height="25" />
+                            </fieldset>
+                            
+                            <fieldset 
+                                className={` icon-invert ${classes['flip-option']} ${classes['margin-lr-5']} ${classes.rotate}`} 
+                                onClick={() => setFlipY()}
+                                >
+                                <img src={FlipIcon} alt="flipY" width="30" height="25" />
+                            </fieldset>
+                        </div>
                     </div>
                 </div>  
             </div>)

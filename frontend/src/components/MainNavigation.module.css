@@ -25,6 +25,16 @@
     color: var(--color-primary-800);
   }
 
+  button {
+    background-color: transparent;
+    color: var(--color-primary-400);
+    border: none;
+  }
+
+  button:hover {
+    color: var(--color-primary-800);
+  }
+
 
 /* ---------------------------MEDIA QUERYs--------------------------------- */
   @media (min-width: 1251px) and (max-width: 3000px) {

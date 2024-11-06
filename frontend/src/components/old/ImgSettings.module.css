@@ -2,19 +2,21 @@
 .settings-img-area {
     width: 100%;
     height: 60%;
-    margin: 0 5px 0 0;
-
     border: 2px dashed gray;
     border-radius: 5%;
     background-color: rgb(12, 12, 12);
-    /* //field polina */
-    margin-bottom: 20px;
-    margin-top: 20px;
 }
 
 .settings-img-items {
   margin: 10px;
   justify-content: center;
+}
+
+.flip-img {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
 }
 
 .flip-option {

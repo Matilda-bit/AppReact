@@ -29,13 +29,12 @@ function MemesList({memes}) {
             </li>
           ))}
         </ul>
-
       </div>);
   } else {
     return (
       <div className={classes.memes}>
         <h1>All Memes</h1>
-        <p>You can create new memes and store it here...</p>
+        <p>This option will be available soon...</p>
         </div>
     );
   }

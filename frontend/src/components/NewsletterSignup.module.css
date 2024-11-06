@@ -1,8 +1,10 @@
 .newsletter {
   display:flex;
   align-items: center;
+  margin: 0 auto;
   flex-wrap: nowrap;
   max-width: 400px;
+  padding-bottom: 20px;
 }
 
 .newsletter input,
