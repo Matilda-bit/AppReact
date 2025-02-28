@@ -8,8 +8,8 @@ import {
   Await,
 } from 'react-router-dom';
 
-import MemeItem from '../components/MemeItem';
-import MemesList from '../components/MemesList';
+import MemeItem from '../components/memes/MemeItem';
+import MemesList from '../components/memes/MemesList';
 import { getAuthToken } from '../util/auth';
 
 function MemeDetailPage() {

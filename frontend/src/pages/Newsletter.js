@@ -1,5 +1,5 @@
 import React from 'react';
-import NewsletterSignup from '../components/NewsletterSignup';
+import NewsletterSignup from '../components/subscribe/NewsletterSignup';
 import PageContent from '../components/PageContent';
 
 function NewsletterPage() {

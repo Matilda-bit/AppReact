@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import MemesNavigation from '../../components/MemesNavigation';
+import MemesNavigation from '../../components/navigation/MemesNavigation';
 
 
 function MemesRootLayout() {

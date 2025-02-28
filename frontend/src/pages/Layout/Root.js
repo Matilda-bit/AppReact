@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { Outlet, useLoaderData, useSubmit } from 'react-router-dom';
 
-import MainNavigation from '../../components/MainNavigation';
+import MainNavigation from '../../components/navigation/MainNavigation';
 import { getTokenDuration } from '../../util/auth';
 // import Header from "../../components/old/Header";
 

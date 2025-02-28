@@ -10,19 +10,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import html2canvas from 'html2canvas';
 
 
-import ImgSettings from './old/ImgSettings'; // assuming you have created a separate Settings component
-import SettingsLine from './old/SettingsLine'; // assuming you have created a separate Settings component
-import SetSameSettings from './old/SetSameSettings'; // Adjust the path as per your project structure
-import DraggableComponent from "./old/DraggableComponent";
-import MemeCatalog from "./old/MemeCatalog";
+import ImgSettings from '../old/ImgSettings'; // assuming you have created a separate Settings component
+import SettingsLine from '../old/SettingsLine'; // assuming you have created a separate Settings component
+import SetSameSettings from '../old/SetSameSettings'; // Adjust the path as per your project structure
+import DraggableComponent from "../old/DraggableComponent";
+import MemeCatalog from "../old/MemeCatalog";
 
-import DeleteIcon from './../assets/icons/btn/garbage.png';
-import AddIcon from './../assets/icons/btn/add.png';
+import DeleteIcon from './../../assets/icons/btn/garbage.png';
+import AddIcon from './../../assets/icons/btn/add.png';
 
-import * as memeActions from '../store/actions/meme';
+import * as memeActions from '../../store/actions/meme';
 
 
-import { getAuthToken } from '../util/auth';
+import { getAuthToken } from '../../util/auth';
 import classes from './MemeForm.module.css';
 
 /**

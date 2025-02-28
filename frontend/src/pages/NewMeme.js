@@ -1,5 +1,5 @@
 import React from 'react';
-import MemeForm from '../components/MemeForm';
+import MemeForm from '../components/memes/MemeForm';
 // import AvailableMemeTemplates from '../components/AvailableMemeTemplates';
 
 function NewMemePage() {

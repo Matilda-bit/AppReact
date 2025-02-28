@@ -2,9 +2,8 @@ import React from 'react';
 import { Form, NavLink, useRouteLoaderData } from 'react-router-dom';
 
 import classes from './MainNavigation.module.css';
-// import NewsletterSignup from './NewsletterSignup';
 
-import Header from "./old/Header";
+import Header from "../old/Header";
 
 function MainNavigation() {
   const token = useRouteLoaderData('root');
@@ -79,7 +78,6 @@ function MainNavigation() {
           )}
         </ul>
       </nav>
-      {/* <NewsletterSignup /> */}
     </header>
     </>
   );

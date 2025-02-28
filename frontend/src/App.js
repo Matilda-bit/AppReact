@@ -20,7 +20,7 @@ import AuthenticationPage, {
 } from './pages/Authentication';
 import { action as logoutAction } from './pages/Logout';
 
-import { action as manipulateMemeAction } from './components/MemeForm';
+import { action as manipulateMemeAction } from './components/memes/MemeForm';
 import { checkAuthLoader, tokenLoader } from './util/auth';
 
 

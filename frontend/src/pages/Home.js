@@ -2,7 +2,7 @@ import React from 'react';
 
 import PageContent from '../components/PageContent';
 
-import HomeContent from '../components/HomeContent'
+import HomeContent from '../components/home/HomeContent'
 
 
 function HomePage() {

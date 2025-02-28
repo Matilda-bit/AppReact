@@ -2,7 +2,7 @@ import React from 'react';
 import { Suspense } from 'react';
 import { useLoaderData, json, defer, Await } from 'react-router-dom';
 
-import MemesList from '../components/MemesList';
+import MemesList from '../components/memes/MemesList';
 
 function MemesPage() {
   const { memes } = useLoaderData();

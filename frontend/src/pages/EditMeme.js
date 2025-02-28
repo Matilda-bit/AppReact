@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouteLoaderData } from 'react-router-dom';
 
-import MemeForm from '../components/MemeForm';
+import MemeForm from '../components/memes/MemeForm';
 
 function EditMemePage() {
   const data = useRouteLoaderData('meme-detail');
