@@ -1,19 +1,15 @@
 /* Memes Text Position Templates */
-.meme > .line-bottom {
+.meme>.line-bottom {
     top: 100%;
     justify-content: center;
 }
 
-.meme > .line-top {
+.meme>.line-top {
     top: 0;
     justify-content: center;
     /* height: 120%;  */
 }
 
-.meme-text{
-    display: flex;
-    flex-direction: row; 
-} 
 
 /* ?? */
 .line-0 {
@@ -32,34 +28,40 @@
 .color-white {
     color: white;
     text-shadow:
-    2px 2px 0 #000,
-    -2px -2px 0 #000,
-    2px -2px 0 #000,
-    -2px 2px 0 #000,
-    0 2px 0 #000,
-    2px 0 0 #000,
-    0 -2px 0 #000,
-    -2px 0 0 #000,
-    2px 2px 5px #000;
+        2px 2px 0 #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        0 2px 0 #000,
+        2px 0 0 #000,
+        0 -2px 0 #000,
+        -2px 0 0 #000,
+        2px 2px 5px #000;
 }
 
 .color-black {
     color: black;
     text-shadow:
-    2px 2px 0 #ffffff,
-    -2px -2px 0 #ffffff,
-    2px -2px 0 #ffffff,
-    -2px 2px 0 #ffffff,
-    0 2px 0 #ffffff,
-    2px 0 0 #ffffff,
-    0 -2px 0 #ffffff,
-    -2px 0 0 #ffffff,
-    2px 2px 5px #ffffff;
-} 
+        2px 2px 0 #ffffff,
+        -2px -2px 0 #ffffff,
+        2px -2px 0 #ffffff,
+        -2px 2px 0 #ffffff,
+        0 2px 0 #ffffff,
+        2px 0 0 #ffffff,
+        0 -2px 0 #ffffff,
+        -2px 0 0 #ffffff,
+        2px 2px 5px #ffffff;
+}
 
 .no-cursor {
     cursor: default;
 }
+
+.meme-text {
+    display: flex;
+    flex-direction: row;
+}
+
 
 .meme-text {
     position: relative;
@@ -69,16 +71,18 @@
     font-family: Impact, sans-serif;
     text-transform: uppercase;
     letter-spacing: 1px;
-    position: absolute; 
+    position: absolute;
 }
-.meme-text:active{
+
+.meme-text:active {
     margin: auto;
     padding: 0 2px;
-    border: 1px dashed white; 
+    border: 1px dashed white;
+    width: fixed;
 }
 
 .limit {
-    border:#313131;
+    border: #313131;
     border-width: 5px;
     border-style: solid;
 }
@@ -138,12 +142,15 @@
 .font-size-17 {
     font-size: 410%;
 }
+
 .font-size-18 {
     font-size: 640%;
 }
+
 .font-size-19 {
     font-size: 670%;
 }
+
 .font-size-20 {
     font-size: 700%;
 }
@@ -151,6 +158,7 @@
 .font-comic {
     font-family: Comic Sans MS, Comic Sans, cursive !important;
 }
+
 .border-cst {
     border-radius: 1px;
     border-color: #555555;
@@ -180,9 +188,11 @@
 .text-align-center {
     text-align: center !important;
 }
+
 .text-align-left {
     text-align: left !important;
 }
+
 .text-align-right {
     text-align: right !important;
 }

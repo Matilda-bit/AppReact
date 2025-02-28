@@ -1,31 +1,37 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@400;600&display=swap');
-               
+
 
 .gif {
-    width: 100%;
-    height: auto;
-    max-width: 600px;
-    margin: 20px auto;
-    display: block;
-  }
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  margin: 20px auto;
+  display: block;
+}
 
 p {
-  max-width: 900px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 0 15px;
 }
 
-p, a, li {
+p,
+a,
+li {
   font-family: 'Poppins', sans-serif;
 }
 
 img {
-  width: 100%;           /* Ensures the image scales down to fit the container */
-  height: auto;          /* Maintains the aspect ratio */
-  max-width: 750px;      /* Limits the image width to prevent it from expanding too much on larger screens */
-  display: block;        /* Avoids any inline spacing issues */
-  margin: 0 auto;        /* Centers the image horizontally */
+  width: 100%;
+  /* Ensures the image scales down to fit the container */
+  height: auto;
+  /* Maintains the aspect ratio */
+  max-width: 750px;
+  /* Limits the image width to prevent it from expanding too much on larger screens */
+  display: block;
+  /* Avoids any inline spacing issues */
+  margin: 0 auto;
+  /* Centers the image horizontally */
   padding: 5px;
 }
 
@@ -34,8 +40,8 @@ img {
   color: #d5d5d5;
   line-height: 1.6;
   margin: 0 auto;
-  font-family: "Lucida Console", "Courier New", monospace; 
-  font-weight: bold;                                            
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: bold;
 }
 
 
@@ -81,26 +87,18 @@ img {
 .list li {
   font-weight: bold;
   margin: 10px 0;
-  font-family: "Lucida Console", "Courier New", monospace; 
+  font-family: "Lucida Console", "Courier New", monospace;
 }
-  
+
 
 /* ---------------------------MEDIA QUERYs--------------------------------- */
-@media (min-width: 1251px) and (max-width: 3000px) {
+@media (min-width: 1251px) and (max-width: 3000px) {}
 
-}
+@media (min-width: 801px) and (max-width: 1250px) {}
 
-@media (min-width: 801px) and (max-width: 1250px) {
+@media screen and (max-width: 800px) {}
 
-}
-
-@media screen and (max-width: 800px) {
-
-}
-
-@media screen and (min-width: 500px) { 
-
-}
+@media screen and (min-width: 500px) {}
 
 @media screen and (max-width: 500px) {
   p {
@@ -108,6 +106,6 @@ img {
   }
 
   img {
-      max-width: 360px;
-    }
+    max-width: 360px;
+  }
 }

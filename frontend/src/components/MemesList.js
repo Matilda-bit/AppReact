@@ -4,27 +4,26 @@ import { Link } from 'react-router-dom';
 
 import classes from './MemesList.module.css';
 
-function MemesList({memes}) {
+function MemesList({ memes }) {
   // const memes = useLoaderData();
   console.log("MemesList");
-  console.log(memes);
 
-  if(memes) {
+  if (memes) {
     return (
       <div className={classes.memes}>
         <h1>All Memes</h1>
-        <ul className={classes.list + " " +  classes['meme-catalog']}>
-          {memes.map((meme,index) => (
+        <ul className={classes.list + " " + classes['meme-catalog']}>
+          {memes.map((meme, index) => (
             <li key={meme.id} className={classes.item}>
               <Link to={`/memes/${meme.id}`}>
-                  <div id="meme-images" className={classes.content + " " + classes['meme-images']}>
-                          <img
-                              key={index}
-                              src={meme.item.img}
-                              alt={meme.item.name}
-                              draggable="false"
-                          />
-                  </div>
+                <div id="meme-images" className={classes.content + " " + classes['meme-images']}>
+                  <img
+                    key={index}
+                    src={meme.item.img}
+                    alt={meme.item.name}
+                    draggable="false"
+                  />
+                </div>
               </Link>
             </li>
           ))}
@@ -35,7 +34,7 @@ function MemesList({memes}) {
       <div className={classes.memes}>
         <h1>All Memes</h1>
         <p>This option will be available soon...</p>
-        </div>
+      </div>
     );
   }
 

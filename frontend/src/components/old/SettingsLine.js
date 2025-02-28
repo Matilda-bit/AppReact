@@ -8,18 +8,18 @@ import IncreaseSize from '../../assets/icons/fontSize/up.png';
 
 import classes from './SettingsLine.module.css';
 
-const SettingsLine = ({index, line, template, setColor, setTextAlign, setFontSize, hideSettings }) => {
-    const tem = index === 0; 
+const SettingsLine = ({ index, line, template, setColor, setTextAlign, setFontSize, hideSettings }) => {
+    const tem = index === 0;
     let reduce = line.fontSize > 6;
     let increase = line.fontSize < 20;
-    if(!tem && hideSettings) {
+    if (!tem && hideSettings) {
         return null;
     }
 
 
     return (
         <div className={classes.settings}>
-            <div className="">
+            <div className={classes.options}>
                 <label>Color</label>
                 <div className={classes['color-options']}>
                     <div
@@ -28,18 +28,18 @@ const SettingsLine = ({index, line, template, setColor, setTextAlign, setFontSiz
                         onClick={() => { setColor((hideSettings && index !== 0) ? template.color : 'color-black'); }}
                     />
                     <div
-                        className={classes['color-option'] + " " + ((line.color === 'color-white')? classes['option-selected'] : null)}
+                        className={classes['color-option'] + " " + ((line.color === 'color-white') ? classes['option-selected'] : null)}
                         style={{ backgroundColor: "white" }}
                         onClick={() => { setColor((hideSettings && index !== 0) ? template.color : 'color-white'); }}
                     />
                 </div>
             </div>
 
-            <div className="">
+            <div className={classes.options}>
                 <label>Text Align</label>
                 <div className={classes['display-flex']}>
                     <div className={classes['align-option']}
-                    onClick={() => { setTextAlign((hideSettings && index !== 0) ? template.setTextAlign : 'text-align-left'); }}
+                        onClick={() => { setTextAlign((hideSettings && index !== 0) ? template.setTextAlign : 'text-align-left'); }}
                     >
                         <img src={AlignLeftIcon} alt="Left Align" width="25" height="15" />
                     </div>
@@ -52,7 +52,7 @@ const SettingsLine = ({index, line, template, setColor, setTextAlign, setFontSiz
                 </div>
             </div>
 
-            <div className="">
+            <div className={classes.options}>
                 <label>Font Size</label>
                 <div className={classes['display-flex']}>
                     <fieldset className={classes['font-size-option']} onClick={() => reduce ? setFontSize("reduce") : null}>

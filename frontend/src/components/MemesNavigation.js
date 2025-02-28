@@ -18,7 +18,8 @@ function MemesNavigation() {
               }
               end
             >
-              All Memes
+
+              My Memes
             </NavLink>
           </li>
           {token && (

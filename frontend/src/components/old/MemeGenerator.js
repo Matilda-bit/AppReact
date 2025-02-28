@@ -8,7 +8,7 @@ import {
     // useActionData,
     // json,
     // redirect
-  } from 'react-router-dom';
+} from 'react-router-dom';
 
 import SettingsLine from './SettingsLine'; // assuming you have created a separate Settings component
 import ImgSettings from './ImgSettings'; // assuming you have created a separate Settings component
@@ -36,14 +36,14 @@ const MemeGenerator = () => {
     const flip = useSelector(state => state.flip);
 
     const dispatch = useDispatch();
-    
+
     const [picInfo, setPicInfo] = useState();
     // const [aiRequest, setAiRequest] = useState(false);
     var memeRef = useRef(null);
 
-   
+
     const [allMemeImgs, setAllMemeImgs] = useState([]);
-   
+
     //ACTIONS
     const setLines = (newLines) => {
         dispatch({ type: 'SET_LINES', payload: newLines });
@@ -80,35 +80,11 @@ const MemeGenerator = () => {
     useEffect(() => {
         fetch("https://api.imgflip.com/get_memes")
             .then(response => response.json())
-            .then(response => { 
+            .then(response => {
                 const { memes } = response.data;
                 setAllMemeImgs(memes);
             });
     }, []);
-    // const {
-    //     isFetching,
-    //     fetchedData,
-    //     setFetchedData,
-    //     error
-    //   } = useFetch();
-
-    //     useEffect(() => {
-            
-        
-    //           if (error) {
-    //             return <Error title="An error occurred1!" message={error.message} />;
-    //           }
-        
-    //           if(!isFetching){
-    //             console.log(fetchedData)
-    //               setAllMemeImgs(fetchedData.data.memes);
-    //           }
-        
-    // }, []);
-   
-
-      //
-
 
 
     //change the line set limit height by the meme height
@@ -134,7 +110,7 @@ const MemeGenerator = () => {
                 }
                 return line;
             });
-            setLines(updateSettings);  
+            setLines(updateSettings);
             setHideSettings(!hideSettings);
         }
     };
@@ -142,12 +118,12 @@ const MemeGenerator = () => {
     function handleSubmit(event) {
         event.preventDefault();
         const memeBox = document.getElementById('meme-box');
-    
+
         // Use html2canvas to render the meme-box to a canvas
         html2canvas(memeBox, { useCORS: true }).then(canvas => {
             // Convert the canvas to a data URL
             const dataUrl = canvas.toDataURL();
-    
+
             // Optionally, create a link element to download the image
             const a = document.createElement('a');
             a.setAttribute('download', 'meme.png');
@@ -160,30 +136,30 @@ const MemeGenerator = () => {
     function setColor(index, color) {
         console.log("I'm trying!!");
         const updatedData = lines.map((line, i) => {
-                if ((i === index || (index === 0 && hideSettings))) {
-                    return { ...line, color };
-                }
-                return line;
-            });
+            if ((i === index || (index === 0 && hideSettings))) {
+                return { ...line, color };
+            }
+            return line;
+        });
         setLines(updatedData);
     };
 
     function setTextAlign(index, textAlign) {
         const updatedLines = lines.map((line, i) => {
-                if ((i === index || (index === 0 && hideSettings))) {
-                    return { ...line, textAlign };
-                }
-                return line;
-            });
+            if ((i === index || (index === 0 && hideSettings))) {
+                return { ...line, textAlign };
+            }
+            return line;
+        });
         setLines(updatedLines);
     };
 
     function setFontSize(index, operation) {
         const newLines = lines.map((line, i) => {
-                                if ((i === index || (index === 0 && hideSettings)) && (operation === "reduce" || operation === "increase")) {
-                                    return { ...line, fontSize: operation === "reduce" ? line.fontSize - 1 : line.fontSize + 1 };
-                                }
-                                return line;
+            if ((i === index || (index === 0 && hideSettings)) && (operation === "reduce" || operation === "increase")) {
+                return { ...line, fontSize: operation === "reduce" ? line.fontSize - 1 : line.fontSize + 1 };
+            }
+            return line;
         });
 
         setLines(newLines);
@@ -214,75 +190,75 @@ const MemeGenerator = () => {
                 handleSubmit={handleSubmit}
             />
 
-        <section>
-        <hr className="solid"></hr>
-            <div className='title-section generator'>
-                <h1  className="center ">MEME GENERATOR SECTION</h1>
-            </div>
-    
-            <div className="edit-area">
-                <Form className="meme-form" onSubmit={handleSubmit}>
-                    <div className="meme-input">
+            <section>
+                <hr className="solid"></hr>
+                <div className='title-section generator'>
+                    <h1 className="center ">MEME GENERATOR SECTION</h1>
+                </div>
 
-                        <ImgSettings
-                            setFlip={() => setFlip(!flip)}
-                        />
+                <div className="edit-area">
+                    <Form className="meme-form" onSubmit={handleSubmit}>
+                        <div className="meme-input">
 
-                        {lines.map((line, index) => (
-                            <div key={index}>
-                            <div className="meme-input-item">
-                                <div className="title-line">
-                                <label>Text {`#${index + 1}`}: </label>
+                            <ImgSettings
+                                setFlip={() => setFlip(!flip)}
+                            />
 
+                            {lines.map((line, index) => (
+                                <div key={index}>
+                                    <div className="meme-input-item">
+                                        <div className="title-line">
+                                            <label>Text {`#${index + 1}`}: </label>
+
+                                        </div>
+                                        <SettingsLine
+                                            index={index}
+                                            line={lines[index]}
+                                            template={lines[0]}
+                                            setColor={(color) => setColor(index, color)}
+                                            setTextAlign={(textAlign) => setTextAlign(index, textAlign)}
+                                            setFontSize={(operation) => setFontSize(index, operation)}
+                                            hideSettings={hideSettings}
+                                        />
+
+                                        {(index === 0) ? <textarea
+                                            type="text"
+                                            name={"text-" + { index }}
+                                            className={"margin-10 " + (index !== 0) ? "lines " : "line-0 "}
+                                            placeholder={"Top Text"}
+                                            value={line.text}
+                                            onChange={(event) => handleChange(event, index)}
+                                        />
+                                            :
+                                            <div className="display-flex">
+                                                <textarea
+                                                    type="text"
+                                                    name={"text-" + { index }}
+                                                    className={"margin-10 " + (index !== 0) ? "lines " : "line-0 "}
+                                                    placeholder={index === 0 ? "Top Text" : (index < 2 ? "Bottom Text" : `Text #${index + 1}`)}
+                                                    value={line.text}
+                                                    onChange={(event) => handleChange(event, index)}
+                                                />
+                                                <button className="btn-delete" onClick={() => deleteLine(index)}>
+                                                    <img draggable="false" src={DeleteIcon} alt="Delete" border="0" width={45} height={45} />
+                                                </button>
+                                            </div>
+                                        }
+                                    </div>
+
+                                    {index === 0 && lines.length > 1 && (
+                                        <SetSameSettings
+                                            hideSettings={hideSettings}
+                                            checkboxChange={checkboxChange}
+                                        />
+                                    )}
+
+                                    <hr className="solid"></hr>
                                 </div>
-                                <SettingsLine 
-                                    index={index}
-                                    line={lines[index]}
-                                    template={lines[0]}
-                                    setColor={(color) => setColor(index, color)}
-                                    setTextAlign={(textAlign) => setTextAlign(index, textAlign)}
-                                    setFontSize={(operation) => setFontSize(index, operation)}
-                                    hideSettings={hideSettings}
-                                />
 
-                                {(index === 0) ? <textarea
-                                    type="text"
-                                    name={"text-" + {index}}
-                                    className={"margin-10 " + (index !== 0) ?  "lines " : "line-0 "}
-                                    placeholder={"Top Text"}
-                                    value={line.text}
-                                    onChange={(event) => handleChange(event, index)}
-                                />  
-                                : 
-                                <div className="display-flex">
-                                    <textarea
-                                        type="text"
-                                        name={"text-" + {index}}
-                                        className={"margin-10 " + (index !== 0) ?  "lines " : "line-0 "}
-                                        placeholder={index === 0 ? "Top Text" : (index < 2 ? "Bottom Text" : `Text #${index+1}`)}
-                                        value={line.text}
-                                        onChange={(event) => handleChange(event, index)}
-                                    />  
-                                    <button className="btn-delete" onClick={() => deleteLine(index)}>
-                                        <img draggable="false" src={DeleteIcon} alt="Delete" border="0" width={45} height={45}/>
-                                    </button>    
-                                </div>
-                                }
-                            </div>
-                        
-                            {index === 0 && lines.length > 1 && (
-                                <SetSameSettings
-                                    hideSettings={hideSettings}
-                                    checkboxChange={checkboxChange}
-                                />
-                            )}
+                            ))}
 
-                            <hr className="solid"></hr>
-                        </div>
-                            
-                        ))}
-
-                        {/* {lines.map((line, index) => (
+                            {/* {lines.map((line, index) => (
                                         <TextLine
                                             key={index}
                                             index={index}
@@ -297,48 +273,48 @@ const MemeGenerator = () => {
                                         />
                                     ))} */}
 
-                        <div className="meme-input-btn ">
-                            <button className="button-39 " type="button" onClick={addLine}> <img src={AddIcon} alt="buttonpng" border="0" width={20} height={20} /> 
-                                 Add Text</button>
+                            <div className="meme-input-btn ">
+                                <button className="button-39 " type="button" onClick={addLine}> <img src={AddIcon} alt="buttonpng" border="0" width={20} height={20} />
+                                    Add Text</button>
+                            </div>
+
+                            <button className="button-39" type="button" style={{ verticalAlign: 'middle' }} onClick={addLine}>Save in My Memes</button>
+                            <button className="download-btn" style={{ verticalAlign: 'middle' }} type="submit"><span>Download</span></button>
+
                         </div>
+                    </Form>
 
-                        <button className="button-39" type="button" style={{verticalAlign: 'middle'}} onClick={addLine}>Save in My Memes</button>
-                        <button className="download-btn" style={{verticalAlign: 'middle'}} type="submit"><span>Download</span></button>
+                    <div className="display-meme">
+                        <div
+                            id="meme-box"
+                            className="meme-box meme limit">
+                            <img draggable="false" className={(flip ? "meme-flip " : "") + "meme-img"} src={item.img} alt={item.name} />
+                            {lines.map((line, index) => (
+                                <DraggableComponent
+                                    key={index}
+                                    unique={index}
+                                    line={line}
+                                    imgId={item.id}
+                                    boxCount={item.box_count}
+                                    info={picInfo}
+                                />
+                            ))}
+                        </div>
+                        <div className="center settings-title grey">
+                            <h2 className="center font-comic">{item.name}</h2>
+                        </div>
+                    </div>
 
-                    </div>
-                </Form>
-
-                <div className="display-meme">
-                    <div 
-                    id="meme-box" 
-                    className="meme-box meme limit">
-                        <img draggable="false" className={(flip ? "meme-flip " : "") + "meme-img"} src={item.img} alt={item.name} />
-                        {lines.map((line, index) => (
-                            <DraggableComponent
-                                key={index}
-                                unique={index}
-                                line={line}
-                                imgId={item.id}
-                                boxCount={item.box_count}
-                                info={picInfo}
-                            />
-                        ))}
-                    </div>
-                    <div className="center settings-title grey">
-                        <h2 className="center font-comic">{item.name}</h2>
-                    </div>
                 </div>
-             
-            </div>  
 
-            
-            <div className=" col-6 center row flex display">
-                <br/>
-                
-                <label > original size {item.width} x {item.height}</label>
-                <label > boxes {item.box_count} </label>
-                <label > id {item.id} </label>
-            </div>
+
+                <div className=" col-6 center row flex display">
+                    <br />
+
+                    <label > original size {item.width} x {item.height}</label>
+                    <label > boxes {item.box_count} </label>
+                    <label > id {item.id} </label>
+                </div>
             </section>
         </>
     );
