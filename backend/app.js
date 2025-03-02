@@ -7,6 +7,9 @@ const authRoutes = require('./routes/auth');
 
 const app = express();
 
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
 app.use(bodyParser.json());
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -26,4 +29,5 @@ app.use((error, req, res, next) => {
   res.status(status).json({ message: message });
 });
 
-app.listen(8080);
+app.listen(8080, () => {
+  console.log('Server is running on port 8080')});
