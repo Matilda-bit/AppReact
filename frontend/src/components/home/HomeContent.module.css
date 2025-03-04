@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@400;600&display=swap');
 
-
 .gif {
   width: 100%;
   height: auto;
@@ -13,25 +12,22 @@ p {
   max-width: 800px;
   margin: 0 auto;
   padding: 0 15px;
+  text-align: left;
 }
 
 p,
 a,
 li {
   font-family: 'Poppins', sans-serif;
+
 }
 
 img {
   width: 100%;
-  /* Ensures the image scales down to fit the container */
   height: auto;
-  /* Maintains the aspect ratio */
   max-width: 750px;
-  /* Limits the image width to prevent it from expanding too much on larger screens */
   display: block;
-  /* Avoids any inline spacing issues */
   margin: 0 auto;
-  /* Centers the image horizontally */
   padding: 5px;
 }
 
@@ -44,11 +40,9 @@ img {
   font-weight: bold;
 }
 
-
-
 .link {
   color: #81bcfa;
-  text-decoration: underline;
+  text-decoration: none;
   cursor: pointer;
 }
 
@@ -90,13 +84,50 @@ img {
   font-family: "Lucida Console", "Courier New", monospace;
 }
 
+/* --------------------------- NEW STYLES FOR RESPONSIVENESS --------------------------- */
+.gifContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
 
-/* ---------------------------MEDIA QUERYs--------------------------------- */
+.contentRow, .contentRowReverse {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.contentRow img, .contentRowReverse img {
+  width: 50%;
+  max-width: 100%;
+  height: auto;
+}
+
+.contentRow p, .contentRowReverse p {
+  width: 50%;
+}
+
+.contentRowReverse {
+  flex-direction: row-reverse;
+}
+
+/* --------------------------- MEDIA QUERIES --------------------------- */
 @media (min-width: 1251px) and (max-width: 3000px) {}
 
 @media (min-width: 801px) and (max-width: 1250px) {}
 
-@media screen and (max-width: 800px) {}
+@media screen and (max-width: 800px) {
+  .contentRow, .contentRowReverse {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contentRow img, .contentRowReverse img,
+  .contentRow p, .contentRowReverse p {
+    width: 100%;
+  }
+}
 
 @media screen and (min-width: 500px) {}
 

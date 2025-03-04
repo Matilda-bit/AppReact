@@ -5,7 +5,7 @@
     background: #313131;
     background: -webkit-linear-gradient(to right,#313131,#c7ede6);
     background: linear-gradient(to right,#313131,#c7ede6);
-    border-bottom: 7px solid #313131;
+    /* border-bottom: 7px solid #74a2d6; */
 }
 
 .staticHeader img {
@@ -19,7 +19,7 @@
     font-family: Impact, sans-serif;
     color: whitesmoke;
     font-size:50px;
-    margin-left: 60px;
+    margin-left: 10px;
 
     text-shadow:
     2px 2px 0 #000,
@@ -32,6 +32,20 @@
     -2px 0 0 #000,
     2px 2px 5px #000;
 }
+
+.neon-line {
+    position: absolute;
+    top: 150px;
+    width: 100%; 
+    height: 2px;      
+    background-color: white;
+    box-shadow: 
+        0px 5px 10px gold,  
+        0px 10px 20px gold,  
+        0px 15px 40px gold,  
+        0px 20px 80px gold;  
+    z-index: 1;
+  }
 
 @media (min-width: 1251px) and (max-width: 3000px) {
 
