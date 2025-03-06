@@ -9,6 +9,10 @@ const app = express();
 
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
+// Handle requests by serving index.html for all routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+});
 
 app.use(bodyParser.json());
 app.use((req, res, next) => {

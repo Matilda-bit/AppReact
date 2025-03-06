@@ -1,10 +1,12 @@
 main {
   max-width: 1200px;
   margin: 0 auto;
+  background-color: #2a242f;
 }
 .content {
   text-align: center;
   color: var(--color-primary-100);
+  padding-top: 20px;
 
 }
 .home-container {

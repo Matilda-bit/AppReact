@@ -10,8 +10,9 @@
 
 .staticHeader img {
     height: 100%;
-    margin: 0 1%;
-    padding-bottom: 5px;
+    margin: 0 15px;
+
+    padding-bottom: 10px;
     width: auto;
 }
 
@@ -19,7 +20,7 @@
     font-family: Impact, sans-serif;
     color: whitesmoke;
     font-size:50px;
-    margin-left: 10px;
+    margin-left: 0px;
 
     text-shadow:
     2px 2px 0 #000,
@@ -76,6 +77,6 @@
 
     .staticHeader > img {
         margin-left: 3px;
-        margin-right: 3px;
+    
     }
 }
